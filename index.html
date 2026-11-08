@@ -103,7 +103,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 </head>
 <body>
 
-<!-- 首頁：Light up 鈕 -->
+<!-- ================= 首頁 ================= -->
 <div id="section-home" class="stage-section active">
   <div class="home-content">
     <button class="light-up-btn" id="btn-light-up">Light up</button>
@@ -112,12 +112,13 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
   </div>
 </div>
 
-<!-- 蛋糕頁面 -->
+<!-- ================= 蛋糕頁面 ================= -->
 <div id="section-cake" class="stage-section">
   <div class="glow-background"></div>
   <div class="action-prompt" id="action-prompt">請點擊一下</div>
   <div class="cake-stage" id="cake-stage">
     <div class="cake-custom-wrapper">
+      <!-- 蛋糕圖片 (可換檔名) -->
       <img src="ji.png" alt="Birthday Cake" class="cake-img" onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80'">
       <div class="candles-container">
         <div class="candle" onclick="extinguishSingleCandle(0)"><div class="flame" id="f0"></div></div>
@@ -129,6 +130,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
     </div>
     <div class="lighter-area" id="lighter-area">
       <div class="lighter-custom" id="lighter" aria-label="拖曳打火機點燃蠟燭">
+        <!-- 打火機圖片 (可換檔名) -->
         <img src="ㄏㄍㄜ.png" alt="Lighter" class="lighter-img" onerror="this.src='https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=300&q=80'">
       </div>
       <span class="lighter-comment">這是點蠟燭不是點煙的</span>
@@ -137,24 +139,28 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
   <div class="wish-text-box" id="wish-text-box"></div>
 </div>
 
-<!-- 照片藝廊頁面 -->
+<!-- ================= 照片藝廊頁面 ================= -->
 <div id="section-gallery" class="stage-section">
   <div class="gallery-title">Moments (點擊各張照片看故事)</div>
   <div class="polaroids-grid">
+    <!-- 照片 1 -->
     <div class="polaroid" tabindex="0" data-id="1">
-      <img src="抽菸.png" class="polaroid-img" alt="回憶照片" onerror="this.src='https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80'">
+      <img src="抽菸.png" class="polaroid-img" alt="回憶照片">
       <div class="polaroid-caption">抽菸啊</div>
     </div>
+    <!-- 照片 2 -->
     <div class="polaroid" tabindex="0" data-id="2">
-      <img src="花花.png" class="polaroid-img" alt="回憶照片" onerror="this.src='https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80'">
+      <img src="花花.png" class="polaroid-img" alt="回憶照片">
       <div class="polaroid-caption">做過了好多事呢</div>
     </div>
+    <!-- 照片 3 -->
     <div class="polaroid" tabindex="0" data-id="3">
-      <img src="奇怪自拍.png" class="polaroid-img" alt="回憶照片" onerror="this.src='https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=600&q=80'">
+      <img src="奇怪自拍.png" class="polaroid-img" alt="回憶照片">
       <div class="polaroid-caption">奇奇怪怪的你和我</div>
     </div>
+    <!-- 照片 4 -->
     <div class="polaroid" tabindex="0" data-id="4">
-      <img src="分開.png" class="polaroid-img" alt="回憶照片" onerror="this.src='https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80'">
+      <img src="分開.png" class="polaroid-img" alt="回憶照片">
       <div class="polaroid-caption">要長大了喔</div>
     </div>
   </div>
@@ -163,13 +169,14 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
   </div>
 </div>
 
-<!-- 信封信件頁面 -->
+<!-- ================= 信封信件頁面 ================= -->
 <div id="section-letter" class="stage-section">
   <div class="gallery-title">請慢慢打開信封</div>
   <div class="letter-container">
     <div class="letter-paper" id="letter-paper">
+      <!-- 這裡修改信件文字 -->
       <h3>嗨正義哥：</h3>
-      <p>想了想，還是想好好祝你生日快樂，但在那之前先說抱歉，在你真正生日當天毀了他。過了一年，長大了一歲，我們一起看過了好多，也各自看到了不一樣的什麼，還是會偶爾想起台北的細雨，想起在潮濕冷空氣抽煙的日子，但是我們都要往前走，一步一步的。不急著成為一個完美的大人，只要持續的慢慢往前走就好，生日快樂>< </p>
+      <p>想了想，還是想好好祝你生日快樂，但在那之前先說抱歉，在你真正生日當天毀了他。又過了一年長大了一歲，我們一起看過了一些什麼，也各自看到了不一樣的什麼，我還是會偶爾想起台北的細雨，想起在潮濕冷空氣抽煙的日子，但是我們都要往前走，一步一步的。不急著成為一個完美的大人，只要持續的慢慢往前走就好。</p>
     </div>
     <div class="envelope" id="envelope" onclick="tearEnvelope()">
       <div class="envelope-flap"></div>
@@ -177,4 +184,329 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
     </div>
   </div>
   <div class="section-next-container" id="letter-next-container">
-    <button class
+    <button class="light-up-btn" id="btn-goto-slider">觀看回憶相簿</button>
+  </div>
+</div>
+
+<!-- ================= 輪播相簿頁面 ================= -->
+<div id="section-slider" class="stage-section">
+  <div class="slider-hint">← 左右滑動瀏覽回憶 →</div>
+  <div class="slider-wrapper" id="slider-wrapper">
+    <div class="slider-track" id="slider-track">
+      <div class="slide-item">
+        <img src="抽菸.png" class="slide-img" alt="回憶照片">
+        <div class="slide-caption-overlay">一起走過的每一條街</div>
+      </div>
+      <div class="slide-item">
+        <img src="花花.png" class="slide-img" alt="回憶照片">
+        <div class="slide-caption-overlay">那些閃閃發光的時刻</div>
+      </div>
+      <div class="slide-item">
+        <img src="奇怪自拍.png" class="slide-img" alt="回憶照片">
+        <div class="slide-caption-overlay">笑著鬧著的日常風景</div>
+      </div>
+    </div>
+  </div>
+  <div class="line-btn-container" id="line-btn-container">
+    <!-- 這裡修改你的 LINE 連結 -->
+    <a href="https://line.me/ti/p/rRB0-1SSeX" target="_blank" rel="noopener noreferrer" class="line-btn">想我就打給我</a>
+    <button type="button" class="music-stop-btn" id="music-stop-btn">停止背景音樂</button>
+  </div>
+</div>
+
+<!-- ================= 故事彈窗燈箱 ================= -->
+<div class="modal-overlay" id="story-modal" onclick="closeStory(event)">
+  <div class="modal-card" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModalDirect()" aria-label="關閉">×</button>
+    <img id="modal-img" src="" alt="Story Image" class="modal-img">
+    <h3 id="modal-title" class="modal-title"></h3>
+    <p id="modal-story" class="modal-story"></p>
+  </div>
+</div>
+
+<!-- 音訊資源 (檔名維持不變) -->
+<audio id="background-music" src="bruno-major-original-key-karaoke---piano-instrumental-with-lyrics.mp3" preload="auto" loop></audio>
+<audio id="lighter-audio" src="打火機.mp3" preload="auto"></audio>
+<audio id="click-audio" src="點擊.mp3" preload="auto"></audio>
+<audio id="extinguish-audio" src="6aad6e8ece867.wav" preload="auto"></audio>
+<audio id="tear-audio" src="1281.mp3" preload="auto"></audio>
+
+<script>
+// ================= 互動控制程式碼 =================
+const music = document.getElementById('background-music'),
+      lighterAudio = document.getElementById('lighter-audio'),
+      clickAudio = document.getElementById('click-audio'),
+      extinguishAudio = document.getElementById('extinguish-audio'),
+      tearAudio = document.getElementById('tear-audio');
+
+const MUSIC_VOLUME = .22, DUCK_VOLUME = .055;
+let musicDuckTimer;
+
+function duckMusic(ms = 850) {
+  if (music.paused) return;
+  music.volume = DUCK_VOLUME;
+  clearTimeout(musicDuckTimer);
+  musicDuckTimer = setTimeout(() => { music.volume = MUSIC_VOLUME }, ms);
+}
+
+function playAudio(audio, duckMs = 850) {
+  try {
+    audio.currentTime = 0;
+    audio.play().catch(() => {});
+    duckMusic(duckMs);
+  } catch (e) {}
+}
+
+function playClickSound() { playAudio(clickAudio, 700); }
+
+const secHome = document.getElementById('section-home'),
+      secCake = document.getElementById('section-cake'),
+      secGallery = document.getElementById('section-gallery'),
+      secLetter = document.getElementById('section-letter'),
+      secSlider = document.getElementById('section-slider');
+
+function switchSection(from, to) {
+  playClickSound();
+  from.classList.remove('active');
+  setTimeout(() => to.classList.add('active'), 600);
+}
+
+document.getElementById('btn-light-up').addEventListener('click', () => {
+  music.volume = MUSIC_VOLUME;
+  music.play().catch(() => {});
+  switchSection(secHome, secCake);
+});
+
+document.getElementById('music-stop-btn').addEventListener('click', () => {
+  const btn = document.getElementById('music-stop-btn');
+  if (music.paused) {
+    music.play().then(() => { music.volume = MUSIC_VOLUME; btn.textContent = '停止背景音樂'; }).catch(() => {});
+  } else {
+    music.pause();
+    btn.textContent = '播放背景音樂';
+  }
+});
+
+const actionPrompt = document.getElementById('action-prompt'),
+      lighterArea = document.getElementById('lighter-area'),
+      lighter = document.getElementById('lighter'),
+      cakeStage = document.getElementById('cake-stage'),
+      wishTextBox = document.getElementById('wish-text-box');
+
+let cakeStep = 0, extinguishedCount = 0, isLighterDragging = false;
+const litCandles = new Set(), extinguishedCandles = new Set();
+
+function showLighter() {
+  if (cakeStep !== 0) return;
+  playClickSound();
+  cakeStep = 1;
+  lighterArea.style.display = 'flex';
+  actionPrompt.innerText = '拖曳打火機，碰觸每根蠟燭點燃';
+}
+
+cakeStage.addEventListener('click', e => {
+  if (!e.target.closest('#lighter')) showLighter();
+});
+actionPrompt.addEventListener('click', showLighter);
+
+function lightCandle(index) {
+  if (cakeStep !== 1 || litCandles.has(index)) return;
+  litCandles.add(index);
+  document.getElementById(`f${index}`).classList.add('lit');
+  playAudio(lighterAudio, 1200);
+  if (litCandles.size === 5) {
+    cakeStep = 2;
+    actionPrompt.innerText = '許下願望吧';
+    typeWriterEffect('許下願望吧，最後一個要好好的放在心裡', () => setTimeout(() => {
+      actionPrompt.style.display = 'block';
+      actionPrompt.innerText = '現在點擊或輕觸蠟燭即可熄滅';
+    }, 1000));
+  }
+}
+
+lighter.addEventListener('pointerdown', e => {
+  if (cakeStep !== 1 && cakeStep !== 2) return;
+  e.preventDefault();
+  e.stopPropagation();
+  isLighterDragging = true;
+  lighter.setPointerCapture(e.pointerId);
+  lighterArea.style.transition = 'none';
+  moveLighter(e);
+});
+
+function moveLighter(e) {
+  if (!isLighterDragging) return;
+  const r = cakeStage.getBoundingClientRect(),
+        areaWidth = lighterArea.offsetWidth,
+        lighterWidth = lighter.offsetWidth;
+  lighterArea.style.right = 'auto';
+  lighterArea.style.bottom = 'auto';
+  lighterArea.style.left = `${e.clientX - r.left - (areaWidth - lighterWidth / 2)}px`;
+  lighterArea.style.top = `${e.clientY - r.top - lighter.offsetHeight / 2}px`;
+
+  if (cakeStep === 1) {
+    document.querySelectorAll('.candle').forEach((c, i) => {
+      const b = c.getBoundingClientRect();
+      if (Math.hypot(e.clientX - (b.left + b.width / 2), e.clientY - (b.top + b.height / 2)) < 38) {
+        lightCandle(i);
+      }
+    });
+  }
+}
+
+window.addEventListener('pointermove', moveLighter);
+window.addEventListener('pointerup', () => {
+  if (isLighterDragging) { isLighterDragging = false; lighterArea.style.transition = ''; }
+});
+window.addEventListener('pointercancel', () => {
+  isLighterDragging = false;
+  lighterArea.style.transition = '';
+});
+
+function extinguishSingleCandle(index) {
+  if (cakeStep !== 2 || extinguishedCandles.has(index)) return;
+  const flame = document.getElementById(`f${index}`);
+  if (!flame.classList.contains('lit')) return;
+  playAudio(extinguishAudio, 1100);
+  flame.classList.remove('lit');
+  extinguishedCandles.add(index);
+  extinguishedCount++;
+  if (extinguishedCount === 5) {
+    cakeStep = 3;
+    actionPrompt.innerText = '願望已收下...';
+    setTimeout(() => switchSection(secCake, secGallery), 1200);
+  }
+}
+
+function typeWriterEffect(text, callback) {
+  wishTextBox.textContent = '';
+  let i = 0;
+  function type() {
+    if (i < text.length) {
+      wishTextBox.textContent += text.charAt(i++);
+      setTimeout(type, 90);
+    } else if (callback) {
+      callback();
+    }
+  }
+  type();
+}
+
+// ================= 在這裡修改各張照片點開後的故事文字與圖片 =================
+const stories = {
+  1: { title: '抽菸啊', img: '抽菸.png', story: '我們在很多地方抽著菸，咖啡廳、畫外音，抽著抽著就在一起了，年紀不小了，記得克制點，注意身體健康' },
+  2: { title: '做過了好多事呢', img: '花花.png', story: '我們看過了不少電影、聽過了不少的音樂，也很謝謝你在這一年陪我去很多很多展覽喔！你覺得這麼不一樣的世界有趣嗎？我是滿喜歡的啦' },
+  3: { title: '奇奇怪怪的你和我', img: '奇怪自拍.png', story: '我其實一直都知道你很在乎你的外表，我也是，你害怕著鏡頭，我懂那種不敢照鏡子的感覺，就是因為我知道，所以才想著透過奇奇怪怪的拍照方式讓你稍微習慣一點吧，也多少記錄一下我們，希望在接下來的時間你還是可以慢慢練習，慢慢習慣' },
+  4: { title: '要長大了喔', img: '分開.png', story: '長大就是開始學會習慣那些可能不會太舒服的事情，或許是分開，或許是再見，或許是逐漸接受那些原本這輩子都不可能接受的事情，但你是陳正義欸，我知道你不會妥協的，所以繼續保持吧，我會一直一直看著你的！生日快樂！' }
+};
+
+const modal = document.getElementById('story-modal'),
+      modalImg = document.getElementById('modal-img'),
+      modalTitle = document.getElementById('modal-title'),
+      modalStory = document.getElementById('modal-story'),
+      galleryNext = document.getElementById('gallery-next-container');
+
+const readStories = new Set();
+
+function openStory(id) {
+  const d = stories[id];
+  if (!d) return;
+  modalImg.src = d.img;
+  modalTitle.textContent = d.title;
+  modalStory.textContent = d.story;
+  modal.classList.add('active');
+  readStories.add(id);
+  if (readStories.size === 4) {
+    galleryNext.classList.add('unlocked');
+  }
+}
+
+function closeModalDirect() {
+  playClickSound();
+  modal.classList.remove('active');
+}
+
+function closeStory(e) {
+  if (e.target === modal) modal.classList.remove('active');
+}
+
+document.querySelectorAll('.polaroid').forEach(item => {
+  item.addEventListener('click', () => openStory(Number(item.dataset.id)));
+  item.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openStory(Number(item.dataset.id));
+    }
+  });
+});
+
+document.getElementById('btn-goto-letter').addEventListener('click', () => switchSection(secGallery, secLetter));
+
+let envelopeOpened = false;
+function tearEnvelope() {
+  if (envelopeOpened) return;
+  envelopeOpened = true;
+  playAudio(tearAudio, 1000);
+  const e = document.getElementById('envelope'),
+        p = document.getElementById('letter-paper');
+  e.classList.add('torn');
+  setTimeout(() => p.classList.add('pulled'), 450);
+  setTimeout(() => document.getElementById('letter-next-container').classList.add('visible'), 2300);
+}
+
+document.getElementById('btn-goto-slider').addEventListener('click', () => switchSection(secLetter, secSlider));
+
+let currentSlide = 0;
+const totalSlides = 3,
+      sliderTrack = document.getElementById('slider-track'),
+      sliderWrapper = document.getElementById('slider-wrapper'),
+      lineBtnContainer = document.getElementById('line-btn-container');
+
+function updateSlide() {
+  sliderTrack.style.transform = `translateX(-${currentSlide * sliderWrapper.offsetWidth}px)`;
+  if (currentSlide === totalSlides - 1) {
+    lineBtnContainer.classList.add('visible');
+  }
+}
+
+let startX = 0, touchMoved = false;
+sliderWrapper.addEventListener('touchstart', e => {
+  startX = e.touches[0].clientX;
+  touchMoved = false;
+}, { passive: true });
+
+sliderWrapper.addEventListener('touchmove', e => {
+  if (Math.abs(e.touches[0].clientX - startX) > 10) touchMoved = true;
+}, { passive: true });
+
+sliderWrapper.addEventListener('touchend', e => {
+  const d = startX - e.changedTouches[0].clientX;
+  if (d > 50 && currentSlide < totalSlides - 1) {
+    currentSlide++;
+    updateSlide();
+  } else if (d < -50 && currentSlide > 0) {
+    currentSlide--;
+    updateSlide();
+  }
+  if (touchMoved) sliderWrapper.dataset.swiped = 'true';
+});
+
+sliderWrapper.addEventListener('click', e => {
+  if (sliderWrapper.dataset.swiped === 'true') {
+    sliderWrapper.dataset.swiped = 'false';
+    return;
+  }
+  const r = sliderWrapper.getBoundingClientRect(),
+        x = e.clientX - r.left;
+  if (x > r.width / 2 && currentSlide < totalSlides - 1) {
+    currentSlide++;
+    updateSlide();
+  } else if (x <= r.width / 2 && currentSlide > 0) {
+    currentSlide--;
+    updateSlide();
+  }
+});
+</script>
+
+</body>
+</html>
