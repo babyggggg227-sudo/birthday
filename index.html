@@ -369,7 +369,7 @@ function lightCandle(index) {
   if (litCandles.size === 5) {
     cakeStep = 2;
     actionPrompt.innerText = '許下願望吧，我給你五個蠟燭的機會';
-    typeWriterEffect('許下願望吧，最後一個要好好的放在心裡', () => setTimeout(() => {
+    typeWriterEffect('許下願望吧，最後一個要好好的放在心裡，我給你五個蠟燭的機會', () => setTimeout(() => {
       actionPrompt.style.display = 'block';
       actionPrompt.innerText = '現在點擊或輕觸蠟燭即可熄滅';
     }, 1000));
@@ -425,8 +425,8 @@ function extinguishSingleCandle(index) {
   extinguishedCount++;
   if (extinguishedCount === 5) {
     cakeStep = 3;
-    actionPrompt.innerText = '願望已收下...';
-    setTimeout(() => switchSection(secCake, secGallery), 1200);
+    actionPrompt.innerText = '願望已收下...要好好記得這些願望跟我分享';
+    setTimeout(() => switchSection(secCake, secGallery), 3000);
   }
 }
 
