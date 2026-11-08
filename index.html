@@ -12,7 +12,7 @@
             padding: 0;
         }
 
-        /* 全域自訂小雞鼠標 (使用可愛小雞 SVG 向量圖作為游標) */
+        /* 全域可愛小雞鼠標 */
         body {
             background-color: #0b0b0b;
             color: #f0f0f0;
@@ -23,7 +23,7 @@
             cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'><text y='20' font-size='20'>🐥</text></svg>"), auto;
         }
 
-        button, .polaroid, .lighter, .envelope-wrapper {
+        button, .polaroid, .lighter, .envelope-wrapper, .candle {
             cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'><text y='20' font-size='20'>🐥</text></svg>"), pointer !important;
         }
 
@@ -95,16 +95,15 @@
             position: relative;
         }
 
-        /* 白色虛光背景 */
         .glow-background {
             position: absolute;
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.02) 60%, transparent 100%);
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.02) 60%, transparent 100%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
-            filter: blur(20px);
+            filter: blur(25px);
         }
 
         .stage-container {
@@ -120,11 +119,10 @@
             z-index: 1;
         }
 
-        /* 自訂蛋糕圖片容器 */
         .cake-custom-wrapper {
             position: relative;
-            width: 240px;
-            height: 220px;
+            width: 260px;
+            height: 240px;
             margin-bottom: 10px;
             display: flex;
             justify-content: center;
@@ -135,13 +133,12 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
+            filter: drop-shadow(0 10px 25px rgba(0,0,0,0.7));
         }
 
-        /* 七彩五支細蠟燭容器（疊在蛋糕圖片上方適當位置） */
         .candles-container {
             position: absolute;
-            top: 45px;
+            top: 55px;
             left: 50%;
             transform: translateX(-50%);
             width: 90px;
@@ -164,7 +161,6 @@
         .candle:nth-child(4) { background: #caffbf; }
         .candle:nth-child(5) { background: #9bf6ff; }
 
-        /* 火焰 */
         .flame {
             position: absolute;
             top: -16px;
@@ -199,12 +195,11 @@
             z-index: 1;
         }
 
-        /* 自訂打火機外觀與旁邊文字 */
         .lighter-area {
             position: absolute;
             bottom: 20px;
             right: 20px;
-            display: none; /* 點擊後出現 */
+            display: none;
             align-items: center;
             gap: 10px;
             z-index: 10;
@@ -221,8 +216,8 @@
         }
 
         .lighter-custom {
-            width: 50px;
-            height: 70px;
+            width: 55px;
+            height: 80px;
             cursor: grab;
             filter: drop-shadow(0 5px 15px rgba(0,0,0,0.8));
             transition: transform 0.2s;
@@ -253,35 +248,6 @@
             color: #dcdcdc;
             line-height: 1.8;
             z-index: 1;
-        }
-
-        .next-step-container {
-            margin-top: 25px;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 1s ease;
-            z-index: 1;
-        }
-        .next-step-container.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .subtle-link-btn {
-            background: transparent;
-            border: none;
-            color: rgba(255, 255, 255, 0.7);
-            font-family: 'Noto Serif TC', serif;
-            font-size: 0.95rem;
-            letter-spacing: 0.15em;
-            cursor: pointer;
-            padding: 8px 16px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s;
-        }
-        .subtle-link-btn:hover {
-            color: #fff;
-            border-color: #fff;
         }
 
         /* ================= 頁面三：拍立得藝廊 ================= */
@@ -352,7 +318,7 @@
             pointer-events: auto;
         }
 
-        /* ================= 頁面四：「我想好好祝福你」信封信紙互動 ================= */
+        /* ================= 頁面四：信封信紙 ================= */
         #page-letter {
             width: 100%;
             max-width: 600px;
@@ -372,7 +338,6 @@
             margin-bottom: 30px;
         }
 
-        /* 信紙本體 (藏在信封後方或裡面) */
         .letter-paper {
             position: absolute;
             width: 340px;
@@ -404,7 +369,6 @@
             color: #111;
         }
 
-        /* 信封外觀 */
         .envelope {
             position: absolute;
             width: 360px;
@@ -450,6 +414,34 @@
             letter-spacing: 0.2em;
             margin-top: 30px;
             z-index: 4;
+        }
+
+        .next-step-container {
+            margin-top: 25px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1s ease;
+        }
+        .next-step-container.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .subtle-link-btn {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Noto Serif TC', serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+        }
+        .subtle-link-btn:hover {
+            color: #fff;
+            border-color: #fff;
         }
 
         /* ================= 頁面五：左右滑動相簿 ================= */
@@ -614,41 +606,36 @@
         </div>
     </div>
 
-    <!-- 頁面二：蛋糕、白色虛光背景、打火機與點蠟燭 -->
+    <!-- 頁面二：蛋糕與打火機 -->
     <div id="page-cake" class="page">
         <div class="glow-background"></div>
         <div class="action-prompt" id="action-prompt">請點擊一下</div>
 
         <div class="stage-container" id="stage-container">
-            <!-- 蛋糕圖片容器（請將 src 替換成你自己的蛋糕圖片網址或檔案路徑） -->
             <div class="cake-custom-wrapper" id="cake-wrapper">
-                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" alt="Birthday Cake" class="cake-img" id="cake-img">
+                <!-- 使用你上傳的蛋糕圖片 ji.jpg -->
+                <img src="ji.jpg" alt="Birthday Cake" class="cake-img" id="cake-img">
                 
-                <!-- 五支七彩蠟燭 -->
                 <div class="candles-container">
-                    <div class="candle"><div class="flame" id="f1"></div></div>
-                    <div class="candle"><div class="flame" id="f2"></div></div>
-                    <div class="candle"><div class="flame" id="f3"></div></div>
-                    <div class="candle"><div class="flame" id="f4"></div></div>
-                    <div class="candle"><div class="flame" id="f5"></div></div>
+                    <div class="candle" onclick="extinguishSingleCandle(0)"><div class="flame" id="f0"></div></div>
+                    <div class="candle" onclick="extinguishSingleCandle(1)"><div class="flame" id="f1"></div></div>
+                    <div class="candle" onclick="extinguishSingleCandle(2)"><div class="flame" id="f2"></div></div>
+                    <div class="candle" onclick="extinguishSingleCandle(3)"><div class="flame" id="f3"></div></div>
+                    <div class="candle" onclick="extinguishSingleCandle(4)"><div class="flame" id="f4"></div></div>
                 </div>
             </div>
 
-            <!-- 打火機與旁邊字樣（請將 src 替換成你自己的打火機圖片網址或檔案路徑） -->
             <div class="lighter-area" id="lighter-area">
                 <span class="lighter-comment">這是點蠟燭不是點煙的</span>
                 <div class="lighter-custom" id="lighter" draggable="true">
-                    <img src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=300&q=80" alt="Lighter" class="lighter-img">
+                    <!-- 使用你上傳的打火機圖片 ㄏㄍㄜ.png -->
+                    <img src="ㄏㄍㄜ.png" alt="Lighter" class="lighter-img">
                 </div>
             </div>
         </div>
 
         <div class="drag-tip" id="drag-tip" style="display:none;">拖動打火機即可點火</div>
         <div class="wish-text-box" id="wish-text-box"></div>
-
-        <div class="next-step-container" id="next-step-container">
-            <button class="subtle-link-btn" id="btn-goto-gallery">一年前我們也是這樣過生日了</button>
-        </div>
     </div>
 
     <!-- 頁面三：拍立得藝廊 -->
@@ -673,7 +660,6 @@
             </div>
         </div>
         
-        <!--看完所有故事後解鎖下一步-->
         <div class="gallery-next-container" id="gallery-next-container">
             <button class="light-up-btn" id="btn-goto-letter">我想好好祝福你</button>
         </div>
@@ -683,12 +669,10 @@
     <div id="page-letter" class="page">
         <div class="gallery-title">請慢慢打開信封</div>
         <div class="letter-container">
-            <!-- 信紙 -->
             <div class="letter-paper" id="letter-paper">
                 <h3>親愛的：</h3>
                 <p>希望你在每一個普通的日子裡，都能夠感受到被世界溫柔以待。不用急著成為完美的大人，只要照著自己的節奏往前走就好。願你所有的願望都能閃閃發光，生日快樂。</p>
             </div>
-            <!-- 信封 -->
             <div class="envelope" id="envelope" onclick="tearEnvelope()">
                 <div class="envelope-flap"></div>
                 <div class="envelope-text">點擊撕開信封</div>
@@ -735,8 +719,25 @@
     </div>
 
     <script>
-        // 音效函數 (Web Audio API 模擬點擊喀噠聲)
+        // 真實打火機點火音效與清脆點擊音效
         let audioCtx = null;
+        function playLighterSound() {
+            try {
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(450, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(120, audioCtx.currentTime + 0.15);
+                gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.15);
+            } catch(e) {}
+        }
+
         function playClickSound() {
             try {
                 if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -774,10 +775,10 @@
         const lighter = document.getElementById('lighter');
         const flames = document.querySelectorAll('.flame');
         const wishTextBox = document.getElementById('wish-text-box');
-        const nextStepContainer = document.getElementById('next-step-container');
         const stageContainer = document.getElementById('stage-container');
 
         let cakeStep = 0;
+        let extinguishedCount = 0;
 
         stageContainer.addEventListener('click', () => {
             if (cakeStep === 0) {
@@ -802,7 +803,7 @@
         function lightTheCandles() {
             if (cakeStep < 1 || cakeStep >= 2) return;
             cakeStep = 2;
-            playClickSound();
+            playLighterSound();
             lighterArea.style.display = 'none';
             dragTip.style.display = 'none';
             actionPrompt.style.display = 'none';
@@ -813,14 +814,16 @@
 
             setTimeout(() => {
                 typeWriterEffect("許下願望吧，最後一個要好好的放在心裡", () => {
-                    nextStepContainer.classList.add('visible');
+                    setTimeout(() => {
+                        actionPrompt.style.display = 'block';
+                        actionPrompt.innerText = "現在要把蠟燭的燭火點掉（點擊蠟燭即可熄滅）";
+                    }, 1000);
                 });
             }, 800);
         }
 
         lighter.addEventListener('click', lightTheCandles);
 
-        // 拖曳打火機點火
         let touchStartX = 0, touchStartY = 0;
         lighter.addEventListener('touchstart', (e) => {
             const touch = e.touches[0];
@@ -840,13 +843,24 @@
             lightTheCandles();
         });
 
-        document.getElementById('btn-goto-gallery').addEventListener('click', () => {
-            playClickSound();
-            pageCake.classList.remove('active');
-            pageGallery.classList.add('active');
-        });
+        function extinguishSingleCandle(index) {
+            if (cakeStep !== 2) return;
+            const flame = document.getElementById(`f${index}`);
+            if (flame.classList.contains('lit')) {
+                playClickSound();
+                flame.classList.remove('lit');
+                extinguishedCount++;
 
-        // 打字機特效
+                if (extinguishedCount === 5) {
+                    actionPrompt.innerText = "願望已收下...";
+                    setTimeout(() => {
+                        pageCake.classList.remove('active');
+                        pageGallery.classList.add('active');
+                    }, 1200);
+                }
+            }
+        }
+
         function typeWriterEffect(text, callback) {
             wishTextBox.innerHTML = "";
             let i = 0;
@@ -863,10 +877,9 @@
             type();
         }
 
-        // 拍立得故事與閱讀狀態追蹤
         const stories = {
             1: { title: "那天一起走的夜路", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80", story: "那天路燈把影子拉得長長的，我們聊了好多關於未來的迷惘與倔強。雖然腳有點酸，但那種身邊有人默默陪著、不用說話也很安心的空氣，至今想起來都還是覺得暖暖的。" },
-            2: { title: "笑得很開心的小事", img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80", story: "因為一件超級無聊的小笑話在路邊笑了好久。生活其實常常擠滿了讓人喘不過氣的瑣事，但只要跟你在一起，總能輕易找回那些最單純、最不加修飾的快樂。" },
+            2: { title: "笑得很開心的小事", img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80", story: "Because of a simple, silly joke, we laughed on the street for a long time..." },
             3: { title: "慶祝彼此的笨拙", img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=600&q=80", story: "我們都不是那種完美的大人，常常跌跌撞撞，把生活過得亂七八糟又充滿驚喜。但慶幸的是，每一次狼狽的時候，身邊都有彼此懂那種笑中帶淚的默契。" },
             4: { title: "未完待續的日常", img: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80", story: "不用許太大太遠的願望，只要每一個重要或不重要的日子裡，我們都能像這樣，繼續保持真實、繼續往前走。生日快樂呀。" }
         };
@@ -909,7 +922,6 @@
             pageLetter.classList.add('active');
         });
 
-        // 信封撕開互動
         function tearEnvelope() {
             playClickSound();
             document.getElementById('envelope').classList.add('torn');
@@ -925,7 +937,6 @@
             pageSlider.classList.add('active');
         });
 
-        // 左右滑動相簿控制
         let currentSlide = 0;
         const totalSlides = 3;
         const sliderTrack = document.getElementById('slider-track');
