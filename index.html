@@ -11,9 +11,9 @@
 body{background:radial-gradient(ellipse at 18% 15%,#352546 0%,transparent 38%),radial-gradient(ellipse at 85% 85%,#263744 0%,transparent 40%),var(--night);color:var(--ink);font-family:'Caveat','Noto Sans TC',sans-serif;width:100vw;height:100vh;overflow:hidden;position:relative;cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='20'%3E%F0%9F%90%A5%3C/text%3E%3C/svg%3E") 2 2,auto}
 button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='20'%3E%F0%9F%90%A5%3C/text%3E%3C/svg%3E") 2 2,pointer}
 
-.stage-section{position:absolute;inset:0;width:100vw;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 1.2s cubic-bezier(.4,0,.2,1);padding:20px}
-.stage-section.active{opacity:1;pointer-events:auto}
-#section-home{z-index:10}#section-cake{z-index:9}#section-gallery{z-index:8}#section-letter{z-index:7}#section-slider{z-index:6}
+/* 修正各頁面的層級與開關控制 */
+.stage-section{position:absolute;inset:0;width:100vw;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 1.2s cubic-bezier(.4,0,.2,1);padding:20px;z-index:1}
+.stage-section.active{opacity:1;pointer-events:auto;z-index:10}
 
 .home-content{display:flex;flex-direction:column;align-items:center;gap:16px}
 
@@ -78,7 +78,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 .slide-caption-overlay{width:100%;height:36px;background:#302637;display:flex;align-items:center;justify-content:center;font-family:'Caveat','Noto Sans TC',sans-serif;font-size:0.8rem;letter-spacing:.1em;color:#ffffffaa}
 .slider-hint{font-family:'Caveat','Noto Sans TC',sans-serif;margin-bottom:6px;font-size:0.8rem;color:#ffffffaa;letter-spacing:.12em}
 
-/* 最後按鈕區塊排版：上方 LINE 按鈕群組，下方獨立放置音樂停止按鈕 */
+/* 最後按鈕區塊排版 */
 .line-btn-container{margin-top:14px;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;pointer-events:none;transition:opacity 1s}
 .line-btn-container.visible{opacity:1;pointer-events:auto}
 .line-btn-row{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px}
@@ -93,7 +93,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 .back-btn{position:absolute;top:20px;left:20px;background:#ffffff15;border:1px solid #ffffff44;color:#fff;padding:8px 16px;border-radius:999px;font-family:'Caveat','Noto Sans TC',sans-serif;font-size:0.9rem;letter-spacing:.08em;z-index:50;transition:background .2s,transform .2s}
 .back-btn:hover{background:#ffffff33;transform:translateY(-2px)}
 
-.modal-overlay{position:fixed;inset:0;width:100%;height:100%;background:#15101bd9;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s;z-index:100;padding:20px}
+.modal-overlay{position:fixed;inset:0;width:100%;height:100%;background:#15101bd9;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s;z-index:1000;padding:20px}
 .modal-overlay.active{opacity:1;pointer-events:auto}
 .modal-card{background:#2a2232;border:1px solid #ffffff55;max-width:450px;width:100%;padding:30px;border-radius:6px;position:relative;box-shadow:0 16px 50px #0009}
 .modal-close{position:absolute;top:15px;right:20px;background:none;border:0;color:#fff;font-size:1.5rem}
@@ -186,7 +186,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
   <div class="letter-container">
     <div class="letter-paper" id="letter-paper">
       <h3>嗨正義哥：</h3>
-      <p>想了想，還是想好好祝你生日快樂，但在那之前先說抱歉，在你真正生日當天毀了他。又過了一年長大了一歲，我們一起看過了一些什麼，也各自看到了不一樣的什麼，我還是會偶爾想起台北的細雨，想起在潮濕冷空氣抽煙的日子，但是我們都要往前走，一步一步的。不急著成為一個完美的大人，只要持續的慢慢往前走就好。</p>
+      <p>想了想，還是想好好祝你生日快樂。不過在那之前先說抱歉，在你真正生日的當天毀了他。過了一年長大了一歲，過去的一年我們一起看過了很多不一樣的風景，也各自在不同的路上創造了很多故事。我還是會偶爾想起台北的細雨，想起在潮濕冷空氣抽煙的日子，但是呀，我們都要往前走，時間在前進，我們也一步一步的。不急著成為一個完美的大人，我們慢慢往前走就好。過了一年，生日快樂。</p>
     </div>
     <div class="envelope" id="envelope" onclick="tearEnvelope()">
       <div class="envelope-flap"></div>
@@ -405,10 +405,10 @@ function typeWriterEffect(text, callback) {
 }
 
 const stories = {
-  1: { title: '抽菸啊', img: '抽菸.png', story: '我們在很多地方抽著菸，咖啡廳、畫外音，抽著抽著就在一起了，年紀不小了，記得克制點，注意身體健康' },
-  2: { title: '做過了好多事呢', img: '花花.png', story: '我們看過了不少電影、聽過了不少的音樂，也很謝謝你在這一年陪我去很多很多展覽喔！你覺得這麼不一樣的世界有趣嗎？我是滿喜歡的啦' },
-  3: { title: '奇奇怪怪的你和我', img: '奇怪自拍.png', story: '我其實一直都知道你很在乎你的外表，我也是，你害怕著鏡頭，我懂那種不敢照鏡子的感覺，就是因為我知道，所以才想著透過奇奇怪怪的拍照方式讓你稍微習慣一點吧，也多少記錄一下我們，希望在接下來的時間你還是可以慢慢練習，慢慢習慣' },
-  4: { title: '要長大了喔', img: '分開.png', story: '長大就是開始學會習慣那些可能不會太舒服的事情，或許是分開，或許是再見，或許是逐漸接受那些原本這輩子都不可能接受的事情，但你是陳正義欸，我知道你不會妥協的，所以繼續保持吧，我會一直一直看著你的！生日快樂！' }
+  1: { title: '抽菸啊', img: '抽菸.png', story: '我們在很多地方一起抽著菸。咖啡廳、畫外音，抽著抽著好像就這樣在一起了。一年後，年紀不小了，記得克制點，注意身體健康，追逐夢想的前提是要一切好好的，我還想看你活很久很久喔。' },
+  2: { title: '做過了好多事呢', img: '花花.png', story: '我們這一年一起看過了不少電影喔、也聽過了不少的音樂，很謝謝你在這一年陪我去很多很多展覽！你覺得這麼不一樣的世界有趣嗎？對於我而言，我是滿喜歡的啦' },
+  3: { title: '奇奇怪怪的你和我', img: '奇怪自拍.png', story: '我其實一直都知道你很在乎你的外表，我也是，你害怕著鏡頭，我懂那種不敢照鏡子的感覺。因為我知道，所以才想著透過奇奇怪怪的拍照方式讓你稍微習慣鏡頭一點吧，也多多少少記錄一下我們，希望在接下來的時間你還是可以慢慢練習，慢慢習慣' },
+  4: { title: '要長大了喔', img: '分開.png', story: '長大就是開始學會習慣那些可能不會太舒服的事情，或許是分開，或許是再見，或許是逐漸接受那些原本這輩子都不可能接受的事情。但你是陳正義欸，我知道你是不會妥協的，所以繼續保持吧，我會一直一直看著你的！生日快樂！' }
 };
 
 const modal = document.getElementById('story-modal'),
