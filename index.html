@@ -56,8 +56,9 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 .section-next-container.unlocked,.section-next-container.visible{opacity:1;pointer-events:auto}
 
 .letter-container{position:relative;width:100%;max-width:500px;height:480px;display:flex;justify-content:center;align-items:center;margin-bottom:15px;pointer-events:none;perspective:1000px}
-.letter-paper{position:absolute;width:min(380px,90vw);height:420px;background:#fffaf0;color:#3e3442;padding:35px 30px;border-radius:3px;box-shadow:0 15px 40px #0009;text-align:left;font-family:'Caveat','Noto Sans TC',sans-serif;font-weight:500;font-size:1.1rem;line-height:1.9;transform:translateY(35px) scaleY(.88);opacity:.35;transition:transform 1.8s cubic-bezier(.22,.8,.25,1),opacity 1.4s ease;z-index:1;overflow-y:auto;pointer-events:auto;background-image:linear-gradient(to bottom,#bd99b118 1px,transparent 1px);background-size:100% 2.2em;transform-origin:bottom center}
+.letter-paper{position:absolute;width:min(380px,90vw);height:420px;background:#fffaf0;color:#3e3442;padding:35px 30px;border-radius:3px;box-shadow:0 15px 40px #0009;text-align:left;font-family:'Caveat','Noto Sans TC',sans-serif;font-weight:500;font-size:1.1rem;line-height:1.9;transform:translateY(35px) scaleY(.88);opacity:1;transition:transform 1.8s cubic-bezier(.22,.8,.25,1);z-index:1;overflow-y:auto;pointer-events:auto;background-image:linear-gradient(to bottom,#bd99b118 1px,transparent 1px);background-size:100% 2.2em;transform-origin:bottom center}
 .letter-paper h3{font-weight:700;margin-bottom:8px;font-size:1.25rem}
+.letter-paper.pulled{transform:translateY(-90px) scaleY(1)}
 .envelope{position:absolute;width:min(420px,95vw);height:260px;background:linear-gradient(135deg,#5b4268,#352a49);border:1px solid #ffffff55;border-radius:4px;z-index:3;display:flex;align-items:center;justify-content:center;transition:transform 1s cubic-bezier(.2,.8,.2,1),opacity 1s ease;pointer-events:auto;box-shadow:0 12px 30px #0008}
 .envelope.torn{transform:translateY(180px) scale(.95);opacity:.2;pointer-events:none}
 .envelope-flap{position:absolute;top:0;left:0;width:100%;height:130px;background:#765783;clip-path:polygon(0 0,50% 100%,100% 0);transition:transform 1s cubic-bezier(.2,.8,.2,1);transform-origin:top;backface-visibility:hidden}
@@ -71,18 +72,22 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 .slide-img{width:100%;height:calc(65vh - 60px);object-fit:cover}
 .slide-caption-overlay{width:100%;height:60px;background:#302637;display:flex;align-items:center;justify-content:center;font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.1rem;letter-spacing:.12em;color:#fff}
 .slider-hint{font-family:'Caveat','Noto Sans TC',sans-serif;margin-bottom:10px;font-size:1rem;color:#fff;letter-spacing:.14em}
-.line-btn-container{margin-top:76px;display:flex;flex-direction:column;align-items:center;gap:16px;opacity:0;pointer-events:none;transition:opacity 1s}
+.line-btn-container{margin-top:24px;display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px;opacity:0;pointer-events:none;transition:opacity 1s}
 .line-btn-container.visible{opacity:1;pointer-events:auto}
-.line-btn{background:linear-gradient(135deg,#b8f1df,#a6d9fd);color:#263a3b;border:2px solid #fff;padding:12px 32px;font-size:1rem;letter-spacing:.12em;border-radius:999px;text-decoration:none;box-shadow:0 5px 0 #72baa6,0 10px 20px #0005;transition:transform .3s,background .3s;font-family:'Caveat','Noto Sans TC',sans-serif;display:inline-block}
+.line-btn{background:linear-gradient(135deg,#b8f1df,#a6d9fd);color:#263a3b;border:2px solid #fff;padding:12px 28px;font-size:1rem;letter-spacing:.12em;border-radius:999px;text-decoration:none;box-shadow:0 5px 0 #72baa6,0 10px 20px #0005;transition:transform .3s,background .3s;font-family:'Caveat','Noto Sans TC',sans-serif;display:inline-block}
 .line-btn:hover{transform:translateY(-3px) rotate(-1deg)}
-.music-stop-btn{border:1px solid #ffffff99;background:#171321b8;color:#fff;padding:9px 18px;border-radius:999px;font-family:'Caveat','Noto Sans TC',sans-serif;font-size:0.95rem;letter-spacing:.08em;box-shadow:0 3px 0 #080711,0 6px 14px #0006;transition:transform .2s,box-shadow .2s}
+.music-stop-btn{border:1px solid #ffffff99;background:#171321b8;color:#fff;padding:12px 24px;border-radius:999px;font-family:'Caveat','Noto Sans TC',sans-serif;font-size:0.95rem;letter-spacing:.08em;box-shadow:0 3px 0 #080711,0 6px 14px #0006;transition:transform .2s,box-shadow .2s}
 .music-stop-btn:hover{transform:translateY(-2px);box-shadow:0 5px 0 #080711,0 9px 18px #0007}
+
+/* 返回按鈕樣式 */
+.back-btn{position:absolute;top:20px;left:20px;background:#ffffff15;border:1px solid #ffffff44;color:#fff;padding:8px 16px;border-radius:999px;font-family:'Caveat','Noto Sans TC',sans-serif;font-size:0.9rem;letter-spacing:.08em;z-index:50;transition:background .2s,transform .2s}
+.back-btn:hover{background:#ffffff33;transform:translateY(-2px)}
 
 .modal-overlay{position:fixed;inset:0;width:100%;height:100%;background:#15101bd9;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s;z-index:100;padding:20px}
 .modal-overlay.active{opacity:1;pointer-events:auto}
 .modal-card{background:#2a2232;border:1px solid #ffffff55;max-width:450px;width:100%;padding:30px;border-radius:6px;position:relative;box-shadow:0 16px 50px #0009}
 .modal-close{position:absolute;top:15px;right:20px;background:none;border:0;color:#fff;font-size:1.5rem}
-.modal-img{width:100%;height:200px;object-fit:cover;margin-bottom:15px;border-radius:3px}
+.modal-img{width:100%;aspect-ratio:1/1;object-fit:cover;margin-bottom:15px;border-radius:3px}
 .modal-title{font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.2rem;margin-bottom:10px;color:#fff}
 .modal-story{font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.05rem;line-height:1.7;color:#f0e5f1}
 
@@ -97,13 +102,13 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
   .cake-custom-wrapper{width:270px;height:250px}
   .candles-container{top:43px}
   .lighter-custom{width:88px;height:128px}
-  .line-btn-container{margin-top:54px}
+  .line-btn-container{margin-top:20px}
 }
 </style>
 </head>
 <body>
 
-<!-- ================= 首頁 ================= -->
+<!-- 首頁 -->
 <div id="section-home" class="stage-section active">
   <div class="home-content">
     <button class="light-up-btn" id="btn-light-up">Light up</button>
@@ -112,13 +117,13 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
   </div>
 </div>
 
-<!-- ================= 蛋糕頁面 ================= -->
+<!-- 蛋糕頁面 -->
 <div id="section-cake" class="stage-section">
+  <button class="back-btn" onclick="switchSection(secCake, secHome)">← 返回首頁</button>
   <div class="glow-background"></div>
   <div class="action-prompt" id="action-prompt">請點擊一下</div>
   <div class="cake-stage" id="cake-stage">
     <div class="cake-custom-wrapper">
-      <!-- 蛋糕圖片 (可換檔名) -->
       <img src="ji.png" alt="Birthday Cake" class="cake-img" onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80'">
       <div class="candles-container">
         <div class="candle" onclick="extinguishSingleCandle(0)"><div class="flame" id="f0"></div></div>
@@ -130,7 +135,6 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
     </div>
     <div class="lighter-area" id="lighter-area">
       <div class="lighter-custom" id="lighter" aria-label="拖曳打火機點燃蠟燭">
-        <!-- 打火機圖片 (可換檔名) -->
         <img src="ㄏㄍㄜ.png" alt="Lighter" class="lighter-img" onerror="this.src='https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=300&q=80'">
       </div>
       <span class="lighter-comment">這是點蠟燭不是點煙的</span>
@@ -139,26 +143,23 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
   <div class="wish-text-box" id="wish-text-box"></div>
 </div>
 
-<!-- ================= 照片藝廊頁面 ================= -->
+<!-- 照片藝廊頁面 -->
 <div id="section-gallery" class="stage-section">
+  <button class="back-btn" onclick="switchSection(secGallery, secCake)">← 返回蛋糕</button>
   <div class="gallery-title">Moments (點擊各張照片看故事)</div>
   <div class="polaroids-grid">
-    <!-- 照片 1 -->
     <div class="polaroid" tabindex="0" data-id="1">
       <img src="抽菸.png" class="polaroid-img" alt="回憶照片">
       <div class="polaroid-caption">抽菸啊</div>
     </div>
-    <!-- 照片 2 -->
     <div class="polaroid" tabindex="0" data-id="2">
       <img src="花花.png" class="polaroid-img" alt="回憶照片">
       <div class="polaroid-caption">做過了好多事呢</div>
     </div>
-    <!-- 照片 3 -->
     <div class="polaroid" tabindex="0" data-id="3">
       <img src="奇怪自拍.png" class="polaroid-img" alt="回憶照片">
       <div class="polaroid-caption">奇奇怪怪的你和我</div>
     </div>
-    <!-- 照片 4 -->
     <div class="polaroid" tabindex="0" data-id="4">
       <img src="分開.png" class="polaroid-img" alt="回憶照片">
       <div class="polaroid-caption">要長大了喔</div>
@@ -169,12 +170,12 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
   </div>
 </div>
 
-<!-- ================= 信封信件頁面 ================= -->
+<!-- 信封信件頁面 -->
 <div id="section-letter" class="stage-section">
+  <button class="back-btn" onclick="switchSection(secLetter, secGallery)">← 返回相片</button>
   <div class="gallery-title">請慢慢打開信封</div>
   <div class="letter-container">
     <div class="letter-paper" id="letter-paper">
-      <!-- 這裡修改信件文字 -->
       <h3>嗨正義哥：</h3>
       <p>想了想，還是想好好祝你生日快樂，但在那之前先說抱歉，在你真正生日當天毀了他。又過了一年長大了一歲，我們一起看過了一些什麼，也各自看到了不一樣的什麼，我還是會偶爾想起台北的細雨，想起在潮濕冷空氣抽煙的日子，但是我們都要往前走，一步一步的。不急著成為一個完美的大人，只要持續的慢慢往前走就好。</p>
     </div>
@@ -188,8 +189,9 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
   </div>
 </div>
 
-<!-- ================= 輪播相簿頁面 ================= -->
+<!-- 輪播相簿頁面 -->
 <div id="section-slider" class="stage-section">
+  <button class="back-btn" onclick="switchSection(secSlider, secLetter)">← 返回信件</button>
   <div class="slider-hint">← 左右滑動瀏覽回憶 →</div>
   <div class="slider-wrapper" id="slider-wrapper">
     <div class="slider-track" id="slider-track">
@@ -208,13 +210,13 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
     </div>
   </div>
   <div class="line-btn-container" id="line-btn-container">
-    <!-- 這裡修改你的 LINE 連結 -->
     <a href="https://line.me/ti/p/rRB0-1SSeX" target="_blank" rel="noopener noreferrer" class="line-btn">想我就打給我</a>
+    <button type="button" class="line-btn" style="background:linear-gradient(135deg,#ffe5a8,#ffb7d5);color:#3a293b;" onclick="alert('v我50！謝謝老闆😆')">V我50</button>
     <button type="button" class="music-stop-btn" id="music-stop-btn">停止背景音樂</button>
   </div>
 </div>
 
-<!-- ================= 故事彈窗燈箱 ================= -->
+<!-- 故事彈窗燈箱 -->
 <div class="modal-overlay" id="story-modal" onclick="closeStory(event)">
   <div class="modal-card" onclick="event.stopPropagation()">
     <button class="modal-close" onclick="closeModalDirect()" aria-label="關閉">×</button>
@@ -224,7 +226,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
   </div>
 </div>
 
-<!-- 音訊資源 (檔名維持不變) -->
+<!-- 音訊資源 -->
 <audio id="background-music" src="bruno-major-original-key-karaoke---piano-instrumental-with-lyrics.mp3" preload="auto" loop></audio>
 <audio id="lighter-audio" src="打火機.mp3" preload="auto"></audio>
 <audio id="click-audio" src="點擊.mp3" preload="auto"></audio>
@@ -232,7 +234,6 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 <audio id="tear-audio" src="1281.mp3" preload="auto"></audio>
 
 <script>
-// ================= 互動控制程式碼 =================
 const music = document.getElementById('background-music'),
       lighterAudio = document.getElementById('lighter-audio'),
       clickAudio = document.getElementById('click-audio'),
@@ -392,12 +393,11 @@ function typeWriterEffect(text, callback) {
   type();
 }
 
-// ================= 在這裡修改各張照片點開後的故事文字與圖片 =================
 const stories = {
-  1: { title: '抽菸啊', img: '抽菸.png', story: '我們在很多地方抽著菸，咖啡廳、畫外音，抽著抽著就在一起了，年紀不小了，記得克制點，注意身體健康' },
-  2: { title: '做過了好多事呢', img: '花花.png', story: '我們看過了不少電影、聽過了不少的音樂，也很謝謝你在這一年陪我去很多很多展覽喔！你覺得這麼不一樣的世界有趣嗎？我是滿喜歡的啦' },
-  3: { title: '奇奇怪怪的你和我', img: '奇怪自拍.png', story: '我其實一直都知道你很在乎你的外表，我也是，你害怕著鏡頭，我懂那種不敢照鏡子的感覺，就是因為我知道，所以才想著透過奇奇怪怪的拍照方式讓你稍微習慣一點吧，也多少記錄一下我們，希望在接下來的時間你還是可以慢慢練習，慢慢習慣' },
-  4: { title: '要長大了喔', img: '分開.png', story: '長大就是開始學會習慣那些可能不會太舒服的事情，或許是分開，或許是再見，或許是逐漸接受那些原本這輩子都不可能接受的事情，但你是陳正義欸，我知道你不會妥協的，所以繼續保持吧，我會一直一直看著你的！生日快樂！' }
+  1: { title: '抽菸啊', img: '抽菸.png', story: '我們在很多地方抽著菸，咖啡廳、畫外音，好像抽著抽著就在一起了。你啊，年紀不小了，記得克制點，注意身體健康，好好照顧自己，追逐夢想的前提是身體健康喔！' },
+  2: { title: '做過了好多事呢', img: '花花.png', story: '我們看過了不少電影、聽過了不少的音樂，很謝謝你在這一年似乎陪我去了很多很多地方喔！你覺得這麼不一樣的世界有趣嗎？我是滿喜歡的啦，聽見了不一樣的想法，就像我喜歡那句遙遠的故事帶回來給我吧。' },
+  3: { title: '奇奇怪怪的你和我', img: '奇怪自拍.png', story: '我其實一直都知道你很在乎你的外表，我也是，你害怕著鏡頭，我懂那種不敢照鏡子的感覺，就是因為我知道，所以才想著透過奇奇怪怪的拍照方式讓你稍微習慣一點吧，也多多少少記錄一下我們，希望在接下來的時間你還是可以慢慢練習，慢慢習慣。' },
+  4: { title: '要長大了喔', img: '分開.png', story: '長大就是開始學會習慣那些可能不會太舒服的事情，或許是分開，或許是再見，或許是逐漸接受那些原本這輩子都不可能接受的事情，但你是陳正義欸，我知道你不會妥協的，所以繼續保持吧，我會一直一直看著你的><生日快樂！' }
 };
 
 const modal = document.getElementById('story-modal'),
