@@ -557,33 +557,31 @@ sliderWrapper.addEventListener('click', e => {
     updateSlide();
   }
 });
-</script>
+<script>
 // 當你在手機螢幕上「滑動手指」時觸發
 document.addEventListener('touchmove', function(e) {
-    // 取得當前手指碰觸螢幕的座標
     let touch = e.touches[0];
     let x = touch.clientX;
     let y = touch.clientY;
 
-    // 建立一個小雞元素
     let chick = document.createElement('div');
-   chick.innerHTML = '<img src="chick.png" width="24" style="pointer-events: none;">';
+    chick.innerHTML = '🐥';
     chick.style.position = 'fixed';
     chick.style.left = x + 'px';
     chick.style.top = y + 'px';
     chick.style.fontSize = '22px';
-    chick.style.pointerEvents = 'none'; // 讓觸控可以穿透小雞，不影響其他按鈕點擊
+    chick.style.pointerEvents = 'none';
     chick.style.zIndex = '99999';
     chick.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
-    chick.style.transform = 'translate(-50%, -50%) scale(1)'; 
+    chick.style.transform = 'translate(-50%, -50%) scale(1)';
+    
     document.body.appendChild(chick);
-    // 讓小雞往上飄一小段距離並漸漸變透明
+
     setTimeout(() => {
         chick.style.transform = 'translate(-50%, -80px) scale(0.4)';
         chick.style.opacity = '0';
     }, 10);
 
-    // 0.5秒後自動從網頁原始碼中刪除，避免手機卡頓
     setTimeout(() => {
         chick.remove();
     }, 500);
