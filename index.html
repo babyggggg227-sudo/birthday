@@ -12,6 +12,7 @@
             padding: 0;
         }
 
+        /* 全域自訂小雞鼠標 (使用可愛小雞 SVG 向量圖作為游標) */
         body {
             background-color: #0b0b0b;
             color: #f0f0f0;
@@ -19,6 +20,11 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'><text y='20' font-size='20'>🐥</text></svg>"), auto;
+        }
+
+        button, .polaroid, .lighter, .envelope-wrapper {
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'><text y='20' font-size='20'>🐥</text></svg>"), pointer !important;
         }
 
         .page {
@@ -67,7 +73,6 @@
             transition: all 0.4s ease;
             font-family: 'Noto Serif TC', serif;
             border-radius: 4px;
-            /* 白色螢光效果 */
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.2);
         }
 
@@ -87,133 +92,72 @@
         /* ================= 頁面二：蛋糕與打火機 ================= */
         #page-cake {
             text-align: center;
+            position: relative;
+        }
+
+        /* 白色虛光背景 */
+        .glow-background {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.02) 60%, transparent 100%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(20px);
         }
 
         .stage-container {
             position: relative;
             width: 100%;
             max-width: 450px;
-            height: 420px;
+            height: 380px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-end;
             margin-bottom: 20px;
+            z-index: 1;
         }
 
-        /* 桌子 */
-        .table {
-            position: absolute;
-            bottom: 0;
-            width: 360px;
-            height: 16px;
-            background: #1f1f1f;
-            border-radius: 4px;
-            border-bottom: 2px solid #333;
-        }
-
-        /* 雙層白色奶油蛋糕 */
-        .cake-wrapper {
+        /* 自訂蛋糕圖片容器 */
+        .cake-custom-wrapper {
             position: relative;
-            width: 260px;
-            height: 200px;
-            margin-bottom: 16px;
+            width: 240px;
+            height: 220px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
         }
 
-        /* 底層蛋糕 */
-        .cake-tier-bottom {
-            position: absolute;
-            bottom: 0;
+        .cake-img {
             width: 100%;
-            height: 110px;
-            background: #fdfdfd;
-            border-radius: 8px 8px 4px 4px;
-            box-shadow: inset -10px 0 20px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.5);
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
         }
 
-        .cake-tier-bottom-cream {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 25px;
-            background: #fff;
-            border-radius: 8px 8px 0 0;
-            border-bottom: 2px solid #eee;
-        }
-
-        /* 上層蛋糕 */
-        .cake-tier-top {
-            position: absolute;
-            bottom: 110px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 180px;
-            height: 80px;
-            background: #fdfdfd;
-            border-radius: 8px 8px 4px 4px;
-            box-shadow: inset -8px 0 15px rgba(0,0,0,0.1);
-        }
-
-        .cake-tier-top-cream {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 20px;
-            background: #fff;
-            border-radius: 8px 8px 0 0;
-            border-bottom: 2px solid #eee;
-        }
-
-        /* 草莓點綴 */
-        .strawberry {
-            position: absolute;
-            width: 14px;
-            height: 16px;
-            background: #d32f2f;
-            border-radius: 50% 50% 40% 40%;
-            box-shadow: inset -2px -2px 4px rgba(0,0,0,0.3);
-        }
-        .strawberry::after {
-            content: '';
-            position: absolute;
-            top: 1px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 6px;
-            height: 4px;
-            background: #4caf50;
-            border-radius: 2px;
-        }
-        /* 上層草莓 */
-        .s1 { top: -12px; left: 30px; }
-        .s2 { top: -14px; left: 80px; }
-        .s3 { top: -12px; right: 30px; }
-        /* 底層草莓 */
-        .s4 { bottom: 102px; left: 20px; }
-        .s5 { bottom: 102px; right: 20px; }
-
-        /* 七彩五支細蠟燭容器 */
+        /* 七彩五支細蠟燭容器（疊在蛋糕圖片上方適當位置） */
         .candles-container {
             position: absolute;
-            bottom: 190px;
+            top: 45px;
             left: 50%;
             transform: translateX(-50%);
-            width: 120px;
-            height: 50px;
+            width: 90px;
+            height: 40px;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            padding: 0 10px;
+            z-index: 2;
         }
 
         .candle {
             position: relative;
-            width: 6px;
-            height: 45px;
-            border-radius: 2px;
+            width: 5px;
+            height: 35px;
+            border-radius: 1px;
         }
-
-        /* 七彩顏色 */
         .candle:nth-child(1) { background: #ffadad; }
         .candle:nth-child(2) { background: #ffd6a5; }
         .candle:nth-child(3) { background: #fdffb6; }
@@ -223,11 +167,11 @@
         /* 火焰 */
         .flame {
             position: absolute;
-            top: -18px;
+            top: -16px;
             left: 50%;
             transform: translateX(-50%) scale(0);
-            width: 10px;
-            height: 18px;
+            width: 9px;
+            height: 16px;
             background: radial-gradient(circle at 50% 80%, #fff 10%, #ffcc00 40%, #ff4500 80%);
             border-radius: 50% 50% 20% 20%;
             box-shadow: 0 0 10px #ff9900, 0 0 20px #ff3300;
@@ -245,60 +189,61 @@
             100% { transform: translateX(-50%) scale(1.1) rotate(3deg); opacity: 1; }
         }
 
-        /* 互動提示文字 */
         .action-prompt {
             font-size: 0.95rem;
             color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             letter-spacing: 0.15em;
             min-height: 24px;
             cursor: pointer;
+            z-index: 1;
         }
 
-        /* 打火機 */
-        .lighter {
+        /* 自訂打火機外觀與旁邊文字 */
+        .lighter-area {
             position: absolute;
-            bottom: 30px;
-            right: 25px;
-            width: 48px;
-            height: 85px;
-            background: #2a2a2a;
-            border: 1px solid rgba(255,255,255,0.25);
-            border-radius: 6px;
-            cursor: pointer;
-            display: none; /* 預設隱藏，點擊畫面後出現 */
-            flex-direction: column;
+            bottom: 20px;
+            right: 20px;
+            display: none; /* 點擊後出現 */
             align-items: center;
-            padding-top: 6px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+            gap: 10px;
+            z-index: 10;
             user-select: none;
             touch-action: none;
-            z-index: 10;
+        }
+
+        .lighter-comment {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 0.1em;
+            white-space: nowrap;
+            font-family: 'Noto Serif TC', serif;
+        }
+
+        .lighter-custom {
+            width: 50px;
+            height: 70px;
+            cursor: grab;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.8));
             transition: transform 0.2s;
         }
-
-        .lighter:active {
-            transform: scale(0.95);
+        .lighter-custom:active {
+            cursor: grabbing;
+        }
+        .lighter-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
-        .lighter-top {
-            width: 22px;
-            height: 12px;
-            background: #555;
-            border-radius: 2px;
-        }
-
-        .lighter-body-label {
-            font-size: 8.5px;
-            color: rgba(255,255,255,0.6);
-            writing-mode: vertical-rl;
+        .drag-tip {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
             margin-top: 10px;
-            letter-spacing: 1px;
-            text-align: center;
-            line-height: 1.2;
+            letter-spacing: 0.1em;
+            z-index: 1;
         }
 
-        /* 打字機文字區 */
         .wish-text-box {
             min-height: 50px;
             text-align: center;
@@ -307,6 +252,7 @@
             letter-spacing: 0.15em;
             color: #dcdcdc;
             line-height: 1.8;
+            z-index: 1;
         }
 
         .next-step-container {
@@ -314,6 +260,7 @@
             opacity: 0;
             pointer-events: none;
             transition: opacity 1s ease;
+            z-index: 1;
         }
         .next-step-container.visible {
             opacity: 1;
@@ -359,7 +306,7 @@
             gap: 30px;
             width: 100%;
             padding: 0 10px;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
 
         .polaroid {
@@ -368,7 +315,6 @@
             padding: 12px 12px 20px 12px;
             border-radius: 3px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-            cursor: pointer;
             transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s;
             position: relative;
         }
@@ -393,6 +339,196 @@
             text-align: center;
             color: #333;
             letter-spacing: 0.05em;
+        }
+
+        .gallery-next-container {
+            margin-top: 20px;
+            opacity: 0.3;
+            pointer-events: none;
+            transition: opacity 0.5s;
+        }
+        .gallery-next-container.unlocked {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* ================= 頁面四：「我想好好祝福你」信封信紙互動 ================= */
+        #page-letter {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            align-items: center;
+            text-align: center;
+        }
+
+        .letter-container {
+            position: relative;
+            width: 100%;
+            max-width: 440px;
+            height: 480px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        /* 信紙本體 (藏在信封後方或裡面) */
+        .letter-paper {
+            position: absolute;
+            width: 340px;
+            height: 420px;
+            background: #fbfbf9;
+            color: #2c2c2c;
+            padding: 40px 30px;
+            border-radius: 2px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            text-align: left;
+            font-size: 0.95rem;
+            line-height: 2;
+            letter-spacing: 0.08em;
+            transform: translateY(0px);
+            transition: transform 1.2s cubic-bezier(0.2, 1.2, 0.3, 1), box-shadow 1.2s;
+            z-index: 1;
+            overflow-y: auto;
+        }
+
+        .letter-paper.pulled {
+            transform: translateY(-80px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+
+        .letter-paper h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            letter-spacing: 0.15em;
+            color: #111;
+        }
+
+        /* 信封外觀 */
+        .envelope {
+            position: absolute;
+            width: 360px;
+            height: 240px;
+            background: #232323;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 4px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            z-index: 3;
+            cursor: pointer;
+            transition: transform 0.8s ease, opacity 0.8s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .envelope.torn {
+            transform: translateY(180px) scale(0.95);
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: #2a2a2a;
+            clip-path: polygon(0 0, 50% 100%, 100% 0);
+            border-top: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.6s ease;
+            transform-origin: top;
+        }
+
+        .envelope.torn .envelope-flap {
+            transform: rotateX(180deg);
+        }
+
+        .envelope-text {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 0.2em;
+            margin-top: 30px;
+            z-index: 4;
+        }
+
+        /* ================= 頁面五：左右滑動相簿 ================= */
+        #page-slider {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 380px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            background: #141414;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .slider-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .slide-item {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .slide-caption {
+            width: 100%;
+            height: 100px;
+            background: #181818;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            letter-spacing: 0.1em;
+            color: #dcdcdc;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .slider-nav {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .slider-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: #fff;
+            padding: 8px 20px;
+            font-family: 'Noto Serif TC', serif;
+            letter-spacing: 0.1em;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        .slider-btn:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: #fff;
         }
 
         /* 彈窗 Modal */
@@ -466,16 +602,6 @@
             color: #b5b5b5;
             letter-spacing: 0.05em;
         }
-
-        @media (max-width: 600px) {
-            .polaroids-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-            .polaroid-img {
-                height: 130px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -488,29 +614,16 @@
         </div>
     </div>
 
-    <!-- 頁面二：蛋糕、打火機、點蠟燭與許願 -->
+    <!-- 頁面二：蛋糕、白色虛光背景、打火機與點蠟燭 -->
     <div id="page-cake" class="page">
-        <!-- 提示文字放在上方 -->
+        <div class="glow-background"></div>
         <div class="action-prompt" id="action-prompt">請點擊一下</div>
 
         <div class="stage-container" id="stage-container">
-            <!-- 雙層白色奶油蛋糕 -->
-            <div class="cake-wrapper" id="cake-wrapper">
-                <!-- 上層草莓 -->
-                <div class="strawberry s1"></div>
-                <div class="strawberry s2"></div>
-                <div class="strawberry s3"></div>
-                <!-- 底層草莓 -->
-                <div class="strawberry s4"></div>
-                <div class="strawberry s5"></div>
-
-                <div class="cake-tier-top">
-                    <div class="cake-tier-top-cream"></div>
-                </div>
-                <div class="cake-tier-bottom">
-                    <div class="cake-tier-bottom-cream"></div>
-                </div>
-
+            <!-- 蛋糕圖片容器（請將 src 替換成你自己的蛋糕圖片網址或檔案路徑） -->
+            <div class="cake-custom-wrapper" id="cake-wrapper">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" alt="Birthday Cake" class="cake-img" id="cake-img">
+                
                 <!-- 五支七彩蠟燭 -->
                 <div class="candles-container">
                     <div class="candle"><div class="flame" id="f1"></div></div>
@@ -521,19 +634,18 @@
                 </div>
             </div>
 
-            <div class="table"></div>
-
-            <!-- 打火機（可拖曳或點擊） -->
-            <div class="lighter" id="lighter" draggable="true">
-                <div class="lighter-top"></div>
-                <div class="lighter-body-label">這是點蠟燭不是點煙的</div>
+            <!-- 打火機與旁邊字樣（請將 src 替換成你自己的打火機圖片網址或檔案路徑） -->
+            <div class="lighter-area" id="lighter-area">
+                <span class="lighter-comment">這是點蠟燭不是點煙的</span>
+                <div class="lighter-custom" id="lighter" draggable="true">
+                    <img src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=300&q=80" alt="Lighter" class="lighter-img">
+                </div>
             </div>
         </div>
 
-        <!-- 打字機文字區 -->
+        <div class="drag-tip" id="drag-tip" style="display:none;">拖動打火機即可點火</div>
         <div class="wish-text-box" id="wish-text-box"></div>
 
-        <!-- 最後跳轉按鈕 -->
         <div class="next-step-container" id="next-step-container">
             <button class="subtle-link-btn" id="btn-goto-gallery">一年前我們也是這樣過生日了</button>
         </div>
@@ -541,28 +653,78 @@
 
     <!-- 頁面三：拍立得藝廊 -->
     <div id="page-gallery" class="page">
-        <div class="gallery-title">Moments</div>
+        <div class="gallery-title">Moments (點擊各張照片看故事)</div>
         <div class="polaroids-grid">
-            <div class="polaroid" onclick="openStory(1)">
+            <div class="polaroid" onclick="readStory(1)">
                 <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" alt="Memory 1" class="polaroid-img">
                 <div class="polaroid-caption">那天一起走的夜路</div>
             </div>
-            <div class="polaroid" onclick="openStory(2)">
+            <div class="polaroid" onclick="readStory(2)">
                 <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Memory 2" class="polaroid-img">
                 <div class="polaroid-caption">笑得很開心的小事</div>
             </div>
-            <div class="polaroid" onclick="openStory(3)">
+            <div class="polaroid" onclick="readStory(3)">
                 <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=600&q=80" alt="Memory 3" class="polaroid-img">
                 <div class="polaroid-caption">慶祝彼此的笨拙</div>
             </div>
-            <div class="polaroid" onclick="openStory(4)">
+            <div class="polaroid" onclick="readStory(4)">
                 <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80" alt="Memory 4" class="polaroid-img">
                 <div class="polaroid-caption">未完待續的日常</div>
             </div>
         </div>
+        
+        <!--看完所有故事後解鎖下一步-->
+        <div class="gallery-next-container" id="gallery-next-container">
+            <button class="light-up-btn" id="btn-goto-letter">我想好好祝福你</button>
+        </div>
     </div>
 
-    <!-- 故事細節彈窗 Modal -->
+    <!-- 頁面四：信封與信紙 -->
+    <div id="page-letter" class="page">
+        <div class="gallery-title">請慢慢打開信封</div>
+        <div class="letter-container">
+            <!-- 信紙 -->
+            <div class="letter-paper" id="letter-paper">
+                <h3>親愛的：</h3>
+                <p>希望你在每一個普通的日子裡，都能夠感受到被世界溫柔以待。不用急著成為完美的大人，只要照著自己的節奏往前走就好。願你所有的願望都能閃閃發光，生日快樂。</p>
+            </div>
+            <!-- 信封 -->
+            <div class="envelope" id="envelope" onclick="tearEnvelope()">
+                <div class="envelope-flap"></div>
+                <div class="envelope-text">點擊撕開信封</div>
+            </div>
+        </div>
+        <div class="next-step-container" id="letter-next-container">
+            <button class="subtle-link-btn" id="btn-goto-slider">觀看回憶相簿</button>
+        </div>
+    </div>
+
+    <!-- 頁面五：左右滑動相簿 -->
+    <div id="page-slider" class="page">
+        <div class="gallery-title">Our Memories</div>
+        <div class="slider-wrapper">
+            <div class="slider-track" id="slider-track">
+                <div class="slide-item">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" class="slide-img">
+                    <div class="slide-caption">一起走過的每一條街</div>
+                </div>
+                <div class="slide-item">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" class="slide-img">
+                    <div class="slide-caption">那些閃閃發光的時刻</div>
+                </div>
+                <div class="slide-item">
+                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=600&q=80" class="slide-img">
+                    <div class="slide-caption">笑著鬧著的日常風景</div>
+                </div>
+            </div>
+        </div>
+        <div class="slider-nav">
+            <button class="slider-btn" onclick="prevSlide()">上一張</button>
+            <button class="slider-btn" onclick="nextSlide()">下一張</button>
+        </div>
+    </div>
+
+    <!-- 故事彈窗 Modal -->
     <div class="modal-overlay" id="story-modal" onclick="closeStory(event)">
         <div class="modal-card" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeModalDirect()">&times;</button>
@@ -573,81 +735,82 @@
     </div>
 
     <script>
-        // --- 頁面跳轉控制 ---
-        const pageHome = document.getElementById('page-home');
-        const pageCake = document.getElementById('page-cake');
-        const pageGallery = document.getElementById('page-gallery');
-
-        const actionPrompt = document.getElementById('action-prompt');
-        const lighter = document.getElementById('lighter');
-        const flames = document.querySelectorAll('.flame');
-        const wishTextBox = document.getElementById('wish-text-box');
-        const nextStepContainer = document.getElementById('next-step-container');
-        const stageContainer = document.getElementById('stage-container');
-
-        let step = 0; // 0: 剛進來, 1: 點擊後出現打火機, 2: 已點燃蠟燭
+        // 音效函數 (Web Audio API 模擬點擊喀噠聲)
         let audioCtx = null;
-
-        // 播放打火機點擊音效 (Web Audio API 模擬清脆喀噠聲)
         function playClickSound() {
             try {
                 if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 const osc = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
                 osc.type = 'triangle';
-                osc.frequency.setValueAtTime(300, audioCtx.currentTime);
+                osc.frequency.setValueAtTime(350, audioCtx.currentTime);
                 osc.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + 0.08);
-                gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
                 osc.connect(gain);
                 gain.connect(audioCtx.destination);
                 osc.start();
                 osc.stop(audioCtx.currentTime + 0.08);
-            } catch(e) {
-                // 忽略音效錯誤
-            }
+            } catch(e) {}
         }
 
+        // 頁面跳轉控制
+        const pageHome = document.getElementById('page-home');
+        const pageCake = document.getElementById('page-cake');
+        const pageGallery = document.getElementById('page-gallery');
+        const pageLetter = document.getElementById('page-letter');
+        const pageSlider = document.getElementById('page-slider');
+
         document.getElementById('btn-light-up').addEventListener('click', () => {
+            playClickSound();
             pageHome.classList.remove('active');
             pageCake.classList.add('active');
         });
 
-        // 點擊舞台或提示文字推進互動
-        stageContainer.addEventListener('click', (e) => {
-            if (step === 0) {
+        // 蛋糕頁面互動
+        const actionPrompt = document.getElementById('action-prompt');
+        const lighterArea = document.getElementById('lighter-area');
+        const dragTip = document.getElementById('drag-tip');
+        const lighter = document.getElementById('lighter');
+        const flames = document.querySelectorAll('.flame');
+        const wishTextBox = document.getElementById('wish-text-box');
+        const nextStepContainer = document.getElementById('next-step-container');
+        const stageContainer = document.getElementById('stage-container');
+
+        let cakeStep = 0;
+
+        stageContainer.addEventListener('click', () => {
+            if (cakeStep === 0) {
                 playClickSound();
-                step = 1;
-                lighter.style.display = 'flex';
+                cakeStep = 1;
+                lighterArea.style.display = 'flex';
+                dragTip.style.display = 'block';
                 actionPrompt.innerText = "請點蠟燭";
             }
         });
 
         actionPrompt.addEventListener('click', () => {
-            if (step === 0) {
+            if (cakeStep === 0) {
                 playClickSound();
-                step = 1;
-                lighter.style.display = 'flex';
+                cakeStep = 1;
+                lighterArea.style.display = 'flex';
+                dragTip.style.display = 'block';
                 actionPrompt.innerText = "請點蠟燭";
             }
         });
 
-        // 點擊打火機或拖曳打火機到蛋糕上來點燃蠟燭
         function lightTheCandles() {
-            if (step < 1 || step >= 2) return;
-            step = 2;
+            if (cakeStep < 1 || cakeStep >= 2) return;
+            cakeStep = 2;
             playClickSound();
-            lighter.style.display = 'none';
+            lighterArea.style.display = 'none';
+            dragTip.style.display = 'none';
             actionPrompt.style.display = 'none';
 
-            // 點燃所有蠟燭火焰
             flames.forEach((f, index) => {
-                setTimeout(() => {
-                    f.classList.add('lit');
-                }, index * 100);
+                setTimeout(() => { f.classList.add('lit'); }, index * 100);
             });
 
-            // 打字機出現許願文字
             setTimeout(() => {
                 typeWriterEffect("許下願望吧，最後一個要好好的放在心裡", () => {
                     nextStepContainer.classList.add('visible');
@@ -657,19 +820,7 @@
 
         lighter.addEventListener('click', lightTheCandles);
 
-        // 桌面端拖曳支援
-        lighter.addEventListener('dragstart', (e) => {
-            e.dataTransfer.setData('text/plain', 'lighter');
-        });
-
-        const cakeWrapper = document.getElementById('cake-wrapper');
-        cakeWrapper.addEventListener('dragover', (e) => { e.preventDefault(); });
-        cakeWrapper.addEventListener('drop', (e) => {
-            e.preventDefault();
-            lightTheCandles();
-        });
-
-        // 手機端觸控打火機點燃
+        // 拖曳打火機點火
         let touchStartX = 0, touchStartY = 0;
         lighter.addEventListener('touchstart', (e) => {
             const touch = e.touches[0];
@@ -689,8 +840,8 @@
             lightTheCandles();
         });
 
-        // 跳轉至相框藝廊頁面
         document.getElementById('btn-goto-gallery').addEventListener('click', () => {
+            playClickSound();
             pageCake.classList.remove('active');
             pageGallery.classList.add('active');
         });
@@ -699,7 +850,7 @@
         function typeWriterEffect(text, callback) {
             wishTextBox.innerHTML = "";
             let i = 0;
-            const speed = 100;
+            const speed = 90;
             function type() {
                 if (i < text.length) {
                     wishTextBox.innerHTML += text.charAt(i);
@@ -712,45 +863,37 @@
             type();
         }
 
-        // --- 拍立得故事彈窗邏輯 ---
+        // 拍立得故事與閱讀狀態追蹤
         const stories = {
-            1: {
-                title: "那天一起走的夜路",
-                img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80",
-                story: "那天路燈把影子拉得長長的，我們聊了好多關於未來的迷惘與倔強。雖然腳有點酸，但那種身邊有人默默陪著、不用說話也很安心的空氣，至今想起來都還是覺得暖暖的。"
-            },
-            2: {
-                title: "笑得很開心的小事",
-                img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80",
-                story: "因為一件超級無聊的小笑話在路邊笑了好久。生活其實常常擠滿了讓人喘不過氣的瑣事，但只要跟你在一起，總能輕易找回那些最單純、最不加修飾的快樂。"
-            },
-            3: {
-                title: "慶祝彼此的笨拙",
-                img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=600&q=80",
-                story: "我們都不是那種完美的大人，常常跌跌撞撞，把生活過得亂七八糟又充滿驚喜。但慶幸的是，每一次狼狽的時候，身邊都有彼此懂那種笑中帶淚的默契。"
-            },
-            4: {
-                title: "未完待續的日常",
-                img: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80",
-                story: "不用許太大太遠的願望，只要每一個重要或不重要的日子裡，我們都能像這樣，繼續保持真實、繼續往前走。生日快樂呀。"
-            }
+            1: { title: "那天一起走的夜路", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80", story: "那天路燈把影子拉得長長的，我們聊了好多關於未來的迷惘與倔強。雖然腳有點酸，但那種身邊有人默默陪著、不用說話也很安心的空氣，至今想起來都還是覺得暖暖的。" },
+            2: { title: "笑得很開心的小事", img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80", story: "因為一件超級無聊的小笑話在路邊笑了好久。生活其實常常擠滿了讓人喘不過氣的瑣事，但只要跟你在一起，總能輕易找回那些最單純、最不加修飾的快樂。" },
+            3: { title: "慶祝彼此的笨拙", img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=600&q=80", story: "我們都不是那種完美的大人，常常跌跌撞撞，把生活過得亂七八糟又充滿驚喜。但慶幸的是，每一次狼狽的時候，身邊都有彼此懂那種笑中帶淚的默契。" },
+            4: { title: "未完待續的日常", img: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80", story: "不用許太大太遠的願望，只要每一個重要或不重要的日子裡，我們都能像這樣，繼續保持真實、繼續往前走。生日快樂呀。" }
         };
 
         const modalOverlay = document.getElementById('story-modal');
         const modalImg = document.getElementById('modal-img');
         const modalTitle = document.getElementById('modal-title');
         const modalStory = document.getElementById('modal-story');
+        let readStoriesCount = new Set();
 
-        function openStory(id) {
+        function readStory(id) {
+            playClickSound();
             const data = stories[id];
             if (!data) return;
             modalImg.src = data.img;
             modalTitle.innerText = data.title;
             modalStory.innerText = data.story;
             modalOverlay.classList.add('active');
+
+            readStoriesCount.add(id);
+            if (readStoriesCount.size === 4) {
+                document.getElementById('gallery-next-container').classList.add('unlocked');
+            }
         }
 
         function closeModalDirect() {
+            playClickSound();
             modalOverlay.classList.remove('active');
         }
 
@@ -758,6 +901,48 @@
             if (e.target === modalOverlay) {
                 modalOverlay.classList.remove('active');
             }
+        }
+
+        document.getElementById('btn-goto-letter').addEventListener('click', () => {
+            playClickSound();
+            pageGallery.classList.remove('active');
+            pageLetter.classList.add('active');
+        });
+
+        // 信封撕開互動
+        function tearEnvelope() {
+            playClickSound();
+            document.getElementById('envelope').classList.add('torn');
+            document.getElementById('letter-paper').classList.add('pulled');
+            setTimeout(() => {
+                document.getElementById('letter-next-container').classList.add('visible');
+            }, 1000);
+        }
+
+        document.getElementById('btn-goto-slider').addEventListener('click', () => {
+            playClickSound();
+            pageLetter.classList.remove('active');
+            pageSlider.classList.add('active');
+        });
+
+        // 左右滑動相簿控制
+        let currentSlide = 0;
+        const totalSlides = 3;
+        const sliderTrack = document.getElementById('slider-track');
+
+        function updateSlide() {
+            playClickSound();
+            sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlide();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlide();
         }
     </script>
 </body>
