@@ -39,7 +39,7 @@
             justify-content: center;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
             padding: 40px 20px;
         }
 
@@ -97,20 +97,20 @@
 
         .glow-background {
             position: absolute;
-            width: 380px;
-            height: 380px;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.02) 60%, transparent 100%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.02) 65%, transparent 100%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 0;
-            filter: blur(25px);
+            filter: blur(30px);
         }
 
         .stage-container {
             position: relative;
             width: 100%;
             max-width: 450px;
-            height: 380px;
+            height: 400px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -121,8 +121,8 @@
 
         .cake-custom-wrapper {
             position: relative;
-            width: 260px;
-            height: 240px;
+            width: 280px;
+            height: 260px;
             margin-bottom: 10px;
             display: flex;
             justify-content: center;
@@ -133,15 +133,16 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 10px 25px rgba(0,0,0,0.7));
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.8));
         }
 
+        /* 精準對齊蛋糕上方的五支蠟燭 */
         .candles-container {
             position: absolute;
-            top: 55px;
+            top: 65px;
             left: 50%;
             transform: translateX(-50%);
-            width: 90px;
+            width: 110px;
             height: 40px;
             display: flex;
             justify-content: space-between;
@@ -151,8 +152,8 @@
 
         .candle {
             position: relative;
-            width: 5px;
-            height: 35px;
+            width: 6px;
+            height: 38px;
             border-radius: 1px;
         }
         .candle:nth-child(1) { background: #ffadad; }
@@ -163,14 +164,14 @@
 
         .flame {
             position: absolute;
-            top: -16px;
+            top: -18px;
             left: 50%;
             transform: translateX(-50%) scale(0);
-            width: 9px;
-            height: 16px;
+            width: 10px;
+            height: 18px;
             background: radial-gradient(circle at 50% 80%, #fff 10%, #ffcc00 40%, #ff4500 80%);
             border-radius: 50% 50% 20% 20%;
-            box-shadow: 0 0 10px #ff9900, 0 0 20px #ff3300;
+            box-shadow: 0 0 12px #ff9900, 0 0 24px #ff3300;
             transition: transform 0.5s ease;
             transform-origin: bottom center;
         }
@@ -216,8 +217,8 @@
         }
 
         .lighter-custom {
-            width: 55px;
-            height: 80px;
+            width: 60px;
+            height: 90px;
             cursor: grab;
             filter: drop-shadow(0 5px 15px rgba(0,0,0,0.8));
             transition: transform 0.2s;
@@ -444,7 +445,7 @@
             border-color: #fff;
         }
 
-        /* ================= 頁面五：全螢幕左右滑動相簿 ================= */
+        /* ================= 頁面五：80% 視窗大小的左右滑動相簿 ================= */
         #page-slider {
             width: 100vw;
             height: 100vh;
@@ -455,16 +456,20 @@
             position: absolute;
             top: 0;
             left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .slider-wrapper {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            position: relative;
+            width: 80vw;
+            height: 80vh;
             overflow: hidden;
-            background: #000;
+            background: #141414;
+            border-radius: 8px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .slider-track {
@@ -475,8 +480,8 @@
         }
 
         .slide-item {
-            min-width: 100vw;
-            height: 100vh;
+            min-width: 80vw;
+            height: 80vh;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -485,33 +490,27 @@
         }
 
         .slide-img {
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            filter: brightness(0.9);
-        }
-
-        /* 底部半透明文字浮層 */
-        .slide-caption-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
             width: 100%;
-            padding: 40px 20px 50px 20px;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            text-align: center;
-            font-size: 1.1rem;
-            letter-spacing: 0.15em;
-            color: #fff;
-            font-family: 'Noto Serif TC', serif;
-            z-index: 5;
-            pointer-events: none;
+            height: calc(80vh - 80px);
+            object-fit: cover;
         }
 
-        /* 左右滑動提示箭頭 */
+        .slide-caption-overlay {
+            width: 100%;
+            height: 80px;
+            background: #181818;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            letter-spacing: 0.15em;
+            color: #dcdcdc;
+            font-family: 'Noto Serif TC', serif;
+        }
+
         .slider-hint {
             position: absolute;
-            top: 30px;
+            top: 20px;
             width: 100%;
             text-align: center;
             font-size: 0.85rem;
@@ -679,7 +678,7 @@
         </div>
     </div>
 
-    <!-- 頁面五：全螢幕左右滑動相簿 -->
+    <!-- 頁面五：80% 視窗大小的左右滑動相簿 -->
     <div id="page-slider" class="page">
         <div class="slider-hint">← 左右滑動瀏覽回憶 →</div>
         <div class="slider-wrapper" id="slider-wrapper">
@@ -710,25 +709,19 @@
         </div>
     </div>
 
+    <!-- 真實打火機音效 -->
+    <audio id="lighter-audio" src="https://cdn.freesound.org/previews/415/415751_5121236-lq.mp3" preload="auto"></audio>
+
     <script>
-        let audioCtx = null;
+        const lighterAudio = document.getElementById('lighter-audio');
         function playLighterSound() {
             try {
-                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                osc.type = 'square';
-                osc.frequency.setValueAtTime(450, audioCtx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(120, audioCtx.currentTime + 0.15);
-                gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.15);
+                lighterAudio.currentTime = 0;
+                lighterAudio.play();
             } catch(e) {}
         }
 
+        let audioCtx = null;
         function playClickSound() {
             try {
                 if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -867,122 +860,4 @@
         }
 
         const stories = {
-            1: { title: "那天一起走的夜路", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80", story: "那天路燈把影子拉得長長的，我們聊了好多關於未來的迷惘與倔強。雖然腳有點酸，但那種身邊有人默默陪著、不用說話也很安心的空氣，至今想起來都還是覺得暖暖的。" },
-            2: { title: "笑得很開心的小事", img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80", story: "因為一件超級無聊的小笑話在路邊笑了好久。生活其實常常擠滿了讓人喘不過氣的瑣事，但只要跟你在一起，總能輕易找回那些最單純、最不加修飾的快樂。" },
-            3: { title: "慶祝彼此的笨拙", img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=600&q=80", story: "我們都不是那種完美的大人，常常跌跌撞撞，把生活過得亂七八糟又充滿驚喜。但慶幸的是，每一次狼狽的時候，身邊都有彼此懂那種笑中帶淚的默契。" },
-            4: { title: "未完待續的日常", img: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80", story: "不用許太大太遠的願望，只要每一個重要或不重要的日子裡，我們都能像這樣，繼續保持真實、繼續往前走。生日快樂呀。" }
-        };
-
-        const modalOverlay = document.getElementById('story-modal');
-        const modalImg = document.getElementById('modal-img');
-        const modalTitle = document.getElementById('modal-title');
-        const modalStory = document.getElementById('modal-story');
-        let readStoriesCount = new Set();
-
-        function readStory(id) {
-            playClickSound();
-            const data = stories[id];
-            if (!data) return;
-            modalImg.src = data.img;
-            modalTitle.innerText = data.title;
-            modalStory.innerText = data.story;
-            modalOverlay.classList.add('active');
-
-            readStoriesCount.add(id);
-            if (readStoriesCount.size === 4) {
-                document.getElementById('gallery-next-container').classList.add('unlocked');
-            }
-        }
-
-        function closeModalDirect() {
-            playClickSound();
-            modalOverlay.classList.remove('active');
-        }
-
-        function closeStory(e) {
-            if (e.target === modalOverlay) {
-                modalOverlay.classList.remove('active');
-            }
-        }
-
-        document.getElementById('btn-goto-letter').addEventListener('click', () => {
-            playClickSound();
-            pageGallery.classList.remove('active');
-            pageLetter.classList.add('active');
-        });
-
-        function tearEnvelope() {
-            playClickSound();
-            document.getElementById('envelope').classList.add('torn');
-            document.getElementById('letter-paper').classList.add('pulled');
-            setTimeout(() => {
-                document.getElementById('letter-next-container').classList.add('visible');
-            }, 1000);
-        }
-
-        document.getElementById('btn-goto-slider').addEventListener('click', () => {
-            playClickSound();
-            pageLetter.classList.remove('active');
-            pageSlider.classList.add('active');
-        });
-
-        /* 滿版左右滑動相簿互動控制 (支援觸控滑動與滑鼠拖曳切換) */
-        let currentSlide = 0;
-        const totalSlides = 3;
-        const sliderTrack = document.getElementById('slider-track');
-        const sliderWrapper = document.getElementById('slider-wrapper');
-
-        function updateSlide() {
-            playClickSound();
-            sliderTrack.style.transform = `translateX(-${currentSlide * 100}vw)`;
-        }
-
-        let startX = 0;
-        let isDragging = false;
-
-        sliderWrapper.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-            isDragging = true;
-        }, {passive: true});
-
-        sliderWrapper.addEventListener('touchend', (e) => {
-            if (!isDragging) return;
-            const endX = e.changedTouches[0].clientX;
-            const diff = startX - endX;
-
-            if (diff > 50) {
-                // 向左滑 -> 下一張
-                if (currentSlide < totalSlides - 1) {
-                    currentSlide++;
-                    updateSlide();
-                }
-            } else if (diff < -50) {
-                // 向右滑 -> 上一張
-                if (currentSlide > 0) {
-                    currentSlide--;
-                    updateSlide();
-                }
-            }
-            isDragging = false;
-        });
-
-        /* 桌面端滑鼠點擊畫面左右兩側切換 */
-        sliderWrapper.addEventListener('click', (e) => {
-            const screenWidth = window.innerWidth;
-            if (e.clientX > screenWidth / 2) {
-                // 點擊右半邊 -> 下一張
-                if (currentSlide < totalSlides - 1) {
-                    currentSlide++;
-                    updateSlide();
-                }
-            } else {
-                // 點擊左半邊 -> 上一張
-                if (currentSlide > 0) {
-                    currentSlide--;
-                    updateSlide();
-                }
-            }
-        });
-    </script>
-</body>
-</html>
+            1: {
