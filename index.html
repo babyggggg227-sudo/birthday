@@ -262,6 +262,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
     <div class="line-btn-row">
       <a href="https://line.me/ti/p/rRB0-1SSeX" target="_blank" rel="noopener noreferrer" class="line-btn">想我就打給我</a>
       <a href="https://line.me/ti/p/rRB0-1SSeX" target="_blank" rel="noopener noreferrer" class="line-btn">V我50</a>
+      <button type="button" class="line-btn" id="download-article-btn">回憶去年寫的</button>
     </div>
     <button type="button" class="music-stop-btn" id="music-stop-btn">停止播放音樂</button>
   </div>
@@ -556,6 +557,26 @@ sliderWrapper.addEventListener('click', e => {
     currentSlide--;
     updateSlide();
   }
+});
+
+/* 下載去年的碎碎念文章功能 */
+document.getElementById('download-article-btn').addEventListener('click', function() {
+    playClickSound();
+    
+    // 你可以在這邊修改去年寫的文章內容（用 \n 換行）
+    const articleText = "嗨正義哥：\n\n這是去年寫給你的文章內容...\n（你可以隨時把這段文字換成你真正的文章）\n\n生日快樂。";
+    
+    const blob = new Blob([articleText], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = '去年的碎碎念.txt';
+    document.body.appendChild(a);
+    a.click();
+    
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
 });
 </script>
 
