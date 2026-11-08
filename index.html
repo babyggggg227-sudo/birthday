@@ -201,6 +201,7 @@
             z-index: 10;
             user-select: none;
             touch-action: none;
+            transition: transform 0.5s ease-in-out; /* 用於從左到右移動動畫 */
         }
 
         .lighter-comment {
@@ -296,7 +297,7 @@
             pointer-events: auto;
         }
 
-        /* 區塊四：放大的信封與信紙（修復點擊與遮擋） */
+        /* 區塊四：放大的信封與帶有淺淺格子的信紙 */
         #section-letter {
             z-index: 7;
         }
@@ -309,29 +310,32 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .letter-paper {
             position: absolute;
             width: 380px;
-            height: 440px;
+            height: 420px;
             background: #fbfbf9;
             color: #2c2c2c;
-            padding: 40px 30px;
+            padding: 35px 30px;
             border-radius: 2px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.6);
             text-align: left;
-            font-size: 1rem;
-            line-height: 1.9;
+            font-size: 0.95rem;
+            line-height: 2.2; /* 行距配合格子 */
             transform: translateY(0px);
             transition: transform 1.2s cubic-bezier(0.2, 1.2, 0.3, 1);
             z-index: 1;
             overflow-y: auto;
+            /* 淺淺的格子線條背景 */
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+            background-size: 100% 2.2em;
         }
 
         .letter-paper.pulled {
-            transform: translateY(-70px);
+            transform: translateY(-90px);
         }
 
         .envelope {
@@ -563,7 +567,7 @@
                 <span class="lighter-comment">這是點蠟燭不是點煙的</span>
                 <div class="lighter-custom" id="lighter" draggable="true">
                     <!-- 精準對應你的打火機檔名：ㄏㄍㄜ.png -->
-                    <img src="厂ㄍㄜ.png" alt="Lighter" class="lighter-img" onerror="this.src='https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=300&q=80'">
+                    <img src="ㄏㄍㄜ.png" alt="Lighter" class="lighter-img" onerror="this.src='https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=300&q=80'">
                 </div>
             </div>
         </div>
@@ -604,7 +608,7 @@
         <div class="letter-container">
             <div class="letter-paper" id="letter-paper">
                 <h3>親愛的：</h3>
-                <p>希望你在每一個普通的日子裡，都能夠感受到被世界溫柔以待. 不用急著成為完美的大人，只要照著自己的節奏往前走就好. 願你所有的願望都能閃閃發光，生日快樂.</p>
+                <p>希望你在每一個普通的日子裡，都能夠感受到被世界溫柔以待。不用急著成為完美的大人，只要照著自己的節奏往前走就好。願你所有的願望都能閃閃發光，生日快樂。</p>
             </div>
             <div class="envelope" id="envelope" onclick="tearEnvelope()">
                 <div class="envelope-flap"></div>
@@ -650,8 +654,10 @@
         </div>
     </div>
 
-    <!-- 打火機音效與撕信紙音效：xm3013.mp3 -->
+    <!-- 打火機音效：xm3013.mp3 -->
     <audio id="lighter-audio" src="xm3013.mp3" preload="auto"></audio>
+    <!-- 撕信紙音效：1281.mp3 -->
+    <audio id="tear-audio" src="1281.mp3" preload="auto"></audio>
 
     <script>
         const lighterAudio = document.getElementById('lighter-audio');
@@ -659,6 +665,14 @@
             try {
                 lighterAudio.currentTime = 0;
                 lighterAudio.play().catch(e => {});
+            } catch(e) {}
+        }
+
+        const tearAudio = document.getElementById('tear-audio');
+        function playTearSound() {
+            try {
+                tearAudio.currentTime = 0;
+                tearAudio.play().catch(e => {});
             } catch(e) {}
         }
 
@@ -731,11 +745,15 @@
             if (cakeStep < 1 || cakeStep >= 2) return;
             cakeStep = 2;
             playLighterSound(); // 播放 xm3013.mp3
-            lighterArea.style.display = 'none';
             actionPrompt.style.display = 'none';
+
+            // 打火機從右下角往左移動到蠟燭上方 (大約 8 秒音效配合)
+            lighterArea.style.transform = "translateX(-160px)";
+            lighterArea.style.transition = "transform 8s ease-in-out";
 
             // 配合音檔大約 8 秒後燭火亮起
             setTimeout(() => {
+                lighterArea.style.display = 'none'; // 點完後隱藏打火機
                 flames.forEach((f, index) => {
                     setTimeout(() => { f.classList.add('lit'); }, index * 100);
                 });
@@ -849,7 +867,7 @@
         });
 
         function tearEnvelope() {
-            playLighterSound(); // 撕信封時播放音檔 1281.mp3
+            playTearSound(); // 播放 1281.mp3 撕紙音效
             document.getElementById('envelope').classList.add('torn');
             document.getElementById('letter-paper').classList.add('pulled');
             setTimeout(() => {
