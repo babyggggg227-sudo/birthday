@@ -558,7 +558,6 @@ sliderWrapper.addEventListener('click', e => {
   }
 });
 </script>
-<script>
 // 當你在手機螢幕上「滑動手指」時觸發
 document.addEventListener('touchmove', function(e) {
     // 取得當前手指碰觸螢幕的座標
@@ -576,10 +575,8 @@ document.addEventListener('touchmove', function(e) {
     chick.style.pointerEvents = 'none'; // 讓觸控可以穿透小雞，不影響其他按鈕點擊
     chick.style.zIndex = '99999';
     chick.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
-    chick.style.transform = 'translate(-50%, -50%) scale(1)';
-    
+    chick.style.transform = 'translate(-50%, -50%) scale(1)'; 
     document.body.appendChild(chick);
-
     // 讓小雞往上飄一小段距離並漸漸變透明
     setTimeout(() => {
         chick.style.transform = 'translate(-50%, -80px) scale(0.4)';
@@ -591,6 +588,5 @@ document.addEventListener('touchmove', function(e) {
         chick.remove();
     }, 500);
 }, { passive: true });
-</script>
 </body>
 </html>
