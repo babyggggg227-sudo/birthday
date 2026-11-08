@@ -1,55 +1,180 @@
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Happy Birthday</title>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&family=Noto+Sans+TC:wght@400;500;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}:root{--ink:#f8edf5;--pink:#ffb7d5;--lav:#d8c6ff;--mint:#b8f1df;--gold:#ffe5a8;--night:#171321}body{background:radial-gradient(ellipse at 18% 15%,#352546 0%,transparent 38%),radial-gradient(ellipse at 85% 85%,#263744 0%,transparent 40%),var(--night);color:var(--ink);font-family:'Noto Serif TC',serif;width:100vw;height:100vh;overflow:hidden;position:relative;cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='20'%3E%F0%9F%90%A5%3C/text%3E%3C/svg%3E") 2 2,auto}button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='20'%3E%F0%9F%90%A5%3C/text%3E%3C/svg%3E") 2 2,pointer}
-.stage-section{position:absolute;inset:0;width:100vw;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 1.2s cubic-bezier(.4,0,.2,1);padding:20px}.stage-section.active{opacity:1;pointer-events:auto}#section-home{z-index:10}#section-cake{z-index:9}#section-gallery{z-index:8}#section-letter{z-index:7}#section-slider{z-index:6}
-.home-content{display:flex;flex-direction:column;align-items:center;gap:16px}.light-up-btn{background:linear-gradient(135deg,#fff1f7,#f3eaff);color:#4b3659;border:2px solid #fff9;padding:14px 40px;font-size:1.1rem;letter-spacing:.16em;transition:transform .25s,box-shadow .25s;font-family:inherit;border-radius:999px;box-shadow:0 6px 0 #c6a9d8,0 12px 26px #07050d66}.light-up-btn:hover{transform:translateY(-3px) rotate(-1deg);box-shadow:0 9px 0 #c6a9d8,0 16px 30px #07050d66}.light-up-btn:active{transform:translateY(3px);box-shadow:0 3px 0 #c6a9d8}.sound-hint{font-family:'Caveat','Noto Serif TC',serif;font-size:1.1rem;letter-spacing:.08em;color:#ffe9f5;text-shadow:0 2px 9px #ffacd466}.producer-credit{font-size:.85rem;color:#ffffffa8;letter-spacing:.1em;font-family:'Caveat',serif}
-.glow-background{position:absolute;width:420px;height:420px;background:radial-gradient(circle,#ffe9f52e 0%,#d9c5ff0a 65%,transparent 100%);border-radius:50%;pointer-events:none;filter:blur(30px)}.cake-stage{position:relative;width:100%;max-width:480px;height:380px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;margin-bottom:10px;z-index:1}.cake-custom-wrapper{position:relative;width:300px;height:280px;margin-bottom:10px;display:flex;justify-content:center;align-items:flex-end}.cake-img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 15px 30px #000c)}
-.candles-container{position:absolute;top:48px;left:50%;transform:translateX(-50%);width:125px;height:58px;display:flex;justify-content:space-between;align-items:flex-end;z-index:2}.candle{position:relative;width:22px;height:52px;display:flex;align-items:flex-end;justify-content:center;border-radius:4px;cursor:pointer;touch-action:manipulation}.candle::before{content:"";position:absolute;bottom:0;width:7px;height:40px;border-radius:3px;background:#ffadad;pointer-events:none}.candle:nth-child(2)::before{background:#ffd6a5}.candle:nth-child(3)::before{background:#fdffb6}.candle:nth-child(4)::before{background:#caffbf}.candle:nth-child(5)::before{background:#9bf6ff}.flame{position:absolute;top:-18px;left:50%;transform:translateX(-50%) scale(0);width:11px;height:19px;background:radial-gradient(circle at 50% 80%,#fff 10%,#fc0 40%,#ff4500 80%);border-radius:50% 50% 20% 20%;box-shadow:0 0 10px #f90,0 0 20px #f30;transition:transform .3s;transform-origin:bottom center;pointer-events:none}.flame.lit{transform:translateX(-50%) scale(1);animation:flicker 1.2s infinite alternate}@keyframes flicker{0%{transform:translateX(-50%) scale(.9) rotate(-3deg);opacity:.85}100%{transform:translateX(-50%) scale(1.1) rotate(3deg);opacity:1}}
-.action-prompt{font-size:.9rem;color:#fff;margin-bottom:8px;letter-spacing:.1em;cursor:pointer;z-index:1;text-align:center;text-shadow:0 2px 8px #000}.lighter-area{position:absolute;bottom:10px;right:10px;display:none;flex-direction:column;align-items:center;gap:2px;z-index:10;user-select:none;touch-action:none}.lighter-comment{font-size:.85rem;color:#fff;letter-spacing:.08em;white-space:nowrap;pointer-events:none;order:2;text-shadow:0 2px 6px #000}.lighter-custom{width:100px;height:145px;cursor:grab;filter:drop-shadow(0 8px 20px #000e);display:flex;align-items:center;justify-content:center;background:transparent;touch-action:none;user-select:none;order:1}.lighter-custom:active{cursor:grabbing}.lighter-img{width:100%;height:100%;object-fit:contain;mix-blend-mode:screen;pointer-events:none;-webkit-user-drag:none}.wish-text-box{min-height:40px;text-align:center;font-size:1rem;letter-spacing:.1em;color:#fff1f8;line-height:1.6;z-index:1;text-shadow:0 2px 8px #000}
-.gallery-title{font-size:1rem;letter-spacing:.14em;color:#fff;margin-bottom:20px;font-weight:500;text-shadow:0 2px 8px #0008}.polaroids-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:800px;width:100%;margin-bottom:30px;padding:0 10px}.polaroid{background:#f4f4f2;color:#29232e;padding:10px 10px 15px;border-radius:3px;box-shadow:0 10px 25px #0008;transition:transform .3s}.polaroid:hover{transform:translateY(-5px) rotate(1deg)}.polaroid-img{
-  width:100%;
-  aspect-ratio:1 / 1;
-  object-fit:cover;
-  display:block;
-  border-radius:2px;
-}{width:100%;height:130px;object-fit:cover;margin-bottom:8px;border-radius:2px}.polaroid-caption{font-family:'Caveat','Noto Serif TC',cursive;font-size:1rem;text-align:center;color:#493b50}.section-next-container{opacity:.3;pointer-events:none;transition:opacity .5s}.section-next-container.unlocked,.section-next-container.visible{opacity:1;pointer-events:auto}
-.letter-container{position:relative;width:100%;max-width:500px;height:480px;display:flex;justify-content:center;align-items:center;margin-bottom:15px;pointer-events:none;perspective:1000px}.letter-paper{position:absolute;width:min(380px,90vw);height:420px;background:#fffaf0;color:#3e3442;padding:35px 30px;border-radius:3px;box-shadow:0 15px 40px #0009;text-align:left;font-family:'Noto Sans TC','Microsoft JhengHei',sans-serif;font-weight:500;font-size:.98rem;line-height:2.1;transform:translateY(35px) scaleY(.88);opacity:.35;transition:transform 1.8s cubic-bezier(.22,.8,.25,1),opacity 1.4s ease;z-index:1;overflow-y:auto;pointer-events:auto;background-image:linear-gradient(to bottom,#bd99b118 1px,transparent 1px);background-size:100% 2.2em;transform-origin:bottom center}.letter-paper h3{font-weight:700;margin-bottom:8px}.letter-paper p{font-weight:500}.letter-paper.pulled{transform:translateY(-90px) scaleY(1);opacity:1}.envelope{position:absolute;width:min(420px,95vw);height:260px;background:linear-gradient(135deg,#5b4268,#352a49);border:1px solid #ffffff55;border-radius:4px;z-index:3;display:flex;align-items:center;justify-content:center;transition:transform 1s cubic-bezier(.2,.8,.2,1),opacity 1s ease;pointer-events:auto;box-shadow:0 12px 30px #0008}.envelope.torn{transform:translateY(180px) scale(.95);opacity:.2;pointer-events:none}.envelope-flap{position:absolute;top:0;left:0;width:100%;height:130px;background:#765783;clip-path:polygon(0 0,50% 100%,100% 0);transition:transform 1s cubic-bezier(.2,.8,.2,1);transform-origin:top;backface-visibility:hidden}.envelope.torn .envelope-flap{transform:rotateX(180deg)}.envelope-text{font-size:.95rem;color:#fff;letter-spacing:.15em;margin-top:30px;z-index:4}#letter-next-container{position:relative;z-index:20}
-.slider-wrapper{position:relative;width:75vw;height:65vh;overflow:hidden;background:#241e2a;border-radius:8px;box-shadow:0 20px 50px #000b;border:1px solid #ffffff3b;margin-bottom:15px;touch-action:pan-y}.slider-track{display:flex;width:100%;height:100%;transition:transform .6s cubic-bezier(.25,1,.5,1)}.slide-item{min-width:75vw;height:65vh;display:flex;flex-direction:column;align-items:center;justify-content:center}.slide-img{width:100%;height:calc(65vh - 60px);object-fit:cover}.slide-caption-overlay{width:100%;height:60px;background:#302637;display:flex;align-items:center;justify-content:center;font-size:.95rem;letter-spacing:.12em;color:#fff}.slider-hint{margin-bottom:10px;font-size:.8rem;color:#fff;letter-spacing:.14em}.line-btn-container{margin-top:76px;display:flex;flex-direction:column;align-items:center;gap:16px;opacity:0;pointer-events:none;transition:opacity 1s}.line-btn-container.visible{opacity:1;pointer-events:auto}.line-btn{background:linear-gradient(135deg,#b8f1df,#a6d9fd);color:#263a3b;border:2px solid #fff;padding:12px 32px;font-size:.95rem;letter-spacing:.12em;border-radius:999px;text-decoration:none;box-shadow:0 5px 0 #72baa6,0 10px 20px #0005;transition:transform .3s,background .3s;font-family:inherit;display:inline-block}.line-btn:hover{transform:translateY(-3px) rotate(-1deg)}.music-stop-btn{border:1px solid #ffffff99;background:#171321b8;color:#fff;padding:9px 18px;border-radius:999px;font:inherit;font-size:.85rem;letter-spacing:.08em;box-shadow:0 3px 0 #080711,0 6px 14px #0006;transition:transform .2s,box-shadow .2s}.music-stop-btn:hover{transform:translateY(-2px);box-shadow:0 5px 0 #080711,0 9px 18px #0007}.music-stop-btn:active{transform:translateY(2px);box-shadow:0 1px 0 #080711}
-.modal-overlay{position:fixed;inset:0;width:100%;height:100%;background:#15101bd9;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s;z-index:100;padding:20px}.modal-overlay.active{opacity:1;pointer-events:auto}.modal-card{background:#2a2232;border:1px solid #ffffff55;max-width:450px;width:100%;padding:30px;border-radius:6px;position:relative;box-shadow:0 16px 50px #0009}.modal-close{position:absolute;top:15px;right:20px;background:none;border:0;color:#fff;font-size:1.5rem}.modal-img{width:100%;height:200px;object-fit:cover;margin-bottom:15px;border-radius:3px}.modal-title{font-size:1rem;margin-bottom:10px;color:#fff}.modal-story{font-size:.9rem;line-height:1.7;color:#f0e5f1}button:focus-visible,a:focus-visible,.polaroid:focus-visible,.candle:focus-visible{outline:2px solid #ffe5a8;outline-offset:4px}
-@media(max-width:700px){.polaroids-grid{grid-template-columns:repeat(2,1fr);gap:12px}.polaroid-img{height:100px}.slider-wrapper{width:90vw}.slide-item{min-width:90vw}.letter-container{height:430px}.letter-paper{height:380px;padding:28px 22px}.lighter-comment{font-size:.72rem}.lighter-area{gap:2px}.cake-stage{height:350px}.cake-custom-wrapper{width:270px;height:250px}.candles-container{top:43px}.lighter-custom{width:88px;height:128px}.line-btn-container{margin-top:54px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#f8edf5;--pink:#ffb7d5;--lav:#d8c6ff;--mint:#b8f1df;--gold:#ffe5a8;--night:#171321}
+body{background:radial-gradient(ellipse at 18% 15%,#352546 0%,transparent 38%),radial-gradient(ellipse at 85% 85%,#263744 0%,transparent 40%),var(--night);color:var(--ink);font-family:'Caveat','Noto Sans TC',sans-serif;width:100vw;height:100vh;overflow:hidden;position:relative;cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='20'%3E%F0%9F%90%A5%3C/text%3E%3C/svg%3E") 2 2,auto}
+button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='20'%3E%F0%9F%90%A5%3C/text%3E%3C/svg%3E") 2 2,pointer}
+
+.stage-section{position:absolute;inset:0;width:100vw;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 1.2s cubic-bezier(.4,0,.2,1);padding:20px}
+.stage-section.active{opacity:1;pointer-events:auto}
+#section-home{z-index:10}#section-cake{z-index:9}#section-gallery{z-index:8}#section-letter{z-index:7}#section-slider{z-index:6}
+
+.home-content{display:flex;flex-direction:column;align-items:center;gap:16px}
+.light-up-btn{background:linear-gradient(135deg,#fff1f7,#f3eaff);color:#4b3659;border:2px solid #fff9;padding:14px 40px;font-size:1.2rem;letter-spacing:.16em;transition:transform .25s,box-shadow .25s;font-family:'Caveat','Noto Sans TC',sans-serif;border-radius:999px;box-shadow:0 6px 0 #c6a9d8,0 12px 26px #07050d66}
+.light-up-btn:hover{transform:translateY(-3px) rotate(-1deg);box-shadow:0 9px 0 #c6a9d8,0 16px 30px #07050d66}
+.light-up-btn:active{transform:translateY(3px);box-shadow:0 3px 0 #c6a9d8}
+.sound-hint{font-family:'Caveat','Noto Serif TC',serif;font-size:1.3rem;letter-spacing:.08em;color:#ffe9f5;text-shadow:0 2px 9px #ffacd466}
+.producer-credit{font-size:.95rem;color:#ffffffa8;letter-spacing:.1em;font-family:'Caveat',serif}
+
+.glow-background{position:absolute;width:420px;height:420px;background:radial-gradient(circle,#ffe9f52e 0%,#d9c5ff0a 65%,transparent 100%);border-radius:50%;pointer-events:none;filter:blur(30px)}
+.cake-stage{position:relative;width:100%;max-width:480px;height:380px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;margin-bottom:10px;z-index:1}
+.cake-custom-wrapper{position:relative;width:300px;height:280px;margin-bottom:10px;display:flex;justify-content:center;align-items:flex-end}
+.cake-img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 15px 30px #000c)}
+
+.candles-container{position:absolute;top:48px;left:50%;transform:translateX(-50%);width:125px;height:58px;display:flex;justify-content:space-between;align-items:flex-end;z-index:2}
+.candle{position:relative;width:22px;height:52px;display:flex;align-items:flex-end;justify-content:center;border-radius:4px;cursor:pointer;touch-action:manipulation}
+.candle::before{content:"";position:absolute;bottom:0;width:7px;height:40px;border-radius:3px;background:#ffadad;pointer-events:none}
+.candle:nth-child(2)::before{background:#ffd6a5}
+.candle:nth-child(3)::before{background:#fdffb6}
+.candle:nth-child(4)::before{background:#caffbf}
+.candle:nth-child(5)::before{background:#9bf6ff}
+.flame{position:absolute;top:-18px;left:50%;transform:translateX(-50%) scale(0);width:11px;height:19px;background:radial-gradient(circle at 50% 80%,#fff 10%,#fc0 40%,#ff4500 80%);border-radius:50% 50% 20% 20%;box-shadow:0 0 10px #f90,0 0 20px #f30;transition:transform .3s;transform-origin:bottom center;pointer-events:none}
+.flame.lit{transform:translateX(-50%) scale(1);animation:flicker 1.2s infinite alternate}
+@keyframes flicker{0%{transform:translateX(-50%) scale(.9) rotate(-3deg);opacity:.85}100%{transform:translateX(-50%) scale(1.1) rotate(3deg);opacity:1}}
+
+.action-prompt{font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.1rem;color:#fff;margin-bottom:8px;letter-spacing:.1em;cursor:pointer;z-index:1;text-align:center;text-shadow:0 2px 8px #000}
+.lighter-area{position:absolute;bottom:10px;right:10px;display:none;flex-direction:column;align-items:center;gap:2px;z-index:10;user-select:none;touch-action:none}
+.lighter-comment{font-family:'Caveat',sans-serif;font-size:0.95rem;color:#fff;letter-spacing:.08em;white-space:nowrap;pointer-events:none;order:2;text-shadow:0 2px 6px #000}
+.lighter-custom{width:100px;height:145px;cursor:grab;filter:drop-shadow(0 8px 20px #000e);display:flex;align-items:center;justify-content:center;background:transparent;touch-action:none;user-select:none;order:1}
+.lighter-custom:active{cursor:grabbing}
+.lighter-img{width:100%;height:100%;object-fit:contain;mix-blend-mode:screen;pointer-events:none;-webkit-user-drag:none}
+.wish-text-box{font-family:'Caveat','Noto Sans TC',sans-serif;min-height:40px;text-align:center;font-size:1.2rem;letter-spacing:.1em;color:#fff1f8;line-height:1.6;z-index:1;text-shadow:0 2px 8px #000}
+
+.gallery-title{font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.2rem;letter-spacing:.14em;color:#fff;margin-bottom:20px;font-weight:500;text-shadow:0 2px 8px #0008;text-align:center}
+.polaroids-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:850px;width:100%;margin-bottom:30px;padding:0 10px}
+.polaroid{background:#f4f4f2;color:#29232e;padding:10px 10px 15px;border-radius:3px;box-shadow:0 10px 25px #0008;transition:transform .3s}
+.polaroid:hover{transform:translateY(-5px) rotate(1deg)}
+.polaroid-img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;border-radius:2px}
+.polaroid-caption{font-family:'Caveat','Noto Serif TC',cursive;font-size:1.1rem;text-align:center;color:#493b50;margin-top:6px}
+.section-next-container{opacity:.3;pointer-events:none;transition:opacity .5s}
+.section-next-container.unlocked,.section-next-container.visible{opacity:1;pointer-events:auto}
+
+.letter-container{position:relative;width:100%;max-width:500px;height:480px;display:flex;justify-content:center;align-items:center;margin-bottom:15px;pointer-events:none;perspective:1000px}
+.letter-paper{position:absolute;width:min(380px,90vw);height:420px;background:#fffaf0;color:#3e3442;padding:35px 30px;border-radius:3px;box-shadow:0 15px 40px #0009;text-align:left;font-family:'Caveat','Noto Sans TC',sans-serif;font-weight:500;font-size:1.1rem;line-height:1.9;transform:translateY(35px) scaleY(.88);opacity:.35;transition:transform 1.8s cubic-bezier(.22,.8,.25,1),opacity 1.4s ease;z-index:1;overflow-y:auto;pointer-events:auto;background-image:linear-gradient(to bottom,#bd99b118 1px,transparent 1px);background-size:100% 2.2em;transform-origin:bottom center}
+.letter-paper h3{font-weight:700;margin-bottom:8px;font-size:1.25rem}
+.envelope{position:absolute;width:min(420px,95vw);height:260px;background:linear-gradient(135deg,#5b4268,#352a49);border:1px solid #ffffff55;border-radius:4px;z-index:3;display:flex;align-items:center;justify-content:center;transition:transform 1s cubic-bezier(.2,.8,.2,1),opacity 1s ease;pointer-events:auto;box-shadow:0 12px 30px #0008}
+.envelope.torn{transform:translateY(180px) scale(.95);opacity:.2;pointer-events:none}
+.envelope-flap{position:absolute;top:0;left:0;width:100%;height:130px;background:#765783;clip-path:polygon(0 0,50% 100%,100% 0);transition:transform 1s cubic-bezier(.2,.8,.2,1);transform-origin:top;backface-visibility:hidden}
+.envelope.torn .envelope-flap{transform:rotateX(180deg)}
+.envelope-text{font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.1rem;color:#fff;letter-spacing:.15em;margin-top:30px;z-index:4}
+#letter-next-container{position:relative;z-index:20}
+
+.slider-wrapper{position:relative;width:75vw;height:65vh;overflow:hidden;background:#241e2a;border-radius:8px;box-shadow:0 20px 50px #000b;border:1px solid #ffffff3b;margin-bottom:15px;touch-action:pan-y}
+.slider-track{display:flex;width:100%;height:100%;transition:transform .6s cubic-bezier(.25,1,.5,1)}
+.slide-item{min-width:75vw;height:65vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.slide-img{width:100%;height:calc(65vh - 60px);object-fit:cover}
+.slide-caption-overlay{width:100%;height:60px;background:#302637;display:flex;align-items:center;justify-content:center;font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.1rem;letter-spacing:.12em;color:#fff}
+.slider-hint{font-family:'Caveat','Noto Sans TC',sans-serif;margin-bottom:10px;font-size:1rem;color:#fff;letter-spacing:.14em}
+.line-btn-container{margin-top:76px;display:flex;flex-direction:column;align-items:center;gap:16px;opacity:0;pointer-events:none;transition:opacity 1s}
+.line-btn-container.visible{opacity:1;pointer-events:auto}
+.line-btn{background:linear-gradient(135deg,#b8f1df,#a6d9fd);color:#263a3b;border:2px solid #fff;padding:12px 32px;font-size:1rem;letter-spacing:.12em;border-radius:999px;text-decoration:none;box-shadow:0 5px 0 #72baa6,0 10px 20px #0005;transition:transform .3s,background .3s;font-family:'Caveat','Noto Sans TC',sans-serif;display:inline-block}
+.line-btn:hover{transform:translateY(-3px) rotate(-1deg)}
+.music-stop-btn{border:1px solid #ffffff99;background:#171321b8;color:#fff;padding:9px 18px;border-radius:999px;font-family:'Caveat','Noto Sans TC',sans-serif;font-size:0.95rem;letter-spacing:.08em;box-shadow:0 3px 0 #080711,0 6px 14px #0006;transition:transform .2s,box-shadow .2s}
+.music-stop-btn:hover{transform:translateY(-2px);box-shadow:0 5px 0 #080711,0 9px 18px #0007}
+
+.modal-overlay{position:fixed;inset:0;width:100%;height:100%;background:#15101bd9;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s;z-index:100;padding:20px}
+.modal-overlay.active{opacity:1;pointer-events:auto}
+.modal-card{background:#2a2232;border:1px solid #ffffff55;max-width:450px;width:100%;padding:30px;border-radius:6px;position:relative;box-shadow:0 16px 50px #0009}
+.modal-close{position:absolute;top:15px;right:20px;background:none;border:0;color:#fff;font-size:1.5rem}
+.modal-img{width:100%;height:200px;object-fit:cover;margin-bottom:15px;border-radius:3px}
+.modal-title{font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.2rem;margin-bottom:10px;color:#fff}
+.modal-story{font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.05rem;line-height:1.7;color:#f0e5f1}
+
+@media(max-width:700px){
+  .polaroids-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .slider-wrapper{width:90vw}
+  .slide-item{min-width:90vw}
+  .letter-container{height:430px}
+  .letter-paper{height:380px;padding:28px 22px}
+  .lighter-comment{font-size:.8rem}
+  .cake-stage{height:350px}
+  .cake-custom-wrapper{width:270px;height:250px}
+  .candles-container{top:43px}
+  .lighter-custom{width:88px;height:128px}
+  .line-btn-container{margin-top:54px}
+}
 </style>
-*{box-sizing:border-box;margin:0;padding:0}:root{--ink:#f8edf5;--pink:#ffb7d5;--lav:#d8c6ff;--mint:#b8f1df;--gold:#ffe5a8;--night:#171321}body{background:radial-gradient(ellipse at 18% 15%,#352546 0%,transparent 38%),radial-gradient(ellipse at 85% 85%,#263744 0%,transparent 40%),var(--night);color:var(--ink);font-family:'Noto Sans TC',sans-serif;width:100vw;min-height:100vh;overflow-x:hidden}.stage-section{position:absolute;inset:0;width:100vw;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 1.2s cubic-bezier(.4,0,.2,1);padding:20px}.stage-section.active{opacity:1;pointer-events:auto}#section-home{z-index:10}#section-cake{z-index:9}#section-gallery{z-index:8}#section-letter{z-index:7}#section-slider{z-index:6}.home-content{display:flex;flex-direction:column;align-items:center;gap:16px}.light-up-btn{background:linear-gradient(135deg,#fff1f7,#f3eaff);color:#4b3659;border:2px solid #fff9;padding:14px 40px;font-size:1.1rem;letter-spacing:.16em;transition:transform .25s,box-shadow .25s;font-family:inherit;border-radius:999px;box-shadow:0 6px 0 #c6a9d8,0 12px 26px rgba(0,0,0,.25);cursor:pointer}.light-up-btn:hover{transform:translateY(-3px) rotate(-1deg);box-shadow:0 9px 0 #c6a9d8,0 16px 30px rgba(0,0,0,.3)}.sound-hint{font-family:'Caveat','Noto Serif TC',serif;font-size:1.3rem;letter-spacing:.08em;color:#fff9f5;text-shadow:0 2px 8px rgba(0,0,0,.7)}.producer-credit{font-size:.85rem;color:rgba(255,255,255,.7);letter-spacing:.1em;font-family:'Caveat','Noto Serif TC',serif}.gallery-title{font-size:1rem;letter-spacing:.14em;color:#fff;margin-bottom:20px;font-weight:500;text-shadow:0 2px 8px rgba(0,0,0,.7);text-align:center}.polaroids-grid{display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:20px;max-width:900px;width:100%;margin-bottom:30px;padding:0 10px}.polaroid{background:#f4f4f2;color:#29232e;padding:10px 10px 15px;border-radius:3px;box-shadow:0 10px 25px rgba(0,0,0,.45);transition:transform .3s ease;cursor:pointer;border:1px solid rgba(255,255,255,.15)}.polaroid:hover{transform:translateY(-5px) rotate(1deg)}.polaroid-img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;border-radius:2px}.polaroid-caption{font-family:'Caveat','Noto Serif TC',cursive;font-size:1rem;text-align:center;color:#493b50;margin-top:8px}.section-next-container{opacity:0;pointer-events:none;transition:opacity .5s ease}.section-next-container.unlocked{opacity:1;pointer-events:auto}.modal-overlay{position:fixed;inset:0;width:100%;height:100%;background:rgba(21,16,27,.85);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s ease;z-index:1000;padding:20px}.modal-overlay.active{opacity:1;pointer-events:auto}.modal-card{background:#2a2232;border:1px solid rgba(255,255,255,.35);max-width:900px;width:min(90vw,900px);padding:30px;border-radius:12px;position:relative;box-shadow:0 16px 50px rgba(0,0,0,.6)}.modal-close{position:absolute;top:15px;right:20px;background:none;border:0;color:#fff;font-size:1.8rem;cursor:pointer}.modal-img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;border-radius:3px;margin-bottom:15px}.modal-title{font-size:1.2rem;margin-bottom:10px;color:#fff;font-weight:700}.modal-story{font-size:.95rem;line-height:1.7;color:#f0e5f1}@media(max-width:700px){.polaroids-grid{grid-template-columns:repeat(2,minmax(140px,1fr));gap:12px}.modal-card{padding:22px 18px 18px}} </style>
 </head>
 <body>
-<div id="section-home" class="stage-section active"><div class="home-content"><button class="light-up-btn" id="btn-light-up">Light up</button><div class="sound-hint">open the sound</div><div class="producer-credit">produced by small._.gg</div></div></div>
-<div id="section-cake" class="stage-section"><div class="glow-background"></div><div class="action-prompt" id="action-prompt">請點擊一下</div><div class="cake-stage" id="cake-stage"><div class="cake-custom-wrapper"><img src="ji.png" alt="Birthday Cake" class="cake-img" onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80'"><div class="candles-container"><div class="candle" onclick="extinguishSingleCandle(0)"><div class="flame" id="f0"></div></div><div class="candle" onclick="extinguishSingleCandle(1)"><div class="flame" id="f1"></div></div><div class="candle" onclick="extinguishSingleCandle(2)"><div class="flame" id="f2"></div></div><div class="candle" onclick="extinguishSingleCandle(3)"><div class="flame" id="f3"></div></div><div class="candle" onclick="extinguishSingleCandle(4)"><div class="flame" id="f4"></div></div></div></div><div class="lighter-area" id="lighter-area"><div class="lighter-custom" id="lighter" aria-label="拖曳打火機點燃蠟燭"><img src="ㄏㄍㄜ.png" alt="Lighter" class="lighter-img" onerror="this.src='https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=300&q=80'"></div><span class="lighter-comment">這是點蠟燭不是點煙的</span></div></div><div class="wish-text-box" id="wish-text-box"></div></div>
-<div id="section-gallery" class="stage-section"><div class="gallery-title">Moments (點擊各張照片看故事)</div><div class=".polaroid-img{
-  width:100%;
-  aspect-ratio:1 / 1;
-  object-fit:cover;
-  display:block;
-  border-radius:2px;
-}"><div class="polaroid" tabindex="0" onclick="readStory(1)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();readStory(1)}"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" class="polaroid-img" alt="回憶照片"><div class="polaroid-caption">抽菸啊</div></div><div class="polaroid" tabindex="0" onclick="readStory(2)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();readStory(2)}"><img src="抽菸.png" class="polaroid-img" alt="回憶照片"><div class="polaroid-caption">做過了好多事呢</div></div><div class="polaroid" tabindex="0" onclick="readStory(3)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();readStory(3)}"><img src="花花.png" class="polaroid-img" alt="回憶照片"><div class="polaroid-caption">奇奇怪怪的你和我</div></div><div class="polaroid" tabindex="0" onclick="readStory(4)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();readStory(4)}"><img src="奇怪自拍.png" class="polaroid-img" alt="回憶照片"><div class="polaroid-caption">要長大了喔</div></div></div><div class="section-next-container" id="gallery-next-container"><button class="light-up-btn" id="btn-goto-letter">我想好好祝福你</button></div></div>
-<div id="section-letter" class="stage-section"><div class="gallery-title">請慢慢打開信封</div><div class="letter-container"><div class="letter-paper" id="letter-paper"><h3>嗨正義哥：</h3><p>想了想，還是想好好祝你生日快樂，但在那之前先說抱歉，在你真正生日當天毀了他。又過了一年長大了一歲，我們一起看過了一些什麼，也各自看到了不一樣的什麼，我還是會偶爾想起台北的細雨，想起在潮濕冷空氣抽煙的日子，但是我們都要往前走，一步一步的。不急著成為一個完美的大人，只要持續的慢慢往前走就好。</p></div><div class="envelope" id="envelope" onclick="tearEnvelope()"><div class="envelope-flap"></div><div class="envelope-text">點擊撕開信封</div></div></div><div class="section-next-container" id="letter-next-container"><button class="light-up-btn" id="btn-goto-slider">觀看回憶相簿</button></div></div>
-<div id="section-slider" class="stage-section"><div class="slider-hint">← 左右滑動瀏覽回憶 →</div><div class="slider-wrapper" id="slider-wrapper"><div class="slider-track" id="slider-track"><div class="slide-item"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80" class="slide-img" alt="回憶照片"><div class="slide-caption-overlay">一起走過的每一條街</div></div><div class="slide-item"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80" class="slide-img" alt="回憶照片"><div class="slide-caption-overlay">那些閃閃發光的時刻</div></div><div class="slide-item"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80" class="slide-img" alt="回憶照片"><div class="slide-caption-overlay">笑著鬧著的日常風景</div></div></div></div><div class="line-btn-container" id="line-btn-container"><a href="https://line.me/ti/p/rRB0-1SSeX" target="_blank" rel="noopener noreferrer" class="line-btn">想我就打給我</a><button type="button" class="music-stop-btn" id="music-stop-btn">停止背景音樂</button></div></div>
-<div class="modal-overlay" id="story-modal" onclick="closeStory(event)"><div class="modal-card" onclick="event.stopPropagation()"><button class="modal-close" onclick="closeModalDirect()" aria-label="關閉">&times;</button><img id="modal-img" src="" alt="Story Image" class="modal-img"><h3 id="modal-title" class="modal-title"></h3><p id="modal-story" class="modal-story"></p></div></div>
-<audio id="background-music" src="bruno-major-original-key-karaoke---piano-instrumental-with-lyrics.mp3" preload="auto" loop></audio><audio id="lighter-audio" src="打火機.mp3" preload="auto"></audio><audio id="click-audio" src="點擊.mp3" preload="auto"></audio><audio id="extinguish-audio" src="6aad6e8ece867.wav" preload="auto"></audio><audio id="tear-audio" src="1281.mp3" preload="auto"></audio>
-<div id="section-gallery" class="stage-section"><div class="gallery-title">Moments (點擊各張照片看故事)</div><div class="polaroids-grid"><div class="polaroid" tabindex="0" data-id="1"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1080&h=1080&q=80" class="polaroid-img" alt="回憶照片"><div class="polaroid-caption">抽菸啊</div></div><div class="polaroid" tabindex="0" data-id="2"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1080&h=1080&q=80" class="polaroid-img" alt="回憶照片"><div class="polaroid-caption">做過了好多事呢</div></div><div class="polaroid" tabindex="0" data-id="3"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1080&h=1080&q=80" class="polaroid-img" alt="回憶照片"><div class="polaroid-caption">奇奇怪怪的你和我</div></div><div class="polaroid" tabindex="0" data-id="4"><img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1080&h=1080&q=80" class="polaroid-img" alt="回憶照片"><div class="polaroid-caption">要長大了喔</div></div></div><div class="section-next-container" id="gallery-next-container"><button class="light-up-btn" id="btn-goto-letter">我想好好祝福你</button></div></div>
-<div class="modal-overlay" id="story-modal"><div class="modal-card" onclick="event.stopPropagation()"><button class="modal-close" onclick="closeModalDirect()" aria-label="關閉">×</button><img id="modal-img" class="modal-img" src="" alt="故事圖片"><h3 id="modal-title" class="modal-title"></h3><p id="modal-story" class="modal-story"></p></div></div>
-<script>
-const music=document.getElementById('background-music'),lighterAudio=document.getElementById('lighter-audio'),clickAudio=document.getElementById('click-audio'),extinguishAudio=document.getElementById('extinguish-audio'),tearAudio=document.getElementById('tear-audio');const MUSIC_VOLUME=.22,DUCK_VOLUME=.055;let musicDuckTimer;
-function duckMusic(ms=850){if(music.paused)return;music.volume=DUCK_VOLUME;clearTimeout(musicDuckTimer);musicDuckTimer=setTimeout(()=>{music.volume=MUSIC_VOLUME},ms)}function playAudio(audio,duckMs=850){try{audio.currentTime=0;audio.play().catch(()=>{});duckMusic(duckMs)}catch(e){}}function playClickSound(){playAudio(clickAudio,700)}
-const secHome=document.getElementById('section-home'),secCake=document.getElementById('section-cake'),secGallery=document.getElementById('section-gallery'),secLetter=document.getElementById('section-letter'),secSlider=document.getElementById('section-slider');function switchSection(from,to){playClickSound();from.classList.remove('active');setTimeout(()=>to.classList.add('active'),600)}
-document.getElementById('btn-light-up').addEventListener('click',()=>{music.volume=MUSIC_VOLUME;music.play().catch(()=>{});switchSection(secHome,secCake)});document.getElementById('music-stop-btn').addEventListener('click',()=>{const btn=document.getElementById('music-stop-btn');if(music.paused){music.play().then(()=>{music.volume=MUSIC_VOLUME;btn.textContent='停止背景音樂'}).catch(()=>{})}else{music.pause();btn.textContent='播放背景音樂'}});
-const actionPrompt=document.getElementById('action-prompt'),lighterArea=document.getElementById('lighter-area'),lighter=document.getElementById('lighter'),cakeStage=document.getElementById('cake-stage'),wishTextBox=document.getElementById('wish-text-box');let cakeStep=0,extinguishedCount=0,isLighterDragging=false;const litCandles=new Set(),extinguishedCandles=new Set();function showLighter(){if(cakeStep!==0)return;playClickSound();cakeStep=1;lighterArea.style.display='flex';actionPrompt.innerText='拖曳打火機，碰觸每根蠟燭點燃'}cakeStage.addEventListener('click',e=>{if(!e.target.closest('#lighter'))showLighter()});actionPrompt.addEventListener('click',showLighter);
-function lightCandle(index){if(cakeStep!==1||litCandles.has(index))return;litCandles.add(index);document.getElementById(`f${index}`).classList.add('lit');playAudio(lighterAudio,1200);if(litCandles.size===5){cakeStep=2;actionPrompt.innerText='許下願望吧';typeWriterEffect('許下願望吧，最後一個要好好的放在心裡',()=>setTimeout(()=>{actionPrompt.style.display='block';actionPrompt.innerText='現在點擊或輕觸蠟燭即可熄滅'},1000))}}
-lighter.addEventListener('pointerdown',e=>{if(cakeStep!==1&&cakeStep!==2)return;e.preventDefault();e.stopPropagation();isLighterDragging=true;lighter.setPointerCapture(e.pointerId);lighterArea.style.transition='none';moveLighter(e)});function moveLighter(e){if(!isLighterDragging)return;const r=cakeStage.getBoundingClientRect(),areaWidth=lighterArea.offsetWidth,lighterWidth=lighter.offsetWidth;lighterArea.style.right='auto';lighterArea.style.bottom='auto';lighterArea.style.left=`${e.clientX-r.left-(areaWidth-lighterWidth/2)}px`;lighterArea.style.top=`${e.clientY-r.top-lighter.offsetHeight/2}px`;if(cakeStep===1)document.querySelectorAll('.candle').forEach((c,i)=>{const b=c.getBoundingClientRect();if(Math.hypot(e.clientX-(b.left+b.width/2),e.clientY-(b.top+b.height/2))<38)lightCandle(i)})}window.addEventListener('pointermove',moveLighter);window.addEventListener('pointerup',()=>{if(isLighterDragging){isLighterDragging=false;lighterArea.style.transition=''}});window.addEventListener('pointercancel',()=>{isLighterDragging=false;lighterArea.style.transition=''})
-function extinguishSingleCandle(index){if(cakeStep!==2||extinguishedCandles.has(index))return;const flame=document.getElementById(`f${index}`);if(!flame.classList.contains('lit'))return;playAudio(extinguishAudio,1100);flame.classList.remove('lit');extinguishedCandles.add(index);extinguishedCount++;if(extinguishedCount===5){cakeStep=3;actionPrompt.innerText='願望已收下...';setTimeout(()=>switchSection(secCake,secGallery),1200)}}function typeWriterEffect(text,callback){wishTextBox.textContent='';let i=0;function type(){if(i<text.length){wishTextBox.textContent+=text.charAt(i++);setTimeout(type,90)}else if(callback)callback()}type()}
-const stories={1:{title:'抽菸啊',img:'抽菸.png',story:'我們在很多地方抽著菸，咖啡廳、畫外音，抽著抽著就在一起了，年紀不小了，記得克制點，注意身體健康'},2:{title:'做過了好多事呢',img:'花花.png',story:'我們看過了不少電影、聽過了不少的音樂，也很謝謝你在這一年陪我去很多很多展覽喔！你覺得這麼不一樣的世界有趣嗎？我是滿喜歡的啦'},3:{title:'奇奇怪怪的你和我',img:'奇怪自拍.png',story:'我其實一直都知道你很在乎你的外表，我也是，你害怕著鏡頭，我懂那種不敢照鏡子的感覺，就是因為我知道，所以才想著透過奇奇怪怪的拍照方式讓你稍微習慣一點吧，也多少記錄一下我們，希望在接下來的時間你還是可以慢慢練習，慢慢習慣'},4:{title:'要長大了喔',img:'分開.png',story:'長大就是開始學會習慣那些可能不會太舒服的事情，或許是分開，或許是再見，或許是逐漸接受那些原本這輩子都不可能接受的事情，但你是陳正義欸，我知道你不會妥協的，所以繼續保持吧，我會一直一直看著你的！生日快樂！'}};const modalOverlay=document.getElementById('story-modal');let readStoriesCount=new Set();function readStory(id){playClickSound();const d=stories[id];if(!d)return;document.getElementById('modal-img').src=d.img;document.getElementById('modal-title').innerText=d.title;document.getElementById('modal-story').innerText=d.story;modalOverlay.classList.add('active');readStoriesCount.add(id);if(readStoriesCount.size===4)document.getElementById('gallery-next-container').classList.add('unlocked')}function closeModalDirect(){playClickSound();modalOverlay.classList.remove('active')}function closeStory(e){if(e.target===modalOverlay)modalOverlay.classList.remove('active')}
-document.getElementById('btn-goto-letter').addEventListener('click',()=>switchSection(secGallery,secLetter));let envelopeOpened=false;function tearEnvelope(){if(envelopeOpened)return;envelopeOpened=true;playAudio(tearAudio,1000);const e=document.getElementById('envelope'),p=document.getElementById('letter-paper');e.classList.add('torn');setTimeout(()=>p.classList.add('pulled'),450);setTimeout(()=>document.getElementById('letter-next-container').classList.add('visible'),2300)}document.getElementById('btn-goto-slider').addEventListener('click',()=>switchSection(secLetter,secSlider));
-let currentSlide=0;const totalSlides=3,sliderTrack=document.getElementById('slider-track'),sliderWrapper=document.getElementById('slider-wrapper'),lineBtnContainer=document.getElementById('line-btn-container');function updateSlide(){sliderTrack.style.transform=`translateX(-${currentSlide*sliderWrapper.offsetWidth}px)`;if(currentSlide===totalSlides-1)lineBtnContainer.classList.add('visible')}let startX=0,touchMoved=false;sliderWrapper.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;touchMoved=false},{passive:true});sliderWrapper.addEventListener('touchmove',e=>{if(Math.abs(e.touches[0].clientX-startX)>10)touchMoved=true},{passive:true});sliderWrapper.addEventListener('touchend',e=>{const d=startX-e.changedTouches[0].clientX;if(d>50&&currentSlide<totalSlides-1){currentSlide++;updateSlide()}else if(d< -50&&currentSlide>0){currentSlide--;updateSlide()}if(touchMoved)sliderWrapper.dataset.swiped='true'});sliderWrapper.addEventListener('click',e=>{if(sliderWrapper.dataset.swiped==='true'){sliderWrapper.dataset.swiped='false';return}const r=sliderWrapper.getBoundingClientRect(),x=e.clientX-r.left;if(x>r.width/2&&currentSlide<totalSlides-1){currentSlide++;updateSlide()}else if(x<=r.width/2&&currentSlide>0){currentSlide--;updateSlide()}});
-const stories={1:{title:'抽菸啊',img:'抽菸.png',story:'我們在很多地方抽著菸，咖啡廳、畫外音，抽著抽著就在一起了，年紀不小了，記得克制點，注意身體健康'},2:{title:'做過了好多事呢',img:'花花.png',story:'我們看過了不少電影、聽過了不少的音樂，也很謝謝你在這一年陪我去很多很多展覽喔！你覺得這麼不一樣的世界有趣嗎？我是滿喜歡的啦'},3:{title:'奇奇怪怪的你和我',img:'奇怪自拍.png',story:'我其實一直都知道你很在乎你的外表，我也是，你害怕著鏡頭，我懂那種不敢照鏡子的感覺，就是因為我知道，所以才想著透過奇奇怪怪的拍照方式讓你稍微習慣一點吧，也多少記錄一下我們，希望在接下來的時間你還是可以慢慢練習，慢慢習慣'},4:{title:'要長大了喔',img:'分開.png',story:'長大就是開始學會習��那些可能不會太舒服的事情，或許是分開，或許是再見，或許是逐漸接受那些原本這輩子都不可能接受的事情，但你是陳正義欸，我知道你不會妥協的，所以繼續保持吧！生日快樂！'}};const modal=document.getElementById('story-modal'),modalImg=document.getElementById('modal-img'),modalTitle=document.getElementById('modal-title'),modalStory=document.getElementById('modal-story'),galleryNext=document.getElementById('gallery-next-container'),readStories=new Set();function openStory(id){const d=stories[id];if(!d)return;modalImg.src=d.img;modalTitle.textContent=d.title;modalStory.textContent=d.story;modal.classList.add('active');readStories.add(id);if(readStories.size===4)galleryNext.classList.add('unlocked')}function closeModalDirect(){modal.classList.remove('active')}function closeStory(e){if(e.target===modal)modal.classList.remove('active')}document.querySelectorAll('.polaroid').forEach(item=>{item.addEventListener('click',()=>openStory(Number(item.dataset.id)));item.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openStory(Number(item.dataset.id))}})});modal.addEventListener('click',closeStory);document.getElementById('btn-light-up').addEventListener('click',()=>{document.getElementById('section-home').classList.remove('active');document.getElementById('section-gallery').classList.add('active')});
-</script>
-</body>
-</html>
+
+<!-- 首頁：Light up 鈕 -->
+<div id="section-home" class="stage-section active">
+  <div class="home-content">
+    <button class="light-up-btn" id="btn-light-up">Light up</button>
+    <div class="sound-hint">open the sound</div>
+    <div class="producer-credit">produced by small._.gg</div>
+  </div>
+</div>
+
+<!-- 蛋糕頁面 -->
+<div id="section-cake" class="stage-section">
+  <div class="glow-background"></div>
+  <div class="action-prompt" id="action-prompt">請點擊一下</div>
+  <div class="cake-stage" id="cake-stage">
+    <div class="cake-custom-wrapper">
+      <img src="ji.png" alt="Birthday Cake" class="cake-img" onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80'">
+      <div class="candles-container">
+        <div class="candle" onclick="extinguishSingleCandle(0)"><div class="flame" id="f0"></div></div>
+        <div class="candle" onclick="extinguishSingleCandle(1)"><div class="flame" id="f1"></div></div>
+        <div class="candle" onclick="extinguishSingleCandle(2)"><div class="flame" id="f2"></div></div>
+        <div class="candle" onclick="extinguishSingleCandle(3)"><div class="flame" id="f3"></div></div>
+        <div class="candle" onclick="extinguishSingleCandle(4)"><div class="flame" id="f4"></div></div>
+      </div>
+    </div>
+    <div class="lighter-area" id="lighter-area">
+      <div class="lighter-custom" id="lighter" aria-label="拖曳打火機點燃蠟燭">
+        <img src="ㄏㄍㄜ.png" alt="Lighter" class="lighter-img" onerror="this.src='https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=300&q=80'">
+      </div>
+      <span class="lighter-comment">這是點蠟燭不是點煙的</span>
+    </div>
+  </div>
+  <div class="wish-text-box" id="wish-text-box"></div>
+</div>
+
+<!-- 照片藝廊頁面 -->
+<div id="section-gallery" class="stage-section">
+  <div class="gallery-title">Moments (點擊各張照片看故事)</div>
+  <div class="polaroids-grid">
+    <div class="polaroid" tabindex="0" data-id="1">
+      <img src="抽菸.png" class="polaroid-img" alt="回憶照片" onerror="this.src='https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80'">
+      <div class="polaroid-caption">抽菸啊</div>
+    </div>
+    <div class="polaroid" tabindex="0" data-id="2">
+      <img src="花花.png" class="polaroid-img" alt="回憶照片" onerror="this.src='https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80'">
+      <div class="polaroid-caption">做過了好多事呢</div>
+    </div>
+    <div class="polaroid" tabindex="0" data-id="3">
+      <img src="奇怪自拍.png" class="polaroid-img" alt="回憶照片" onerror="this.src='https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=600&q=80'">
+      <div class="polaroid-caption">奇奇怪怪的你和我</div>
+    </div>
+    <div class="polaroid" tabindex="0" data-id="4">
+      <img src="分開.png" class="polaroid-img" alt="回憶照片" onerror="this.src='https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80'">
+      <div class="polaroid-caption">要長大了喔</div>
+    </div>
+  </div>
+  <div class="section-next-container" id="gallery-next-container">
+    <button class="light-up-btn" id="btn-goto-letter">我想好好祝福你</button>
+  </div>
+</div>
+
+<!-- 信封信件頁面 -->
+<div id="section-letter" class="stage-section">
+  <div class="gallery-title">請慢慢打開信封</div>
+  <div class="letter-container">
+    <div class="letter-paper" id="letter-paper">
+      <h3>嗨正義哥：</h3>
+      <p>想了想，還是想好好祝你生日快樂，但在那之前先說抱歉，在你真正生日當天毀了他。過了一年，長大了一歲，我們一起看過了好多，也各自看到了不一樣的什麼，還是會偶爾想起台北的細雨，想起在潮濕冷空氣抽煙的日子，但是我們都要往前走，一步一步的。不急著成為一個完美的大人，只要持續的慢慢往前走就好，生日快樂>< </p>
+    </div>
+    <div class="envelope" id="envelope" onclick="tearEnvelope()">
+      <div class="envelope-flap"></div>
+      <div class="envelope-text">點擊撕開信封</div>
+    </div>
+  </div>
+  <div class="section-next-container" id="letter-next-container">
+    <button class
