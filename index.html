@@ -860,4 +860,118 @@
         }
 
         const stories = {
-            1: {
+            1: { title: "那天一起走的夜路", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80", story: "那天路燈把影子拉得長長的，我們聊了好多關於未來的迷惘與倔強。雖然腳有點酸，但那種身邊有人默默陪著、不用說話也很安心的空氣，至今想起來都還是覺得暖暖的。" },
+            2: { title: "笑得很開心的小事", img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80", story: "因為一件超級無聊的小笑話在路邊笑了好久。生活其實常常擠滿了讓人喘不過氣的瑣事，但只要跟你在一起，總能輕易找回那些最單純、最不加修飾的快樂。" },
+            3: { title: "慶祝彼此的笨拙", img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=600&q=80", story: "我們都不是那種完美的大人，常常跌跌撞撞，把生活過得亂七八糟又充滿驚喜。但慶幸的是，每一次狼狽的時候，身邊都有彼此懂那種笑中帶淚的默契。" },
+            4: { title: "未完待續的日常", img: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80", story: "不用許太大太遠的願望，只要每一個重要或不重要的日子裡，我們都能像這樣，繼續保持真實、繼續往前走。生日快樂呀。" }
+        };
+
+        const modalOverlay = document.getElementById('story-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalTitle = document.getElementById('modal-title');
+        const modalStory = document.getElementById('modal-story');
+        let readStoriesCount = new Set();
+
+        function readStory(id) {
+            playClickSound();
+            const data = stories[id];
+            if (!data) return;
+            modalImg.src = data.img;
+            modalTitle.innerText = data.title;
+            modalStory.innerText = data.story;
+            modalOverlay.classList.add('active');
+
+            readStoriesCount.add(id);
+            if (readStoriesCount.size === 4) {
+                document.getElementById('gallery-next-container').classList.add('unlocked');
+            }
+        }
+
+        function closeModalDirect() {
+            playClickSound();
+            modalOverlay.classList.remove('active');
+        }
+
+        function closeStory(e) {
+            if (e.target === modalOverlay) {
+                modalOverlay.classList.remove('active');
+            }
+        }
+
+        document.getElementById('btn-goto-letter').addEventListener('click', () => {
+            playClickSound();
+            pageGallery.classList.remove('active');
+            pageLetter.classList.add('active');
+        });
+
+        function tearEnvelope() {
+            playClickSound();
+            document.getElementById('envelope').classList.add('torn');
+            document.getElementById('letter-paper').classList.add('pulled');
+            setTimeout(() => {
+                document.getElementById('letter-next-container').classList.add('visible');
+            }, 1000);
+        }
+
+        document.getElementById('btn-goto-slider').addEventListener('click', () => {
+            playClickSound();
+            pageLetter.classList.remove('active');
+            pageSlider.classList.add('active');
+        });
+
+        /* 80% 視窗大小的左右滑動相簿互動控制 */
+        let currentSlide = 0;
+        const totalSlides = 3;
+        const sliderTrack = document.getElementById('slider-track');
+        const sliderWrapper = document.getElementById('slider-wrapper');
+
+        function updateSlide() {
+            playClickSound();
+            sliderTrack.style.transform = `translateX(-${currentSlide * sliderWrapper.offsetWidth}px)`;
+        }
+
+        let startX = 0;
+        let isDragging = false;
+
+        sliderWrapper.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        }, {passive: true});
+
+        sliderWrapper.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            const endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+
+            if (diff > 50) {
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    updateSlide();
+                }
+            } else if (diff < -50) {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateSlide();
+                }
+            }
+            isDragging = false;
+        });
+
+        sliderWrapper.addEventListener('click', (e) => {
+            const rect = sliderWrapper.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            if (clickX > rect.width / 2) {
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    updateSlide();
+                }
+            } else {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateSlide();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
