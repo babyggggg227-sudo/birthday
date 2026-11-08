@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--ink:#f8edf5;--pink:#ffb7d5;--lav:#d8c6ff;--mint:#b8f1df;--gold:#ffe5a8;--night:#171321}
-body{background:radial-gradient(ellipse at 18% 15%,#352546 0%,transparent 38%),radial-gradient(ellipse at 85% 85%,#263744 0%,transparent 40%),var(--night);color:var(--ink);font-family:'Caveat','Noto Sans TC',sans-serif;width:100vw;height:100vh;overflow:hidden;position:relative;cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='20'%3E%F0%9F%90%A5%3C/text%3E%3C/svg%3E") 2 2,auto}
+body{background:radial-gradient(ellipse at 18% 15%,#352546 0%,transparent 38%),radial-gradient(ellipse at 85% 85%,#263744 0%,transparent 40%),var(--night);color:var(--ink);font-family:'Noto Sans TC',sans-serif;width:100vw;height:100vh;overflow:hidden;position:relative;cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='20'%3E%F0%9F%90%A5%3C/text%3E%3C/svg%3E") 2 2,auto}
 button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='20'%3E%F0%9F%90%A5%3C/text%3E%3C/svg%3E") 2 2,pointer}
 
 /* 修正各頁面的層級與開關控制 */
@@ -18,12 +18,12 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 .home-content{display:flex;flex-direction:column;align-items:center;gap:16px}
 
 /* 首頁透明螢光方框按鈕 */
-.light-up-btn{background:transparent;color:#b8f1df;border:2px solid #b8f1df;padding:14px 44px;font-size:1.2rem;letter-spacing:.18em;transition:transform .25s,box-shadow .25s,background .25s;font-family:'Caveat','Noto Sans TC',sans-serif;border-radius:12px;box-shadow:0 0 15px #b8f1df33,inset 0 0 15px #b8f1df11}
+.light-up-btn{background:transparent;color:#b8f1df;border:2px solid #b8f1df;padding:14px 44px;font-size:1.2rem;letter-spacing:.18em;transition:transform .25s,box-shadow .25s,background .25s;font-family:'Noto Sans TC',sans-serif;border-radius:12px;box-shadow:0 0 15px #b8f1df33,inset 0 0 15px #b8f1df11}
 .light-up-btn:hover{transform:translateY(-3px);background:#b8f1df15;box-shadow:0 0 25px #b8f1df66,inset 0 0 20px #b8f1df33}
 .light-up-btn:active{transform:translateY(3px);box-shadow:0 0 10px #b8f1df33}
 
-.sound-hint{font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.3rem;letter-spacing:.08em;color:#ffe9f5;text-shadow:0 2px 9px #ffacd466}
-.producer-credit{font-size:.95rem;color:#ffffffa8;letter-spacing:.1em;font-family:'Caveat','Noto Sans TC',sans-serif}
+.sound-hint{font-family:'Noto Sans TC',sans-serif;font-size:1.2rem;letter-spacing:.08em;color:#ffe9f5;text-shadow:0 2px 9px #ffacd466}
+.producer-credit{font-size:0.95rem;color:#ffffffa8;letter-spacing:.1em;font-family:'Noto Sans TC',sans-serif}
 
 .glow-background{position:absolute;width:420px;height:420px;background:radial-gradient(circle,#ffe9f52e 0%,#d9c5ff0a 65%,transparent 100%);border-radius:50%;pointer-events:none;filter:blur(30px)}
 .cake-stage{position:relative;width:100%;max-width:480px;height:380px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;margin-bottom:10px;z-index:1}
@@ -41,56 +41,56 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 .flame.lit{transform:translateX(-50%) scale(1);animation:flicker 1.2s infinite alternate}
 @keyframes flicker{0%{transform:translateX(-50%) scale(.9) rotate(-3deg);opacity:.85}100%{transform:translateX(-50%) scale(1.1) rotate(3deg);opacity:1}}
 
-.action-prompt{font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.1rem;color:#fff;margin-bottom:8px;letter-spacing:.1em;cursor:pointer;z-index:1;text-align:center;text-shadow:0 2px 8px #000}
+.action-prompt{font-family:'Noto Sans TC',sans-serif;font-size:1.1rem;color:#fff;margin-bottom:8px;letter-spacing:.1em;cursor:pointer;z-index:1;text-align:center;text-shadow:0 2px 8px #000}
 .lighter-area{position:absolute;bottom:10px;right:10px;display:none;flex-direction:column;align-items:center;gap:2px;z-index:10;user-select:none;touch-action:none}
-.lighter-comment{font-family:'Caveat','Noto Sans TC',sans-serif;font-size:0.95rem;color:#fff;letter-spacing:.08em;white-space:nowrap;pointer-events:none;order:2;text-shadow:0 2px 6px #000}
+.lighter-comment{font-family:'Noto Sans TC',sans-serif;font-size:0.95rem;color:#fff;letter-spacing:.08em;white-space:nowrap;pointer-events:none;order:2;text-shadow:0 2px 6px #000}
 .lighter-custom{width:100px;height:145px;cursor:grab;filter:drop-shadow(0 8px 20px #000e);display:flex;align-items:center;justify-content:center;background:transparent;touch-action:none;user-select:none;order:1}
 .lighter-custom:active{cursor:grabbing}
 .lighter-img{width:100%;height:100%;object-fit:contain;mix-blend-mode:screen;pointer-events:none;-webkit-user-drag:none}
-.wish-text-box{font-family:'Caveat','Noto Sans TC',sans-serif;min-height:40px;text-align:center;font-size:1.2rem;letter-spacing:.1em;color:#fff1f8;line-height:1.6;z-index:1;text-shadow:0 2px 8px #000}
+.wish-text-box{font-family:'Noto Sans TC',sans-serif;min-height:40px;text-align:center;font-size:1.2rem;letter-spacing:.1em;color:#fff1f8;line-height:1.6;z-index:1;text-shadow:0 2px 8px #000}
 
-.gallery-title{font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.2rem;letter-spacing:.14em;color:#fff;margin-bottom:20px;font-weight:500;text-shadow:0 2px 8px #0008;text-align:center}
+.gallery-title{font-family:'Noto Sans TC',sans-serif;font-size:1.2rem;letter-spacing:.14em;color:#fff;margin-bottom:20px;font-weight:500;text-shadow:0 2px 8px #0008;text-align:center}
 .polaroids-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:850px;width:100%;margin-bottom:30px;padding:0 10px}
 .polaroid{background:#f4f4f2;color:#29232e;padding:10px 10px 15px;border-radius:3px;box-shadow:0 10px 25px #0008;transition:transform .3s}
 .polaroid:hover{transform:translateY(-5px) rotate(1deg)}
 .polaroid-img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;border-radius:2px}
-.polaroid-caption{font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.1rem;text-align:center;color:#493b50;margin-top:6px}
+.polaroid-caption{font-family:'Noto Sans TC',sans-serif;font-size:1.1rem;text-align:center;color:#493b50;margin-top:6px}
 .section-next-container{opacity:.3;pointer-events:none;transition:opacity .5s}
 .section-next-container.unlocked,.section-next-container.visible{opacity:1;pointer-events:auto}
 
 .letter-container{position:relative;width:100%;max-width:500px;height:480px;display:flex;justify-content:center;align-items:center;margin-bottom:15px;pointer-events:none;perspective:1000px}
-.letter-paper{position:absolute;width:min(380px,90vw);height:420px;background:#fffaf0;color:#3e3442;padding:35px 30px;border-radius:3px;box-shadow:0 15px 40px #0009;text-align:left;font-family:'Caveat','Noto Sans TC',sans-serif;font-weight:500;font-size:1.1rem;line-height:1.9;transform:translateY(35px) scaleY(.88);opacity:1;transition:transform 1.8s cubic-bezier(.22,.8,.25,1);z-index:1;overflow-y:auto;pointer-events:auto;background-image:linear-gradient(to bottom,#bd99b118 1px,transparent 1px);background-size:100% 2.2em;transform-origin:bottom center}
+.letter-paper{position:absolute;width:min(380px,90vw);height:420px;background:#fffaf0;color:#3e3442;padding:35px 30px;border-radius:3px;box-shadow:0 15px 40px #0009;text-align:left;font-family:'Noto Sans TC',sans-serif;font-weight:500;font-size:1.1rem;line-height:1.9;transform:translateY(35px) scaleY(.88);opacity:1;transition:transform 1.8s cubic-bezier(.22,.8,.25,1);z-index:1;overflow-y:auto;pointer-events:auto;background-image:linear-gradient(to bottom,#bd99b118 1px,transparent 1px);background-size:100% 2.2em;transform-origin:bottom center}
 .letter-paper h3{font-weight:700;margin-bottom:8px;font-size:1.25rem}
 .letter-paper.pulled{transform:translateY(-90px) scaleY(1)}
 .envelope{position:absolute;width:min(420px,95vw);height:260px;background:linear-gradient(135deg,#5b4268,#352a49);border:1px solid #ffffff55;border-radius:4px;z-index:3;display:flex;align-items:center;justify-content:center;transition:transform 1s cubic-bezier(.2,.8,.2,1),opacity 1s ease;pointer-events:auto;box-shadow:0 12px 30px #0008}
 .envelope.torn{transform:translateY(180px) scale(.95);opacity:.2;pointer-events:none}
 .envelope-flap{position:absolute;top:0;left:0;width:100%;height:130px;background:#765783;clip-path:polygon(0 0,50% 100%,100% 0);transition:transform 1s cubic-bezier(.2,.8,.2,1);transform-origin:top;backface-visibility:hidden}
 .envelope.torn .envelope-flap{transform:rotateX(180deg)}
-.envelope-text{font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.1rem;color:#fff;letter-spacing:.15em;margin-top:30px;z-index:4}
+.envelope-text{font-family:'Noto Sans TC',sans-serif;font-size:1.1rem;color:#fff;letter-spacing:.15em;margin-top:30px;z-index:4}
 #letter-next-container{position:relative;z-index:20}
 
-/* 輪播畫面：手機橫式大小 (16:9 比例) */
-.slider-wrapper{position:relative;width:min(680px,85vw);aspect-ratio:16 / 9;overflow:hidden;background:#241e2a;border-radius:8px;box-shadow:0 20px 50px #000b;border:1px solid #ffffff3b;margin-bottom:10px;touch-action:pan-y}
+/* 輪播畫面：固定尺寸並確保圖片完整顯示不變形超出 */
+.slider-wrapper{position:relative;width:min(580px,85vw);height:52vh;max-height:450px;overflow:hidden;background:#241e2a;border-radius:8px;box-shadow:0 20px 50px #000b;border:1px solid #ffffff3b;margin-bottom:10px;touch-action:pan-y}
 .slider-track{display:flex;width:100%;height:100%;transition:transform .6s cubic-bezier(.25,1,.5,1)}
-.slide-item{min-width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.slide-img{width:100%;height:calc(100% - 36px);object-fit:cover}
-/* 下方文字變小 */
-.slide-caption-overlay{width:100%;height:36px;background:#302637;display:flex;align-items:center;justify-content:center;font-family:'Caveat','Noto Sans TC',sans-serif;font-size:0.8rem;letter-spacing:.1em;color:#ffffffaa}
-.slider-hint{font-family:'Caveat','Noto Sans TC',sans-serif;margin-bottom:6px;font-size:0.8rem;color:#ffffffaa;letter-spacing:.12em}
+.slide-item{min-width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px}
+.slide-img{width:100%;height:calc(100% - 48px);object-fit:contain;background:#171321;border-radius:4px;}
+/* 下方文字放大、清晰且不斜體 */
+.slide-caption-overlay{width:100%;height:48px;background:#302637;display:flex;align-items:center;justify-content:center;font-family:'Noto Sans TC',sans-serif;font-size:0.95rem;font-weight:500;letter-spacing:.08em;color:#ffffffdd;padding:0 10px;text-align:center;}
+.slider-hint{font-family:'Noto Sans TC',sans-serif;margin-bottom:6px;font-size:0.95rem;color:#ffffffaa;letter-spacing:.12em}
 
 /* 最後按鈕區塊排版 */
 .line-btn-container{margin-top:14px;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;pointer-events:none;transition:opacity 1s}
 .line-btn-container.visible{opacity:1;pointer-events:auto}
 .line-btn-row{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px}
 
-.line-btn{background:transparent;color:#b8f1df;border:2px solid #b8f1df;padding:10px 24px;font-size:0.9rem;letter-spacing:.1em;border-radius:12px;text-decoration:none;box-shadow:0 0 10px #b8f1df22,inset 0 0 10px #b8f1df11;transition:transform .3s,box-shadow .3s,background .3s;font-family:'Caveat','Noto Sans TC',sans-serif;display:inline-block}
+.line-btn{background:transparent;color:#b8f1df;border:2px solid #b8f1df;padding:10px 24px;font-size:0.9rem;letter-spacing:.1em;border-radius:12px;text-decoration:none;box-shadow:0 0 10px #b8f1df22,inset 0 0 10px #b8f1df11;transition:transform .3s,box-shadow .3s,background .3s;font-family:'Noto Sans TC',sans-serif;display:inline-block}
 .line-btn:hover{transform:translateY(-2px);background:#b8f1df15;box-shadow:0 0 18px #b8f1df55}
 
-.music-stop-btn{border:1px solid #ffffff66;background:#171321b8;color:#ffffffaa;padding:8px 20px;border-radius:999px;font-family:'Caveat','Noto Sans TC',sans-serif;font-size:0.8rem;letter-spacing:.08em;box-shadow:0 3px 0 #080711;transition:transform .2s,color .2s}
+.music-stop-btn{border:1px solid #ffffff66;background:#171321b8;color:#ffffffaa;padding:8px 20px;border-radius:999px;font-family:'Noto Sans TC',sans-serif;font-size:0.85rem;letter-spacing:.08em;box-shadow:0 3px 0 #080711;transition:transform .2s,color .2s}
 .music-stop-btn:hover{transform:translateY(-2px);color:#fff}
 
 /* 返回按鈕樣式 */
-.back-btn{position:absolute;top:20px;left:20px;background:#ffffff15;border:1px solid #ffffff44;color:#fff;padding:8px 16px;border-radius:999px;font-family:'Caveat','Noto Sans TC',sans-serif;font-size:0.9rem;letter-spacing:.08em;z-index:50;transition:background .2s,transform .2s}
+.back-btn{position:absolute;top:20px;left:20px;background:#ffffff15;border:1px solid #ffffff44;color:#fff;padding:8px 16px;border-radius:999px;font-family:'Noto Sans TC',sans-serif;font-size:0.9rem;letter-spacing:.08em;z-index:50;transition:background .2s,transform .2s}
 .back-btn:hover{background:#ffffff33;transform:translateY(-2px)}
 
 .modal-overlay{position:fixed;inset:0;width:100%;height:100%;background:#15101bd9;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s;z-index:1000;padding:20px}
@@ -98,12 +98,12 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 .modal-card{background:#2a2232;border:1px solid #ffffff55;max-width:450px;width:100%;padding:30px;border-radius:6px;position:relative;box-shadow:0 16px 50px #0009}
 .modal-close{position:absolute;top:15px;right:20px;background:none;border:0;color:#fff;font-size:1.5rem}
 .modal-img{width:100%;aspect-ratio:1/1;object-fit:cover;margin-bottom:15px;border-radius:3px}
-.modal-title{font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.2rem;margin-bottom:10px;color:#fff}
-.modal-story{font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.05rem;line-height:1.7;color:#f0e5f1}
+.modal-title{font-family:'Noto Sans TC',sans-serif;font-size:1.2rem;margin-bottom:10px;color:#fff}
+.modal-story{font-family:'Noto Sans TC',sans-serif;font-size:1.05rem;line-height:1.7;color:#f0e5f1}
 
 @media(max-width:700px){
   .polaroids-grid{grid-template-columns:repeat(2,1fr);gap:12px}
-  .slider-wrapper{width:92vw}
+  .slider-wrapper{width:92vw;height:55vh}
   .letter-container{height:430px}
   .letter-paper{height:380px;padding:28px 22px}
   .lighter-comment{font-size:.8rem}
@@ -186,7 +186,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
   <div class="letter-container">
     <div class="letter-paper" id="letter-paper">
       <h3>嗨正義哥：</h3>
-      <p>想了想，還是想好好祝你生日快樂。不過在那之前先說抱歉，在你真正生日的當天毀了他。過了一年長大了一歲，過去的一年我們一起看過了很多不一樣的風景，也各自在不同的路上創造了很多故事。我還是會偶爾想起台北的細雨，想起在潮濕冷空氣抽煙的日子，但是呀，我們都要往前走，時間在前進，我們也一步一步的。不急著成為一個完美的大人，我們慢慢往前走就好。過了一年，生日快樂。</p>
+      <p>想了想，還是想好好祝你生日快樂。在那之前先說抱歉，在你真正生日的當天毀了他。長大了一歲，過去的一年我們一起看過了很多不一樣的風景，也各自在不同的路上創造了很多故事。我還是會偶爾想起台北的細雨，想起在潮濕冷空氣抽煙的日子。但是呀，我們都要往前走，時間在前進，我們也一步一步，不急著成為一個完美的大人，慢慢往前走就好。過了一年，生日快樂。</p>
     </div>
     <div class="envelope" id="envelope" onclick="tearEnvelope()">
       <div class="envelope-flap"></div>
