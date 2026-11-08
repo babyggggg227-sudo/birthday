@@ -18,7 +18,7 @@
             font-family: 'Noto Serif TC', serif;
             width: 100vw;
             height: 100vh;
-            overflow: hidden; /* 禁止任何頁面捲動 */
+            overflow: hidden;
             position: relative;
             cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'><text y='20' font-size='20'>🐥</text></svg>"), auto;
         }
@@ -27,7 +27,6 @@
             cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'><text y='20' font-size='20'>🐥</text></svg>"), pointer !important;
         }
 
-        /* 畫面共用區塊：全屏覆蓋且預設透明隱藏 */
         .stage-section {
             position: absolute;
             top: 0;
@@ -49,7 +48,7 @@
             pointer-events: auto;
         }
 
-        /* ================= 區塊一：首頁 ================= */
+        /* 區塊一：首頁 */
         #section-home {
             z-index: 10;
         }
@@ -88,7 +87,7 @@
             font-family: 'Caveat', serif;
         }
 
-        /* ================= 區塊二：蛋糕與打火機 ================= */
+        /* 區塊二：蛋糕與打火機 */
         #section-cake {
             z-index: 9;
         }
@@ -238,7 +237,7 @@
             z-index: 1;
         }
 
-        /* ================= 區塊三：拍立得照片故事 ================= */
+        /* 區塊三：拍立得照片故事 */
         #section-gallery {
             z-index: 8;
         }
@@ -297,7 +296,7 @@
             pointer-events: auto;
         }
 
-        /* ================= 區塊四：信封信紙 ================= */
+        /* 區塊四：放大的信封與信紙（修復點擊與遮擋） */
         #section-letter {
             z-index: 7;
         }
@@ -305,8 +304,8 @@
         .letter-container {
             position: relative;
             width: 100%;
-            max-width: 400px;
-            height: 400px;
+            max-width: 500px;
+            height: 480px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -315,16 +314,16 @@
 
         .letter-paper {
             position: absolute;
-            width: 300px;
-            height: 360px;
+            width: 380px;
+            height: 440px;
             background: #fbfbf9;
             color: #2c2c2c;
-            padding: 30px 25px;
+            padding: 40px 30px;
             border-radius: 2px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
             text-align: left;
-            font-size: 0.9rem;
-            line-height: 1.8;
+            font-size: 1rem;
+            line-height: 1.9;
             transform: translateY(0px);
             transition: transform 1.2s cubic-bezier(0.2, 1.2, 0.3, 1);
             z-index: 1;
@@ -332,13 +331,13 @@
         }
 
         .letter-paper.pulled {
-            transform: translateY(-60px);
+            transform: translateY(-70px);
         }
 
         .envelope {
             position: absolute;
-            width: 330px;
-            height: 220px;
+            width: 420px;
+            height: 260px;
             background: #232323;
             border: 1px solid rgba(255,255,255,0.15);
             border-radius: 4px;
@@ -351,7 +350,7 @@
         }
 
         .envelope.torn {
-            transform: translateY(160px) scale(0.95);
+            transform: translateY(180px) scale(0.95);
             opacity: 0.2;
             pointer-events: none;
         }
@@ -361,7 +360,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 110px;
+            height: 130px;
             background: #2a2a2a;
             clip-path: polygon(0 0, 50% 100%, 100% 0);
             transition: transform 0.6s;
@@ -373,14 +372,14 @@
         }
 
         .envelope-text {
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             color: rgba(255,255,255,0.6);
             letter-spacing: 0.2em;
-            margin-top: 25px;
+            margin-top: 30px;
             z-index: 4;
         }
 
-        /* ================= 區塊五：左右滑動相簿 ================= */
+        /* 區塊五：左右滑動相簿 */
         #section-slider {
             z-index: 6;
         }
@@ -563,6 +562,7 @@
             <div class="lighter-area" id="lighter-area">
                 <span class="lighter-comment">這是點蠟燭不是點煙的</span>
                 <div class="lighter-custom" id="lighter" draggable="true">
+                    <!-- 精準對應你的打火機檔名：ㄏㄍㄜ.png -->
                     <img src="厂ㄍㄜ.png" alt="Lighter" class="lighter-img" onerror="this.src='https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=300&q=80'">
                 </div>
             </div>
@@ -604,7 +604,7 @@
         <div class="letter-container">
             <div class="letter-paper" id="letter-paper">
                 <h3>親愛的：</h3>
-                <p>希望你在每一個普通的日子裡，都能夠感受到被世界溫柔以待。不用急著成為完美的大人，只要照著自己的節奏往前走就好。願你所有的願望都能閃閃發光，生日快樂。</p>
+                <p>希望你在每一個普通的日子裡，都能夠感受到被世界溫柔以待. 不用急著成為完美的大人，只要照著自己的節奏往前走就好. 願你所有的願望都能閃閃發光，生日快樂.</p>
             </div>
             <div class="envelope" id="envelope" onclick="tearEnvelope()">
                 <div class="envelope-flap"></div>
@@ -650,7 +650,7 @@
         </div>
     </div>
 
-    <!-- 打火機音效：xm3013.mp3 -->
+    <!-- 打火機音效與撕信紙音效：xm3013.mp3 -->
     <audio id="lighter-audio" src="xm3013.mp3" preload="auto"></audio>
 
     <script>
@@ -681,7 +681,6 @@
             } catch(e) {}
         }
 
-        // 區塊切換控制（單頁式淡入淡出，不捲動）
         const secHome = document.getElementById('section-home');
         const secCake = document.getElementById('section-cake');
         const secGallery = document.getElementById('section-gallery');
@@ -850,7 +849,7 @@
         });
 
         function tearEnvelope() {
-            playClickSound();
+            playLighterSound(); // 撕信封時播放音檔 1281.mp3
             document.getElementById('envelope').classList.add('torn');
             document.getElementById('letter-paper').classList.add('pulled');
             setTimeout(() => {
