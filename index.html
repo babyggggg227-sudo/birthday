@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--ink:#f8edf5;--pink:#ffb7d5;--lav:#d8c6ff;--mint:#b8f1df;--gold:#ffe5a8;--night:#171321}
@@ -17,13 +17,13 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 
 .home-content{display:flex;flex-direction:column;align-items:center;gap:16px}
 
-/* 首頁透明螢光方框按鈕 */
-.light-up-btn{background:transparent;color:#b8f1df;border:2px solid #b8f1df;padding:14px 44px;font-size:1.2rem;letter-spacing:.18em;transition:transform .25s,box-shadow .25s,background .25s;font-family:'Noto Sans TC',sans-serif;border-radius:12px;box-shadow:0 0 15px #b8f1df33,inset 0 0 15px #b8f1df11}
+/* 首頁透明螢光方框按鈕（保留字體設計） */
+.light-up-btn{background:transparent;color:#b8f1df;border:2px solid #b8f1df;padding:14px 44px;font-size:1.3rem;letter-spacing:.18em;transition:transform .25s,box-shadow .25s,background .25s;font-family:'Caveat','Noto Sans TC',sans-serif;border-radius:12px;box-shadow:0 0 15px #b8f1df33,inset 0 0 15px #b8f1df11}
 .light-up-btn:hover{transform:translateY(-3px);background:#b8f1df15;box-shadow:0 0 25px #b8f1df66,inset 0 0 20px #b8f1df33}
 .light-up-btn:active{transform:translateY(3px);box-shadow:0 0 10px #b8f1df33}
 
-.sound-hint{font-family:'Noto Sans TC',sans-serif;font-size:1.2rem;letter-spacing:.08em;color:#ffe9f5;text-shadow:0 2px 9px #ffacd466}
-.producer-credit{font-size:0.95rem;color:#ffffffa8;letter-spacing:.1em;font-family:'Noto Sans TC',sans-serif}
+.sound-hint{font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.4rem;letter-spacing:.08em;color:#ffe9f5;text-shadow:0 2px 9px #ffacd466}
+.producer-credit{font-size:1rem;color:#ffffffa8;letter-spacing:.1em;font-family:'Caveat','Noto Sans TC',sans-serif}
 
 .glow-background{position:absolute;width:420px;height:420px;background:radial-gradient(circle,#ffe9f52e 0%,#d9c5ff0a 65%,transparent 100%);border-radius:50%;pointer-events:none;filter:blur(30px)}
 .cake-stage{position:relative;width:100%;max-width:480px;height:380px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;margin-bottom:10px;z-index:1}
@@ -69,14 +69,14 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 .envelope-text{font-family:'Noto Sans TC',sans-serif;font-size:1.1rem;color:#fff;letter-spacing:.15em;margin-top:30px;z-index:4}
 #letter-next-container{position:relative;z-index:20}
 
-/* 輪播畫面：固定尺寸並確保圖片完整顯示不變形超出 */
-.slider-wrapper{position:relative;width:min(580px,85vw);height:52vh;max-height:450px;overflow:hidden;background:#241e2a;border-radius:8px;box-shadow:0 20px 50px #000b;border:1px solid #ffffff3b;margin-bottom:10px;touch-action:pan-y}
+/* 輪播畫面：放大框框，並提供充裕的文字高度避免卡住 */
+.slider-wrapper{position:relative;width:min(720px,90vw);height:62vh;max-height:520px;overflow:hidden;background:#241e2a;border-radius:8px;box-shadow:0 20px 50px #000b;border:1px solid #ffffff3b;margin-bottom:12px;touch-action:pan-y}
 .slider-track{display:flex;width:100%;height:100%;transition:transform .6s cubic-bezier(.25,1,.5,1)}
-.slide-item{min-width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px}
-.slide-img{width:100%;height:calc(100% - 48px);object-fit:contain;background:#171321;border-radius:4px;}
-/* 下方文字放大、清晰且不斜體 */
-.slide-caption-overlay{width:100%;height:48px;background:#302637;display:flex;align-items:center;justify-content:center;font-family:'Noto Sans TC',sans-serif;font-size:0.95rem;font-weight:500;letter-spacing:.08em;color:#ffffffdd;padding:0 10px;text-align:center;}
-.slider-hint{font-family:'Noto Sans TC',sans-serif;margin-bottom:6px;font-size:0.95rem;color:#ffffffaa;letter-spacing:.12em}
+.slide-item{min-width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px}
+.slide-img{width:100%;height:calc(100% - 64px);object-fit:contain;background:#171321;border-radius:4px;}
+/* 下方文字區塊加大高度，確保多行文字絕不卡住 */
+.slide-caption-overlay{width:100%;height:64px;background:#302637;display:flex;align-items:center;justify-content:center;font-family:'Noto Sans TC',sans-serif;font-size:0.9rem;font-weight:500;letter-spacing:.06em;color:#ffffffdd;padding:0 12px;text-align:center;line-height:1.3;}
+.slider-hint{font-family:'Noto Sans TC',sans-serif;margin-bottom:8px;font-size:0.9rem;color:#ffffffaa;letter-spacing:.12em}
 
 /* 最後按鈕區塊排版 */
 .line-btn-container{margin-top:14px;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;pointer-events:none;transition:opacity 1s}
@@ -103,7 +103,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 
 @media(max-width:700px){
   .polaroids-grid{grid-template-columns:repeat(2,1fr);gap:12px}
-  .slider-wrapper{width:92vw;height:55vh}
+  .slider-wrapper{width:94vw;height:58vh}
   .letter-container{height:430px}
   .letter-paper{height:380px;padding:28px 22px}
   .lighter-comment{font-size:.8rem}
@@ -368,7 +368,7 @@ function lightCandle(index) {
   playAudio(lighterAudio, 1200);
   if (litCandles.size === 5) {
     cakeStep = 2;
-    actionPrompt.innerText = '許下願望吧，我給你五個願望的機會，你要偷偷說給我聽也可以喔';
+    actionPrompt.innerText = '許下願望吧，我給你五個蠟燭的機會';
     typeWriterEffect('許下願望吧，最後一個要好好的放在心裡', () => setTimeout(() => {
       actionPrompt.style.display = 'block';
       actionPrompt.innerText = '現在點擊或輕觸蠟燭即可熄滅';
