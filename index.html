@@ -197,35 +197,35 @@
             right: 10px;
             display: none;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
             z-index: 10;
             user-select: none;
-            touch-action: none;
-            transition: transform 0.5s ease-in-out; /* 用於從左到右移動動畫 */
+            transition: transform 8s ease-in-out; /* 8秒平順從右到左移動 */
         }
 
         .lighter-comment {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
             letter-spacing: 0.1em;
             white-space: nowrap;
         }
 
+        /* 放大打火機尺寸，並完美透明化背景與融合 */
         .lighter-custom {
-            width: 50px;
-            height: 75px;
-            cursor: grab;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.8));
-            background: rgba(255,255,255,0.03);
-            border-radius: 4px;
+            width: 75px;
+            height: 110px;
+            cursor: pointer;
+            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.9));
             display: flex;
             align-items: center;
             justify-content: center;
+            background: transparent;
         }
         .lighter-img {
             width: 100%;
             height: 100%;
             object-fit: contain;
+            mix-blend-mode: screen; /* 自動過濾白色背景，達到完美透明效果 */
         }
 
         .wish-text-box {
@@ -297,7 +297,7 @@
             pointer-events: auto;
         }
 
-        /* 區塊四：放大的信封與帶有淺淺格子的信紙 */
+        /* 區塊四：信封信紙（修復按鈕點擊遮擋問題） */
         #section-letter {
             z-index: 7;
         }
@@ -311,6 +311,7 @@
             justify-content: center;
             align-items: center;
             margin-bottom: 15px;
+            pointer-events: none; /* 讓未被覆蓋的區域穿透 */
         }
 
         .letter-paper {
@@ -324,12 +325,12 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.6);
             text-align: left;
             font-size: 0.95rem;
-            line-height: 2.2; /* 行距配合格子 */
+            line-height: 2.2;
             transform: translateY(0px);
             transition: transform 1.2s cubic-bezier(0.2, 1.2, 0.3, 1);
             z-index: 1;
             overflow-y: auto;
-            /* 淺淺的格子線條背景 */
+            pointer-events: auto;
             background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
             background-size: 100% 2.2em;
         }
@@ -351,6 +352,7 @@
             align-items: center;
             justify-content: center;
             transition: transform 0.8s, opacity 0.8s;
+            pointer-events: auto;
         }
 
         .envelope.torn {
@@ -381,6 +383,12 @@
             letter-spacing: 0.2em;
             margin-top: 30px;
             z-index: 4;
+        }
+
+        /* 確保下一步按鈕圖層在最上方且可點擊 */
+        #letter-next-container {
+            position: relative;
+            z-index: 20;
         }
 
         /* 區塊五：左右滑動相簿 */
@@ -565,7 +573,7 @@
 
             <div class="lighter-area" id="lighter-area">
                 <span class="lighter-comment">這是點蠟燭不是點煙的</span>
-                <div class="lighter-custom" id="lighter" draggable="true">
+                <div class="lighter-custom" id="lighter">
                     <!-- 精準對應你的打火機檔名：ㄏㄍㄜ.png -->
                     <img src="ㄏㄍㄜ.png" alt="Lighter" class="lighter-img" onerror="this.src='https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=300&q=80'">
                 </div>
@@ -728,7 +736,7 @@
                 playClickSound();
                 cakeStep = 1;
                 lighterArea.style.display = 'flex';
-                actionPrompt.innerText = "請點蠟燭";
+                actionPrompt.innerText = "請點擊打火機點蠟燭";
             }
         });
 
@@ -737,21 +745,21 @@
                 playClickSound();
                 cakeStep = 1;
                 lighterArea.style.display = 'flex';
-                actionPrompt.innerText = "請點蠟燭";
+                actionPrompt.innerText = "請點擊打火機點蠟燭";
             }
         });
 
+        // 點擊打火機後觸發音效，打火機從右向左平順移動，8秒後蠟燭亮起
         function lightTheCandles() {
             if (cakeStep < 1 || cakeStep >= 2) return;
             cakeStep = 2;
-            playLighterSound(); // 播放 xm3013.mp3
+            playLighterSound(); // 播放 xm3013.mp3 音效
             actionPrompt.style.display = 'none';
 
-            // 打火機從右下角往左移動到蠟燭上方 (大約 8 秒音效配合)
-            lighterArea.style.transform = "translateX(-160px)";
-            lighterArea.style.transition = "transform 8s ease-in-out";
+            // 打火機從右下角平順滑動到蠟燭上方
+            lighterArea.style.transform = "translateX(-170px)";
 
-            // 配合音檔大約 8 秒後燭火亮起
+            // 配合音檔長度，設定 8 秒後燭火亮起
             setTimeout(() => {
                 lighterArea.style.display = 'none'; // 點完後隱藏打火機
                 flames.forEach((f, index) => {
@@ -770,25 +778,6 @@
         }
 
         lighter.addEventListener('click', lightTheCandles);
-
-        let touchStartX = 0, touchStartY = 0;
-        lighter.addEventListener('touchstart', (e) => {
-            const touch = e.touches[0];
-            touchStartX = touch.clientX;
-            touchStartY = touch.clientY;
-        }, {passive: true});
-
-        lighter.addEventListener('touchmove', (e) => {
-            const touch = e.touches[0];
-            const deltaX = touch.clientX - touchStartX;
-            const deltaY = touch.clientY - touchStartY;
-            lighter.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-        }, {passive: true});
-
-        lighter.addEventListener('touchend', () => {
-            lighter.style.transform = 'translate(0px, 0px)';
-            lightTheCandles();
-        });
 
         function extinguishSingleCandle(index) {
             if (cakeStep !== 2) return;
@@ -867,7 +856,7 @@
         });
 
         function tearEnvelope() {
-            playTearSound(); // 播放 1281.mp3 撕紙音效
+            playTearSound(); // 播放 1281.mp3 撕信紙音效[cite: 8, 9]
             document.getElementById('envelope').classList.add('torn');
             document.getElementById('letter-paper').classList.add('pulled');
             setTimeout(() => {
