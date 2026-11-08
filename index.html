@@ -558,7 +558,9 @@ sliderWrapper.addEventListener('click', e => {
   }
 });
 </script>
-// 當你在手機螢幕上「滑動手指」時觸發
+
+<!-- 手指滑動小雞特效 -->
+<script>
 document.addEventListener('touchmove', function(e) {
     let touch = e.touches[0];
     let x = touch.clientX;
@@ -587,5 +589,6 @@ document.addEventListener('touchmove', function(e) {
     }, 500);
 }, { passive: true });
 </script>
+
 </body>
 </html>
