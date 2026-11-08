@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <!-- 引入 Google Fonts 中文字型與手寫感字型 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0b0b0b;
+            color: #f0f0f0;
+            font-family: 'Noto Serif TC', serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 頁面切換共用樣式 */
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 40px 20px;
+        }
+
+        .page.active {
+            opacity: 1;
+            pointer-events: auto;
+            position: relative;
+        }
+
+        /* ================= 頁面一：首頁 ================= */
+        #page-home {
+            height: 100vh;
+            justify-content: center;
+        }
+
+        .light-up-btn {
+            background: transparent;
+            color: #e0e0e0;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 14px 36px;
+            font-size: 1rem;
+            letter-spacing: 0.2em;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: 'Noto Serif TC', serif;
+            border-radius: 2px;
+        }
+
+        .light-up-btn:hover {
+            border-color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+        }
+
+        /* ================= 頁面二：蛋糕與打火機 ================= */
+        #page-cake {
+            text-align: center;
+        }
+
+        .stage-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        /* 蛋糕與蠟燭區 */
+        .cake-wrapper {
+            position: relative;
+            width: 220px;
+            height: 160px;
+        }
+
+        .cake-body {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 120px;
+            background: #1a1a1a;
+            border-radius: 12px 12px 4px 4px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 4px 12px rgba(0,0,0,0.8);
+        }
+
+        .cake-cream {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 30px;
+            background: #262626;
+            border-radius: 12px 12px 0 0;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        /* 蠟燭 */
+        .candle {
+            position: absolute;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 14px;
+            height: 50px;
+            background: linear-gradient(90deg, #ccc, #eee, #ccc);
+            border-radius: 2px;
+        }
+
+        /* 火焰 */
+        .flame {
+            position: absolute;
+            top: -24px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            width: 14px;
+            height: 24px;
+            background: radial-gradient(circle at 50% 80%, #fff 10%, #ffcc00 40%, #ff4500 80%);
+            border-radius: 50% 50% 20% 20%;
+            box-shadow: 0 0 15px #ff9900, 0 0 30px #ff3300;
+            transition: transform 0.5s ease;
+            transform-origin: bottom center;
+        }
+
+        .flame.lit {
+            transform: translateX(-50%) scale(1);
+            animation: flicker 1.5s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(0.95) rotate(-2deg); opacity: 0.9; }
+            100% { transform: translateX(-50%) scale(1.05) rotate(2deg); opacity: 1; }
+        }
+
+        /* 旁邊的小字提示與互動按鈕 */
+        .candle-hint {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 10px;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            cursor: pointer;
+            letter-spacing: 0.1em;
+        }
+        .candle-hint.visible {
+            opacity: 1;
+        }
+        .candle-hint:hover {
+            color: #fff;
+        }
+
+        /* 打火機 */
+        .lighter {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 80px;
+            background: #2a2a2a;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+            cursor: grab;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 6px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            user-select: none;
+            touch-action: none;
+            z-index: 10;
+            transition: box-shadow 0.3s;
+        }
+
+        .lighter:active {
+            cursor: grabbing;
+        }
+
+        .lighter-top {
+            width: 20px;
+            height: 12px;
+            background: #444;
+            border-radius: 2px;
+        }
+
+        .lighter-body-label {
+            font-size: 9px;
+            color: rgba(255,255,255,0.4);
+            writing-mode: vertical-rl;
+            margin-top: 15px;
+            letter-spacing: 2px;
+        }
+
+        /* 打字機文字區 */
+        .wish-text-box {
+            min-height: 60px;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.05rem;
+            letter-spacing: 0.15em;
+            color: #dcdcdc;
+            line-height: 1.8;
+        }
+
+        /* 下一步按鈕容器 */
+        .next-step-container {
+            margin-top: 30px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1s ease;
+        }
+        .next-step-container.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .subtle-link-btn {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Noto Serif TC', serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+        }
+        .subtle-link-btn:hover {
+            color: #fff;
+            border-color: #fff;
+        }
+
+        /* ================= 頁面三：拍立得藝廊 ================= */
+        #page-gallery {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .gallery-title {
+            font-size: 1.1rem;
+            letter-spacing: 0.2em;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .polaroids-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 30px;
+            width: 100%;
+            padding: 0 10px;
+            margin-bottom: 50px;
+        }
+
+        /* 拍立得照片筐樣式 */
+        .polaroid {
+            background: #f4f4f2;
+            color: #222;
+            padding: 12px 12px 20px 12px;
+            border-radius: 3px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s;
+            position: relative;
+        }
+
+        .polaroid:hover {
+            transform: translateY(-8px) rotate(1deg);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+        }
+
+        .polaroid-img {
+            width: 100%;
+            height: 160px;
+            background: #2a2a2a;
+            object-fit: cover;
+            margin-bottom: 12px;
+            filter: grayscale(20%) contrast(105%);
+        }
+
+        .polaroid-caption {
+            font-family: 'Caveat', 'Noto Serif TC', cursive;
+            font-size: 1.15rem;
+            text-align: center;
+            color: #333;
+            letter-spacing: 0.05em;
+        }
+
+        /* ================= 彈窗 Modal 故事檢視 ================= */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            z-index: 100;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: #141414;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            max-width: 480px;
+            width: 100%;
+            padding: 35px;
+            border-radius: 4px;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.9);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.5);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .modal-close:hover {
+            color: #fff;
+        }
+
+        .modal-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border-radius: 2px;
+        }
+
+        .modal-title {
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+            color: #f0f0f0;
+        }
+
+        .modal-story {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #b5b5b5;
+            letter-spacing: 0.05em;
+        }
+
+        /* RWD 微調 */
+        @media (max-width: 600px) {
+            .polaroids-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            .polaroid-img {
+                height: 130px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頁面一：首頁 -->
+    <div id="page-home" class="page active">
+        <button class="light-up-btn" id="btn-light-up">Light up</button>
+    </div>
+
+    <!-- 頁面二：蛋糕、打火機、點蠟燭與許願 -->
+    <div id="page-cake" class="page">
+        <div class="stage-container" id="stage-container">
+            <!-- 蛋糕本體 -->
+            <div class="cake-wrapper" id="cake-wrapper">
+                <div class="cake-body">
+                    <div class="cake-cream"></div>
+                </div>
+                <!-- 蠟燭與火焰 -->
+                <div class="candle">
+                    <div class="flame" id="flame"></div>
+                </div>
+            </div>
+
+            <!-- 打火機（可拖曳） -->
+            <div class="lighter" id="lighter" draggable="true">
+                <div class="lighter-top"></div>
+                <div class="lighter-body-label">Lighter</div>
+            </div>
+        </div>
+
+        <!-- 打字機文字區 -->
+        <div class="wish-text-box" id="wish-text-box"></div>
+
+        <!-- 蠟燭旁邊小字提示 -->
+        <div class="candle-hint" id="candle-hint">許下願望後，點一下我</div>
+
+        <!-- 最後跳轉按鈕 -->
+        <div class="next-step-container" id="next-step-container">
+            <button class="subtle-link-btn" id="btn-goto-gallery">一年前我們也是這樣過生日了</button>
+        </div>
+    </div>
+
+    <!-- 頁面三：拍立得藝廊 -->
+    <div id="page-gallery" class="page">
+        <div class="gallery-title">Moments</div>
+        <div class="polaroids-grid">
+            <!-- 拍立得 1 -->
+            <div class="polaroid" onclick="openStory(1)">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" alt="Memory 1" class="polaroid-img">
+                <div class="polaroid-caption">那天一起走的夜路</div>
+            </div>
+            <!-- 拍立得 2 -->
+            <div class="polaroid" onclick="openStory(2)">
+                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Memory 2" class="polaroid-img">
+                <div class="polaroid-caption">笑得很開心的小事</div>
+            </div>
+            <!-- 拍立得 3 -->
+            <div class="polaroid" onclick="openStory(3)">
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=600&q=80" alt="Memory 3" class="polaroid-img">
+                <div class="polaroid-caption">慶祝彼此的笨拙</div>
+            </div>
+            <!-- 拍立得 4 -->
+            <div class="polaroid" onclick="openStory(4)">
+                <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80" alt="Memory 4" class="polaroid-img">
+                <div class="polaroid-caption">未完待續的日常</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 故事細節彈窗 Modal -->
+    <div class="modal-overlay" id="story-modal" onclick="closeStory(event)">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModalDirect()">&times;</button>
+            <img id="modal-img" src="" alt="Story Image" class="modal-img">
+            <h3 id="modal-title" class="modal-title"></h3>
+            <p id="modal-story" class="modal-story"></p>
+        </div>
+    </div>
+
+    <script>
+        // --- 頁面跳轉控制 ---
+        const pageHome = document.getElementById('page-home');
+        const pageCake = document.getElementById('page-cake');
+        const pageGallery = document.getElementById('page-gallery');
+
+        document.getElementById('btn-light-up').addEventListener('click', () => {
+            pageHome.classList.remove('active');
+            pageCake.classList.add('active');
+        });
+
+        document.getElementById('btn-goto-gallery').addEventListener('click', () => {
+            pageCake.classList.remove('active');
+            pageGallery.classList.add('active');
+        });
+
+        // --- 互動邏輯：打火機點燃蠟燭 ---
+        const lighter = document.getElementById('lighter');
+        const cakeWrapper = document.getElementById('cake-wrapper');
+        const flame = document.getElementById('flame');
+        const wishTextBox = document.getElementById('wish-text-box');
+        const candleHint = document.getElementById('candle-hint');
+        const nextStepContainer = document.getElementById('next-step-container');
+
+        let isLit = false;
+
+        // 桌面端拖曳事件
+        lighter.addEventListener('dragstart', (e) => {
+            e.dataTransfer.setData('text/plain', 'lighter');
+        });
+
+        cakeWrapper.addEventListener('dragover', (e) => {
+            e.preventDefault();
+        });
+
+        cakeWrapper.addEventListener('drop', (e) => {
+            e.preventDefault();
+            lightCandle();
+        });
+
+        // 手機端觸控支援 (簡易觸碰判定距離或點擊模擬)
+        let touchStartX = 0, touchStartY = 0;
+        lighter.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            touchStartX = touch.clientX;
+            touchStartY = touch.clientY;
+        }, {passive: true});
+
+        lighter.addEventListener('touchmove', (e) => {
+            const touch = e.touches[0];
+            const deltaX = touch.clientX - touchStartX;
+            const deltaY = touch.clientY - touchStartY;
+            lighter.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+        }, {passive: true});
+
+        lighter.addEventListener('touchend', (e) => {
+            lighter.style.transform = 'translate(0px, 0px)';
+            const lighterRect = lighter.getBoundingClientRect();
+            const cakeRect = cakeWrapper.getBoundingClientRect();
+            
+            // 判斷是否靠近蛋糕
+            if (
+                lighterRect.left < cakeRect.right &&
+                lighterRect.right > cakeRect.left &&
+                lighterRect.top < cakeRect.bottom &&
+                lighterRect.bottom > cakeRect.top
+            ) {
+                lightCandle();
+            }
+        });
+
+        function lightCandle() {
+            if (isLit) return;
+            isLit = true;
+            flame.classList.add('lit');
+            lighter.style.display = 'none'; // 點燃後隱藏打火機
+
+            // 開始打字機逐字出現許願提示
+            setTimeout(() => {
+                typeWriterEffect("許下願望吧", () => {
+                    candleHint.classList.add('visible');
+                });
+            }, 600);
+        }
+
+        // 打字機特效函數
+        function typeWriterEffect(text, callback) {
+            wishTextBox.innerHTML = "";
+            let i = 0;
+            const speed = 120;
+            function type() {
+                if (i < text.length) {
+                    wishTextBox.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    if (callback) callback();
+                }
+            }
+            type();
+        }
+
+        // 點擊蠟燭（或旁邊小字）熄滅燭火並顯示最後一句話
+        let isExtinguished = false;
+        function extinguishCandle() {
+            if (!isLit || isExtinguished) return;
+            isExtinguished = true;
+
+            flame.classList.remove('lit');
+            flame.style.opacity = '0';
+            candleHint.style.opacity = '0';
+
+            setTimeout(() => {
+                wishTextBox.innerHTML = "";
+                typeWriterEffect("最後一個要好好的放在心裡", () => {
+                    nextStepContainer.classList.add('visible');
+                });
+            }, 500);
+        }
+
+        flame.addEventListener('click', extinguishCandle);
+        candleHint.addEventListener('click', extinguishCandle);
+        cakeWrapper.addEventListener('click', extinguishCandle);
+
+        // --- 拍立得故事資料與彈窗邏輯 ---
+        const stories = {
+            1: {
+                title: "那天一起走的夜路",
+                img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80",
+                story: "那天路燈把影子拉得長長的，我們聊了好多關於未來的迷惘與倔強。雖然腳有點酸，但那種身邊有人默默陪著、不用說話也很安心的空氣，至今想起來都還是覺得暖暖的。"
+            },
+            2: {
+                title: "笑得很開心的小事",
+                img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80",
+                story: "因為一件超級無聊的小笑話在路邊笑了好久。生活其實常常擠滿了讓人喘不過氣的瑣事，但只要跟你在一起，總能輕易找回那些最單純、最不加修飾的快樂。"
+            },
+            3: {
+                title: "慶祝彼此的笨拙",
+                img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=600&q=80",
+                story: "我們都不是那種完美的大人，常常跌跌撞撞，把生活過得亂七八糟又充滿驚喜。但慶幸的是，每一次狼狽的時候，身邊都有彼此懂那種笑中帶淚的默契。"
+            },
+            4: {
+                title: "未完待續的日常",
+                img: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80",
+                story: "不用許太大太遠的願望，只要每一個重要或不重要的日子裡，我們都能像這樣，繼續保持真實、繼續往前走。生日快樂呀。"
+            }
+        };
+
+        const modalOverlay = document.getElementById('story-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalTitle = document.getElementById('modal-title');
+        const modalStory = document.getElementById('modal-story');
+
+        function openStory(id) {
+            const data = stories[id];
+            if (!data) return;
+            modalImg.src = data.img;
+            modalTitle.innerText = data.title;
+            modalStory.innerText = data.story;
+            modalOverlay.classList.add('active');
+        }
+
+        function closeModalDirect() {
+            modalOverlay.classList.remove('active');
+        }
+
+        function closeStory(e) {
+            if (e.target === modalOverlay) {
+                modalOverlay.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
