@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Caveat:wght@500;700&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--ink:#f8edf5;--pink:#ffb7d5;--lav:#d8c6ff;--mint:#b8f1df;--gold:#ffe5a8;--night:#171321}
@@ -15,7 +15,14 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 .stage-section{position:absolute;inset:0;width:100vw;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 1.2s cubic-bezier(.4,0,.2,1);padding:20px;z-index:1}
 .stage-section.active{opacity:1;pointer-events:auto;z-index:10}
 
-.home-content{display:flex;flex-direction:column;align-items:center;gap:16px}
+.home-content{display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
+
+/* 密碼輸入框與提示文字樣式 */
+.password-hint{font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.25rem;letter-spacing:.1em;color:#ffe9f5;text-shadow:0 2px 9px #ffacd466;margin-bottom:4px}
+.password-box{display:flex;gap:10px;margin-bottom:10px}
+.pin-input{width:55px;height:60px;background:transparent;border:2px solid #b8f1df;border-radius:12px;color:#b8f1df;font-size:1.8rem;text-align:center;font-family:'Noto Sans TC',sans-serif;box-shadow:0 0 12px #b8f1df22,inset 0 0 10px #b8f1df11;outline:none;transition:all .25s}
+.pin-input:focus{border-color:#ffb7d5;box-shadow:0 0 20px #ffb7d566;background:#b8f1df0a}
+.password-error{font-family:'Noto Sans TC',sans-serif;font-size:0.9rem;color:#ff85a1;min-height:20px;letter-spacing:.08em;text-shadow:0 2px 6px #0008}
 
 /* 首頁透明螢光方框按鈕（保留字體設計） */
 .light-up-btn{background:transparent;color:#b8f1df;border:2px solid #b8f1df;padding:14px 44px;font-size:1.3rem;letter-spacing:.18em;transition:transform .25s,box-shadow .25s,background .25s;font-family:'Caveat','Noto Sans TC',sans-serif;border-radius:12px;box-shadow:0 0 15px #b8f1df33,inset 0 0 15px #b8f1df11}
@@ -59,8 +66,9 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 .section-next-container.unlocked,.section-next-container.visible{opacity:1;pointer-events:auto}
 
 .letter-container{position:relative;width:100%;max-width:500px;height:480px;display:flex;justify-content:center;align-items:center;margin-bottom:15px;pointer-events:none;perspective:1000px}
-.letter-paper{position:absolute;width:min(380px,90vw);height:420px;background:#fffaf0;color:#3e3442;padding:35px 30px;border-radius:3px;box-shadow:0 15px 40px #0009;text-align:left;font-family:'Noto Sans TC',sans-serif;font-weight:500;font-size:1.1rem;line-height:1.9;transform:translateY(35px) scaleY(.88);opacity:1;transition:transform 1.8s cubic-bezier(.22,.8,.25,1);z-index:1;overflow-y:auto;pointer-events:auto;background-image:linear-gradient(to bottom,#bd99b118 1px,transparent 1px);background-size:100% 2.2em;transform-origin:bottom center}
-.letter-paper h3{font-weight:700;margin-bottom:8px;font-size:1.25rem}
+/* 調整信紙文字：字體更細緻、帶點手寫文學感、大小放大 */
+.letter-paper{position:absolute;width:min(380px,90vw);height:420px;background:#fffaf0;color:#3e3442;padding:35px 30px;border-radius:3px;box-shadow:0 15px 40px #0009;text-align:left;font-family:'ZCOOL XiaoWei','Caveat','Noto Sans TC',sans-serif;font-weight:400;font-size:1.18rem;line-height:2.0;letter-spacing:0.04em;transform:translateY(35px) scaleY(.88);opacity:1;transition:transform 1.8s cubic-bezier(.22,.8,.25,1);z-index:1;overflow-y:auto;pointer-events:auto;background-image:linear-gradient(to bottom,#bd99b118 1px,transparent 1px);background-size:100% 2.3em;transform-origin:bottom center}
+.letter-paper h3{font-weight:700;margin-bottom:8px;font-size:1.35rem}
 .letter-paper.pulled{transform:translateY(-90px) scaleY(1)}
 .envelope{position:absolute;width:min(420px,95vw);height:260px;background:linear-gradient(135deg,#5b4268,#352a49);border:1px solid #ffffff55;border-radius:4px;z-index:3;display:flex;align-items:center;justify-content:center;transition:transform 1s cubic-bezier(.2,.8,.2,1),opacity 1s ease;pointer-events:auto;box-shadow:0 12px 30px #0008}
 .envelope.torn{transform:translateY(180px) scale(.95);opacity:.2;pointer-events:none}
@@ -117,12 +125,24 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 </head>
 <body>
 
-<!-- 首頁 -->
+<!-- 首頁（含 4 位數房間密碼解鎖） -->
 <div id="section-home" class="stage-section active">
   <div class="home-content">
-    <button class="light-up-btn" id="btn-light-up">Light up</button>
-    <div class="sound-hint">open the sound</div>
-    <div class="producer-credit">produced by small._.gg</div>
+    <div class="password-hint">進入房間前要輸入密碼喔！</div>
+    <div class="password-box">
+      <input type="password" maxlength="1" class="pin-input" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code">
+      <input type="password" maxlength="1" class="pin-input" inputmode="numeric" pattern="[0-9]*">
+      <input type="password" maxlength="1" class="pin-input" inputmode="numeric" pattern="[0-9]*">
+      <input type="password" maxlength="1" class="pin-input" inputmode="numeric" pattern="[0-9]*">
+    </div>
+    <div class="password-error" id="password-error"></div>
+    
+    <!-- 原本的 Light up 按鈕，預設隱藏，密碼正確後顯示 -->
+    <div id="unlocked-content" style="display: none; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+      <button class="light-up-btn" id="btn-light-up">Light up</button>
+      <div class="sound-hint">open the sound</div>
+      <div class="producer-credit">produced by small._.gg</div>
+    </div>
   </div>
 </div>
 
@@ -312,6 +332,49 @@ function playAudio(audio, duckMs = 850) {
 
 function playClickSound() { playAudio(clickAudio, 700); }
 
+/* 4位數密碼驗證邏輯 (正確密碼為 1222) */
+const pinInputs = document.querySelectorAll('.pin-input');
+const unlockedContent = document.getElementById('unlocked-content');
+const passwordError = document.getElementById('password-error');
+
+pinInputs.forEach((input, index) => {
+  input.addEventListener('input', (e) => {
+    const val = e.target.value;
+    if (val && index < pinInputs.length - 1) {
+      pinInputs[index + 1].focus();
+    }
+    checkPinCode();
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Backspace' && !input.value && index > 0) {
+      pinInputs[index - 1].focus();
+    }
+  });
+});
+
+function checkPinCode() {
+  const code = Array.from(pinInputs).map(inp => inp.value).join('');
+  if (code.length === 4) {
+    if (code === '1222') {
+      playClickSound();
+      passwordError.textContent = '';
+      document.querySelector('.password-box').style.display = 'none';
+      document.querySelector('.password-hint').style.display = 'none';
+      unlockedContent.style.display = 'flex';
+      unlockedContent.style.opacity = '0';
+      setTimeout(() => {
+        unlockedContent.style.transition = 'opacity 0.8s ease';
+        unlockedContent.style.opacity = '1';
+      }, 50);
+    } else {
+      passwordError.textContent = '密碼不對喔，再試一次！';
+      pinInputs.forEach(inp => inp.value = '');
+      pinInputs[0].focus();
+    }
+  }
+}
+
 const secHome = document.getElementById('section-home'),
       secCake = document.getElementById('section-cake'),
       secGallery = document.getElementById('section-gallery'),
@@ -369,11 +432,11 @@ function lightCandle(index) {
   playAudio(lighterAudio, 1200);
   if (litCandles.size === 5) {
     cakeStep = 2;
-    actionPrompt.innerText = '許下願望吧，可以有五個願望喔';
-    typeWriterEffect('許下願望吧，最後一個要好好的放在心裡，可以許五個喔', () => setTimeout(() => {
+    actionPrompt.innerText = '許下願望吧';
+    typeWriterEffect('許下願望吧，最後一個要好好的放在心裡', () => setTimeout(() => {
       actionPrompt.style.display = 'block';
       actionPrompt.innerText = '現在點擊或輕觸蠟燭即可熄滅';
-    }, 2000));
+    }, 1000));
   }
 }
 
