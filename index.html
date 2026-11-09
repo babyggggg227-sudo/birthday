@@ -107,7 +107,6 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 .picker-title{font-family:'Noto Sans TC',sans-serif;font-size:1.3rem;letter-spacing:.1em;color:#b8f1df;margin-bottom:5px}
 .result-box{background:#171321;border:1px dashed #b8f1df66;padding:20px;border-radius:8px;width:100%;min-height:90px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;color:#ffe9f5;line-height:1.6;font-family:'Noto Sans TC',sans-serif;text-align:center}
 
-
 /* 返回按鈕樣式 */
 .back-btn{position:absolute;top:20px;left:20px;background:#ffffff15;border:1px solid #ffffff44;color:#fff;padding:8px 16px;border-radius:999px;font-family:'Noto Sans TC',sans-serif;font-size:0.9rem;letter-spacing:.08em;z-index:50;transition:background .2s,transform .2s}
 .back-btn:hover{background:#ffffff33;transform:translateY(-2px)}
@@ -270,7 +269,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
       </div>
       <div class="slide-item">
         <img src="20260422第一次遇到巫師.png" class="slide-img" alt="回憶照片">
-        <div class="slide-caption-overlay">【2026.04.22】第一次遇到巫師，開啟我們無恥要免費的咖啡日子，超爽的</div>
+        <div class="slide-caption-overlay">【2026.04.22】第一次遇到巫師，開啟我們無恥要免費的日子，超爽的</div>
       </div>
       <div class="slide-item">
         <img src="20260502我們一起走到人生新階段了.png" class="slide-img" alt="回憶照片">
@@ -300,7 +299,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
       <a href="https://line.me/ti/p/rRB0-1SSeX" target="_blank" rel="noopener noreferrer" class="line-btn">V我50</a>
       <a href="https://canva.link/06dcu0hb0u6cfyg" target="_blank" rel="noopener noreferrer" class="line-btn">回憶去年寫的</a>
     </div>
- <!-- 🥚 蛋的閃爍彩蛋按鈕 -->
+    <!-- 🥚 蛋的閃爍彩蛋按鈕 -->
     <a href="#" class="easter-egg-btn" id="btn-goto-picker">🥚 點我點我點我</a>
     <button type="button" class="music-stop-btn" id="music-stop-btn">停止播放音樂</button>
   </div>
@@ -320,7 +319,6 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
     <button type="button" class="music-stop-btn" id="music-stop-btn-picker">停止播放音樂</button>
   </div>
 </div>
-
 
 <!-- 故事彈窗燈箱 -->
 <div class="modal-overlay" id="story-modal" onclick="closeStory(event)">
@@ -366,17 +364,15 @@ function playAudio(audio, duckMs = 850) {
 
 function playClickSound() { playAudio(clickAudio, 700); }
 
-
 /* 4位數密碼驗證邏輯與隨機錯誤訊息 (正確密碼為 1222) */
 const pinInputs = document.querySelectorAll('.pin-input');
 const passwordStage = document.getElementById('password-stage');
 const unlockedStage = document.getElementById('unlocked-stage');
 const passwordError = document.getElementById('password-error');
 
-// 多種有趣的隨機錯誤訊息
 const errorMessages = [
   '你想什麼時候想見到我呀',
-  '沒關係啊就再也不見面，你這樣開心嗎',
+  '沒關係啊啊就再也不見面，你這樣開心嗎',
   '才不是這個日期，你就沒有很想我嗎',
   '這是我堅持不下去的時候，就會告訴自己再一下下就可以看到你了',
   '我一直偷偷數著日子，期待著那天到來',
@@ -658,7 +654,6 @@ const totalSlides = 13,
       lineBtnContainer = document.getElementById('line-btn-container');
 
 function updateSlide() {
-  // 修正手機滑動定位：使用當前 slideItem 的實際寬度來計算，避免越滑越偏左
   const slideWidth = sliderWrapper.querySelector('.slide-item').offsetWidth;
   sliderTrack.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
   if (currentSlide === totalSlides - 1) {
