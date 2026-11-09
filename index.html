@@ -214,7 +214,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
   <div class="letter-container">
     <div class="letter-paper" id="letter-paper">
       <h3>嗨正義哥：</h3>
-      <p>想了想，還是想好好祝你生日快樂。在那之前先說抱歉，在你真正生日的當天毀了他。長大了一歲，過去的一年我們一起看過了很多不一樣的風景，也各自在不同的路上創造了很多故事。我還是會偶爾想起台北的細雨，想起在潮濕冷空氣抽煙的日子。但是呀，時間在前進，我們也一步一步往前，不急著成為一個完美的大人，慢慢地走呀走就好了。<br>過了一年，生日快樂。</p>
+      <p>想了想，還是想好好祝你生日快樂。在那之前先說抱歉，在你真正生日的當天毀了他。<br>長大了一歲，過去的一年我們一起看過了很多不一樣的風景，也各自在不同的路上創造了很多故事。我還是會偶爾想起台北的細雨，想起在潮濕冷空氣抽煙的日子。但是呀，時間在前進，我們也一步一步往前，不急著成為一個完美的大人，慢慢地走呀走就好了。<br>過了一年，生日快樂。</p>
     </div>
     <div class="envelope" id="envelope" onclick="tearEnvelope()">
       <div class="envelope-flap"></div>
@@ -258,7 +258,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
       </div>
       <div class="slide-item">
         <img src="20260412苦命打工仔.png" class="slide-img" alt="回憶照片">
-        <div class="slide-caption-overlay">2026.04.12苦命打工仔們，我去卡普索，你還去豆子店裡打工</div>
+        <div class="slide-caption-overlay">【2026.04.12】苦命打工仔們，我去卡普索，你還去豆子店裡打工</div>
       </div>
       <div class="slide-item">
         <img src="20260422第一次遇到巫師.png" class="slide-img" alt="回憶照片">
@@ -278,11 +278,11 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
       </div>
       <div class="slide-item">
         <img src="20260810要說再見了.png" class="slide-img" alt="回憶照片">
-        <div class="slide-caption-overlay">【2026.08.10】要好好說再見喔！不過我又參與你人生一個新階段了:D<br>你看著我從橘髮到黑髮，又變成橘髮，我看見你從有頭髮到奇異果，這一年已經過得足夠豐富多彩了</div>
+        <div class="slide-caption-overlay">【2026.08.10】要好好說再見喔！不過我又參與你人生一個新階段了:D<br>你看著我從橘髮到黑髮到橘髮，我看見你從有頭髮到奇異果，這一年已經過得足夠豐富多彩了</div>
       </div>
       <div class="slide-item">
         <img src="20260811新的一年，祝你開心.png" class="slide-img" alt="回憶照片">
-        <div class="slide-caption-overlay">【2026.08.21】 我們有好好告別喔！無論什麼時候都是，都做出了認為對現在最棒最棒的決定<br>23歲的陳政毅會是什麼樣子呢？我會期待，一直期待著的<br>新的一年，天天快樂，天天開心</div>
+        <div class="slide-caption-overlay">【2026.08.21】 我們有好好告別喔！無論什麼時候都是，都做出了認為對現在最棒最棒的決定<br>23歲的陳政毅會是什麼樣子呢？<br>我會期待，一直期待著的<br>新的一年，天天快樂，天天開心</div>
       </div>
     </div>
   </div>
@@ -348,12 +348,12 @@ const passwordError = document.getElementById('password-error');
 
 // 多種有趣的隨機錯誤訊息
 const errorMessages = [
-  '你想什麼時候想見到我',
-  '沒關係啊就再也不見面',
-  '才不是這個日期，你就不想我嗎',
-  '這是我堅持不下去的時候，就會告訴自己快到了',
-  '我一直倒數著這個時間',
-  '要一直好好記得喔'
+  '你想什麼時候想見到我呀',
+  '沒關係啊就再也不見面，你這樣開心嗎',
+  '才不是這個日期，你就沒有很想我嗎',
+  '這是我堅持不下去的時候，就會告訴自己再一下下就可以看到你了',
+  '我一直偷偷數著日子，期待著那天到來',
+  '妳要好好記得喔，有人願意飛好久好久就為了看到你'
 ];
 
 pinInputs.forEach((input, index) => {
@@ -453,11 +453,11 @@ function lightCandle(index) {
   playAudio(lighterAudio, 1200);
   if (litCandles.size === 5) {
     cakeStep = 2;
-    actionPrompt.innerText = '許下願望吧';
-    typeWriterEffect('許下願望吧，最後一個要好好的放在心裡', () => setTimeout(() => {
+    actionPrompt.innerText = '許下願望吧，你有五個額度';
+    typeWriterEffect('五個願望送給你，最後一個要好好的放在心裡', () => setTimeout(() => {
       actionPrompt.style.display = 'block';
       actionPrompt.innerText = '現在點擊或輕觸蠟燭即可熄滅';
-    }, 1000));
+    }, 2500));
   }
 }
 
