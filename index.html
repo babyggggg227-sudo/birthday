@@ -335,7 +335,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 <div id="section-picker" class="stage-section">
   <button class="back-btn" onclick="switchSection(secPicker, secSlider)">← 返回相簿</button>
   <div class="picker-card">
-    <div class="picker-title">🎲 今天去哪裡？約會盲盒</div>
+    <div class="picker-title"想跟你做的好多好多事</div>
     
     <div class="picker-grid">
       <div class="picker-box">
@@ -344,16 +344,16 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
       </div>
       <div class="picker-box">
         <div class="picker-box-label">✨ 做什麼</div>
-        <div class="picker-box-content" id="picker-act">期待今天的行程！</div>
+        <div class="picker-box-content" id="picker-act">期待今天的探險！</div>
       </div>
     </div>
 
     <div class="picker-btn-row">
-      <button type="button" class="line-btn" id="btn-pick-random">抽一個約會行程</button>
+      <button type="button" class="line-btn" id="btn-pick-random">抽一個吧！有點小靈感也不錯</button>
     </div>
 
     <div class="notebook-trigger-row" style="margin-top: 4px;">
-      <button type="button" class="notebook-btn" id="btn-open-notebook">📖 開啟隨身筆記本（口袋咖啡廳 ＆ 電影清單）</button>
+      <button type="button" class="notebook-btn" id="btn-open-notebook">這是秘密清單</button>
     </div>
   </div>
 
@@ -375,21 +375,26 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
   <div class="notebook-spread" onclick="event.stopPropagation()">
     <button class="notebook-close" onclick="closeNotebookDirect()">×</button>
     <div class="notebook-page">
-      <h3>☕ 口袋咖啡廳</h3>
+      <h3>☕ 讚讚咖啡廳</h3>
       <ul>
-        <li><strong>角落安靜選：</strong>巷弄裡不限時的老宅咖啡，有暖黃燈光與貓咪。</li>
-        <li><strong>手沖與肉桂捲：</strong>空氣中永遠飄著烘豆香氣的地方。</li>
-        <li><strong>深夜營業所：</strong>適合聊天到忘記時間的深夜咖啡館。</li>
-        <li><strong>窗景發呆亭：</strong>看著路上行人雨滴發呆的完美角落。</li>
+        <li><strong>REBIRTH：</strong>他可以不要倒嗎，我喜歡他的沙發喜歡跟你</li>
+        <li><strong>羊跳蚤：</strong>Rebirth沒有位置就去對面吧。</li>
+        <li><strong>黃山羊：</strong>肉桂捲好好吃，我想要吃肉桂捲</li>
+        <li><strong>Sugar man：</strong>開到凌晨四點，可以抽菸抽到爽。</li>
+        <li><strong>坵粼咖啡：</strong>大安森林公園旁邊，氣氛很好（不能抽煙）。</li>
+         <li><strong>半路咖啡：</strong>我們有一起在這裡過喔，還跑回去世新。</li>
+      </ul>
       </ul>
     </div>
     <div class="notebook-page">
-      <h3>🎬 電影清單</h3>
+      <h3>🎬 觀影清單</h3>
       <ul>
-        <li>《世界上最糟糕的人》— 那些還在摸索的人生階段。</li>
-        <li>《在布魯日登岸》— 帶點荒謬卻溫柔的告別。</li>
-        <li>《愛在黎明破曉時》— 在火車上遇見的無盡對話。</li>
-        <li>《瑞克與莫蒂》— 一起瘋狂穿越多元宇宙。</li>
+        <li>奧斯陸三部曲：世界上最爛的人、八月三十一我在奧斯陸、愛重奏</li>
+        <li>一直說一直說的電影：偶然與想像、在車上、長椅小情歌、婚姻故事</li>
+        <li>愛在三部曲:Before surise、Before sunset、Brfore midnight</li>
+        <li>白痴美式卡通:瑞克莫蒂、午夜福音、Dang</li>
+        <li>不錯追的劇：還沒晾乾的T恤、BEEF、The good place、怪奇物語</li>
+        <li>我少數的救贖：終極緝殺令、後來的我們、陽光普照、關於性</li>
       </ul>
     </div>
   </div>
@@ -554,8 +559,8 @@ document.getElementById('music-stop-btn').addEventListener('click', toggleMusic)
 document.getElementById('music-stop-btn-picker').addEventListener('click', toggleMusic);
 
 /* 隨機約會抽籤邏輯 */
-const locationsList = ['口袋咖啡廳（安靜角落）', '巷口公園散步', '舊書店挖寶', '河堤看夕陽', '家裡客廳看老電影'];
-const activitiesList = ['交換聽一首歌', '各自看書發呆', '拍奇怪的自拍', '亂逛超市買晚餐食材', '喝一杯聊聊天'];
+const locationsList = ['咖啡廳', '公園草地', '舊書店', '河堤海邊', '家裡軟乎乎的地毯', '家附近的街區'];
+const activitiesList = ['交換聽一首歌', '各自看書發呆', '拍奇怪的自拍', '為對方想一道料理一起買食材', '喝一杯聊聊天','天馬行空的創作''陪對方做一件他想做很久的事情'];
 
 document.getElementById('btn-pick-random').addEventListener('click', () => {
   playClickSound();
