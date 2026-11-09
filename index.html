@@ -391,7 +391,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
         <li><strong>黃山羊：</strong>肉桂捲好好吃，我想要吃肉桂捲</li>
         <li><strong>Sugar man：</strong>開到凌晨四點，可以抽菸抽到爽。</li>
         <li><strong>坵粼咖啡：</strong>大安森林公園旁邊，氣氛很好（不能抽煙）。</li>
-         <li><strong>半路咖啡：</strong>我們有一起在這裡過喔，還跑回去世新。</li>
+         <li><strong>半路咖啡：</strong>我們有一起在這裡過喔，還匆匆忙忙跑回去世新。</li>
       </ul>
     </div>
     <div class="notebook-page">
@@ -599,12 +599,17 @@ function toggleMusic() {
 document.getElementById('music-stop-btn').addEventListener('click', toggleMusic);
 document.getElementById('music-stop-btn-picker').addEventListener('click', toggleMusic);
 
-/* 隨機約會抽籤邏輯（完美防殘影疊字） */
+/* 隨機約會抽籤邏輯（完美修復淡入卡住與殘影） */
 const locationsList = ['咖啡廳', '公園草地', '舊書店', '河堤、海邊', '家裡軟乎乎的地毯', '家附近的街區'];
 const activitiesList = ['交換聽一首歌', '各自看書發呆', '拍奇怪的自拍', '為對方想一道料理一起買食材', '喝一杯聊聊天', '天馬行空的創作', '陪對方做一件他想做很久的事情'];
 
+let isPicking = false;
+
 document.getElementById('btn-pick-random').addEventListener('click', () => {
+  if (isPicking) return; // 防止連續點擊卡住
+  isPicking = true;
   playClickSound();
+  
   const locBox = document.getElementById('picker-loc');
   const actBox = document.getElementById('picker-act');
   
@@ -613,7 +618,7 @@ document.getElementById('btn-pick-random').addEventListener('click', () => {
   actBox.style.opacity = '0';
   
   setTimeout(() => {
-    // 2. 先清空舊文字，防止切換時殘影重疊
+    // 2. 清空舊文字
     locBox.textContent = '';
     actBox.textContent = '';
 
@@ -625,9 +630,13 @@ document.getElementById('btn-pick-random').addEventListener('click', () => {
     locBox.textContent = randomLoc;
     actBox.textContent = randomAct;
     
-    // 5. 淡入顯示
-    locBox.style.opacity = '1';
-    actBox.style.opacity = '1';
+    // 5. 確保 DOM 渲染後再淡入顯示
+    setTimeout(() => {
+      locBox.style.opacity = '1';
+      actBox.style.opacity = '1';
+      isPicking =- false; // 解除鎖定
+    }, 50);
+    
   }, 200);
 });
 const actionPrompt = document.getElementById('action-prompt'),
