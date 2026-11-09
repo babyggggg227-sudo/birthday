@@ -453,8 +453,8 @@ function lightCandle(index) {
   playAudio(lighterAudio, 1200);
   if (litCandles.size === 5) {
     cakeStep = 2;
-    actionPrompt.innerText = '許下願望吧<br>五個願望的額度';
-    typeWriterEffect('許下願望吧，有五次機會喔！<br>最後一個要好好的放在心裡', () => setTimeout(() => {
+    actionPrompt.innerText = '許下願望吧！五個願望的額度';
+    typeWriterEffect('許下願望吧，有五次機會喔！最後一個要好好的放在心裡', () => setTimeout(() => {
       actionPrompt.style.display = 'block';
       actionPrompt.innerText = '現在點擊或輕觸蠟燭即可熄滅';
     }, 2500));
