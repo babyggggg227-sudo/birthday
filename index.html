@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Caveat:wght@500;700&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--ink:#f8edf5;--pink:#ffb7d5;--lav:#d8c6ff;--mint:#b8f1df;--gold:#ffe5a8;--night:#171321}
@@ -71,8 +71,9 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 .section-next-container.unlocked,.section-next-container.visible{opacity:1;pointer-events:auto}
 
 .letter-container{position:relative;width:100%;max-width:500px;height:480px;display:flex;justify-content:center;align-items:center;margin-bottom:15px;pointer-events:none;perspective:1000px}
-.letter-paper{position:absolute;width:min(380px,90vw);height:420px;background:#fffaf0;color:#3e3442;padding:35px 30px;border-radius:3px;box-shadow:0 15px 40px #0009;text-align:left;font-family:'ZCOOL XiaoWei','Caveat','Noto Sans TC',sans-serif;font-weight:400;font-size:1.18rem;line-height:2.0;letter-spacing:0.04em;transform:translateY(35px) scaleY(.88);opacity:1;transition:transform 1.8s cubic-bezier(.22,.8,.25,1);z-index:1;overflow-y:auto;pointer-events:auto;background-image:linear-gradient(to bottom,#bd99b118 1px,transparent 1px);background-size:100% 2.3em;transform-origin:bottom center}
-.letter-paper h3{font-weight:700;margin-bottom:8px;font-size:1.35rem}
+/* 信紙字體改用標準繁體黑體（Noto Sans TC），字重調細 (300)，間距與原本一致 */
+.letter-paper{position:absolute;width:min(380px,90vw);height:420px;background:#fffaf0;color:#3e3442;padding:35px 30px;border-radius:3px;box-shadow:0 15px 40px #0009;text-align:left;font-family:'Noto Sans TC',sans-serif;font-weight:300;font-size:1.05rem;line-height:1.9;letter-spacing:0.04em;transform:translateY(35px) scaleY(.88);opacity:1;transition:transform 1.8s cubic-bezier(.22,.8,.25,1);z-index:1;overflow-y:auto;pointer-events:auto;background-image:linear-gradient(to bottom,#bd99b118 1px,transparent 1px);background-size:100% 2.2em;transform-origin:bottom center}
+.letter-paper h3{font-weight:500;margin-bottom:8px;font-size:1.2rem}
 .letter-paper.pulled{transform:translateY(-90px) scaleY(1)}
 .envelope{position:absolute;width:min(420px,95vw);height:260px;background:linear-gradient(135deg,#5b4268,#352a49);border:1px solid #ffffff55;border-radius:4px;z-index:3;display:flex;align-items:center;justify-content:center;transition:transform 1s cubic-bezier(.2,.8,.2,1),opacity 1s ease;pointer-events:auto;box-shadow:0 12px 30px #0008}
 .envelope.torn{transform:translateY(180px) scale(.95);opacity:.2;pointer-events:none}
@@ -349,7 +350,7 @@ const passwordError = document.getElementById('password-error');
 // 多種有趣的隨機錯誤訊息
 const errorMessages = [
   '你想什麼時候想見到我',
-  '沒關係啊就再也不見面',
+  '沒關係啊啊就再也不見面',
   '才不是這個日期，你就不想我嗎',
   '這是我堅持不下去的時候，就會告訴自己快到了',
   '我一直倒數著這個時間',
