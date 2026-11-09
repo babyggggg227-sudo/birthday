@@ -17,7 +17,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 
 .home-content{display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
 
-/* 密碼輸入畫面區塊（恢復上一版字體設定） */
+/* 密碼輸入畫面區塊 */
 .password-stage{display:flex;flex-direction:column;align-items:center;gap:14px;transition:opacity 0.6s ease}
 .password-hint{font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.35rem;letter-spacing:.1em;color:#ffe9f5;text-shadow:0 2px 9px #ffacd466;line-height:1.5}
 .password-box{display:flex;gap:10px;margin-bottom:6px}
@@ -81,14 +81,13 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 .envelope-text{font-family:'Noto Sans TC',sans-serif;font-size:1.1rem;color:#fff;letter-spacing:.15em;margin-top:30px;z-index:4}
 #letter-next-container{position:relative;z-index:20}
 
-/* 輪播畫面：放大框框，並提供充裕的文字高度避免卡住 */
+/* 輪播畫面：完美置中與自動防卡住 */
 .slider-wrapper{position:relative;width:min(720px,90vw);max-height:85vh;overflow:hidden;background:#241e2a;border-radius:8px;box-shadow:0 20px 50px #000b;border:1px solid #ffffff3b;margin:0 auto 12px auto;touch-action:pan-y}
 .slider-track{display:flex;width:100%;height:100%;transition:transform .6s cubic-bezier(.25,1,.5,1)}
 .slide-item{min-width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px;margin:0 auto;}
 .slide-img{width:100%;height:calc(100% - 90px);object-fit:contain;background:#171321;border-radius:4px;}
 .slide-caption-overlay{width:100%;min-height:75px;background:#302637;display:flex;align-items:center;justify-content:center;font-family:'Noto Sans TC',sans-serif;font-size:0.85rem;font-weight:500;letter-spacing:.04em;color:#ffffffdd;padding:8px 12px;text-align:center;line-height:1.4;}
 .slider-hint{font-family:'Noto Sans TC',sans-serif;margin-bottom:8px;font-size:0.9rem;color:#ffffffaa;letter-spacing:.12em}
-
 
 /* 最後按鈕區塊排版 */
 .line-btn-container{margin-top:14px;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;pointer-events:none;transition:opacity 1s}
@@ -349,12 +348,12 @@ const passwordError = document.getElementById('password-error');
 
 // 多種有趣的隨機錯誤訊息
 const errorMessages = [
-  '你想什麼時候見到我呢',
-  '再輸錯沒關係啊！就再也不見面',
-  '才不是這個日期！！！你就不想我嗎',
-  '這是我堅持不下去的時候，就會告訴自己快到這個日期了',
-  '我一直倒數著這個日期，期待回去的時候',
-  '要一直好好記得喔，我們都有一起期待著'
+  '你想什麼時候想見到我',
+  '沒關係啊就再也不見面',
+  '才不是這個日期，你就不想我嗎',
+  '這是我堅持不下去的時候，就會告訴自己快到了',
+  '我一直倒數著這個時間',
+  '要一直好好記得喔'
 ];
 
 pinInputs.forEach((input, index) => {
@@ -454,11 +453,11 @@ function lightCandle(index) {
   playAudio(lighterAudio, 1200);
   if (litCandles.size === 5) {
     cakeStep = 2;
-    actionPrompt.innerText = '許下願望吧！五個願望的額度';
-    typeWriterEffect('許下願望吧，有五次機會喔！最後一個要好好的放在心裡', () => setTimeout(() => {
+    actionPrompt.innerText = '許下願望吧';
+    typeWriterEffect('許下願望吧，最後一個要好好的放在心裡', () => setTimeout(() => {
       actionPrompt.style.display = 'block';
       actionPrompt.innerText = '現在點擊或輕觸蠟燭即可熄滅';
-    }, 2500));
+    }, 1000));
   }
 }
 
@@ -533,7 +532,7 @@ function typeWriterEffect(text, callback) {
 const stories = {
   1: { title: '抽菸啊', img: '抽菸.png', story: '我們在很多地方一起抽著菸。咖啡廳、畫外音，抽著抽著好像就這樣在一起了。一年後，年紀不小了，記得克制點，注意身體健康，追逐夢想的前提是要一切好好的，我還想看你活很久很久喔。' },
   2: { title: '做過了好多事呢', img: '花花.png', story: '我們這一年一起看過了不少電影喔、也聽過了不少的音樂，很謝謝你在這一年陪我去很多很多展覽！你覺得這麼不一樣的世界有趣嗎？對於我而言，我是滿喜歡的啦' },
-  3: { title: '奇奇怪怪的你和我', img: '奇怪自拍.png', story: '我其實一直都知道你很在乎你的外表，我也是，你害怕著鏡頭，我懂那種不敢照鏡子的感覺。因為我知道，所以才想著透過奇奇怪怪的拍照方式讓你稍微習慣鏡頭一點吧，也多多少少記錄一下我們，希望在接下來的時間你還是可以慢慢練習，慢慢習慣' },
+  3: { title: '奇奇怪怪的你和我', img: '奇怪自拍.png', story: '我其實一直都知道你很在乎你的外表，我也是，u你害怕著鏡頭，我懂那種不敢照鏡子的感覺。因為我知道，所以才想著透過奇奇怪怪的拍照方式讓你稍微習慣鏡頭一點吧，也多多少少記錄一下我們，希望在接下來的時間你還是可以慢慢練習，慢慢習慣' },
   4: { title: '要長大了喔', img: '分開.png', story: '長大就是開始學會習慣那些可能不會太舒服的事情，或許是分開，或許是再見，或許是逐漸接受那些原本這輩子都不可能接受的事情。但你是陳正義欸，我知道你是不會妥協的，所以繼續保持吧，我會一直一直看著你的！生日快樂！' }
 };
 
@@ -600,7 +599,9 @@ const totalSlides = 13,
       lineBtnContainer = document.getElementById('line-btn-container');
 
 function updateSlide() {
-  sliderTrack.style.transform = `translateX(-${currentSlide * sliderWrapper.offsetWidth}px)`;
+  // 修正手機滑動定位：使用當前 slideItem 的實際寬度來計算，避免越滑越偏左
+  const slideWidth = sliderWrapper.querySelector('.slide-item').offsetWidth;
+  sliderTrack.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
   if (currentSlide === totalSlides - 1) {
     lineBtnContainer.classList.add('visible');
   }
