@@ -247,7 +247,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
   <div class="letter-container">
     <div class="letter-paper" id="letter-paper">
       <h3>嗨正義哥：</h3>
-      <p id="letter-text"></p>
+      <p>想了想，還是想好好祝你生日快樂。在那之前先說抱歉，在接近你生日的時候毀了他。<br>長大了一歲，過去的一年我們一起看過了很多不一樣的風景，也各自在不同的路上創造了很多故事。我還是會偶爾想起台北的細雨，想起在潮濕冷空氣抽煙的日子。<br>其實我還是會想像跟你的未來，比你認為的還要多很多，可是現在好像沒有那種勇氣了<br>我可以繼續當那一個旁觀者就好了，看著你越來越好<br>所以呀，時間在前進，我們也一步一步往前，不急著成為一個完美的大人，慢慢地走呀走就好了。<br>過了一年，生日快樂。</p>
     </div>
     <div class="envelope" id="envelope" onclick="tearEnvelope()">
       <div class="envelope-flap"></div>
@@ -321,9 +321,9 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
   </div>
   <div class="line-btn-container" id="line-btn-container">
     <div class="line-btn-row">
-      <a href="https://line.me/ti/p/rRB0-1SSeX" target="_blank" rel="noopener noreferrer" class="line-btn">想我就打給我</a>
-      <a href="https://line.me/ti/p/rRB0-1SSeX" target="_blank" rel="noopener noreferrer" class="line-btn">這個就要V我100了</a>
-      <a href="https://canva.link/06dcu0hb0u6cfyg" target="_blank" rel="noopener noreferrer" class="line-btn">看完之後不要留在過去了</a>
+      <a href="https://line.me/ti/p/rRB0-1SSeX" target="_blank" rel="noopener noreferrer" class="line-btn">想我就打給我吧</a>
+      <a href="https://line.me/ti/p/rRB0-1SSeX" target="_blank" rel="noopener noreferrer" class="line-btn">V我50</a>
+      <a href="https://canva.link/06dcu0hb0u6cfyg" target="_blank" rel="noopener noreferrer" class="line-btn">去年的回憶</a>
     </div>
     <!-- 🥚 蛋的閃爍彩蛋按鈕 -->
     <a href="#" class="easter-egg-btn" id="btn-goto-picker">🥚 點我點我點我</a>
@@ -331,13 +331,12 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
   </div>
 </div>
 
-<!-- 隨機約會抽籤頁面（已拆成兩格子與下方筆記本清單） -->
+<!-- 隨機約會抽籤頁面 -->
 <div id="section-picker" class="stage-section">
   <button class="back-btn" onclick="switchSection(secPicker, secSlider)">← 返回相簿</button>
   <div class="picker-card">
     <div class="picker-title">🎲 今天去哪裡？約會盲盒</div>
     
-    <!-- 拆成兩個格子：地點與做什麼 -->
     <div class="picker-grid">
       <div class="picker-box">
         <div class="picker-box-label">📍 地點</div>
@@ -353,8 +352,14 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
       <button type="button" class="line-btn" id="btn-pick-random">抽一個約會行程</button>
     </div>
 
-    <!-- 下方筆記本清單按鈕 -->
-    <div class="notebook-trigger-row">
+    <!-- 盲盒專屬的三個按鈕 -->
+    <div class="line-btn-row" style="margin-top: 6px;">
+      <a href="https://line.me/ti/p/rRB0-1SSeX" target="_blank" rel="noopener noreferrer" class="line-btn">想我就打給我</a>
+      <a href="https://line.me/ti/p/rRB0-1SSeX" target="_blank" rel="noopener noreferrer" class="line-btn">這個就要V我100了</a>
+      <a href="https://canva.link/06dcu0hb0u6cfyg" target="_blank" rel="noopener noreferrer" class="line-btn">看完之後不要留在過去了</a>
+    </div>
+
+    <div class="notebook-trigger-row" style="margin-top: 10px;">
       <button type="button" class="notebook-btn" id="btn-open-notebook">📖 開啟隨身筆記本（口袋咖啡廳 ＆ 電影清單）</button>
     </div>
   </div>
@@ -364,11 +369,10 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
   </div>
 </div>
 
-<!-- 筆記本燈箱展開頁面（左邊口袋咖啡廳，右邊電影清單） -->
+<!-- 筆記本燈箱展開頁面 -->
 <div class="notebook-modal" id="notebook-modal" onclick="closeNotebook(event)">
   <div class="notebook-spread" onclick="event.stopPropagation()">
     <button class="notebook-close" onclick="closeNotebookDirect()">×</button>
-    <!-- 左頁：口袋咖啡廳 -->
     <div class="notebook-page">
       <h3>☕ 口袋咖啡廳</h3>
       <ul>
@@ -378,7 +382,6 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
         <li><strong>窗景發呆亭：</strong>看著路上行人雨滴發呆的完美角落。</li>
       </ul>
     </div>
-    <!-- 右頁：電影清單 -->
     <div class="notebook-page">
       <h3>🎬 電影清單</h3>
       <ul>
@@ -528,7 +531,7 @@ function closeNotebook(e) {
   if (e.target === notebookModal) notebookModal.classList.remove('active');
 }
 
-// Emoji 音樂暫停／播放切換控制（同步兩顆按鈕與 emoji 狀態）
+// Emoji 音樂暫停／播放切換控制
 function toggleMusic() {
   playClickSound();
   const btn1 = document.getElementById('music-stop-btn');
@@ -549,7 +552,7 @@ function toggleMusic() {
 document.getElementById('music-stop-btn').addEventListener('click', toggleMusic);
 document.getElementById('music-stop-btn-picker').addEventListener('click', toggleMusic);
 
-/* 隨機約會抽籤邏輯（分別抽地點與做什麼） */
+/* 隨機約會抽籤邏輯 */
 const locationsList = ['口袋咖啡廳（安靜角落）', '巷口公園散步', '舊書店挖寶', '河堤看夕陽', '家裡客廳看老電影'];
 const activitiesList = ['交換聽一首歌', '各自看書發呆', '拍奇怪的自拍', '亂逛超市買晚餐食材', '喝一杯聊聊天'];
 
@@ -729,8 +732,6 @@ document.querySelectorAll('.polaroid').forEach(item => {
 document.getElementById('btn-goto-letter').addEventListener('click', () => switchSection(secGallery, secLetter));
 
 let envelopeOpened = false;
-const fullLetterText = "想了想，還是想好好祝你生日快樂。在那之前先說抱歉，在接近你生日的時候毀了他。<br>長大了一歲，過去的一年我們一起看過了很多不一樣的風景，也各自在不同的路上創造了很多故事。我還是會偶爾想起台北的細雨，想起在潮濕冷空氣抽煙的日子。<br>其實我還是會想像跟你的未來，比你認為的還要多很多，可是現在好像沒有那種勇氣了<br>我可以繼續當那一個旁觀者就好了，看著你越來越好<br>所以呀，時間在前進，我們也一步一步往前，不急著成為一個完美的大人，慢慢地走呀走就好了。<br>過了一年，生日快樂。";
-
 function tearEnvelope() {
   if (envelopeOpened) return;
   envelopeOpened = true;
@@ -739,33 +740,7 @@ function tearEnvelope() {
         p = document.getElementById('letter-paper');
   e.classList.add('torn');
   setTimeout(() => p.classList.add('pulled'), 450);
-  
-  setTimeout(() => {
-    typeLetterEffect(fullLetterText, () => {
-      document.getElementById('letter-next-container').classList.add('visible');
-    });
-  }, 1200);
-}
-
-function typeLetterEffect(htmlText, callback) {
-  const targetBox = document.getElementById('letter-text');
-  targetBox.innerHTML = '';
-  let i = 0;
-  function type() {
-    if (i < htmlText.length) {
-      if (htmlText.substr(i, 4) === '<br>') {
-        targetBox.innerHTML += '<br>';
-        i += 4;
-      } else {
-        targetBox.innerHTML += htmlText.charAt(i);
-        i++;
-      }
-      setTimeout(type, 45);
-    } else if (callback) {
-      callback();
-    }
-  }
-  type();
+  setTimeout(() => document.getElementById('letter-next-container').classList.add('visible'), 2300);
 }
 
 document.getElementById('btn-goto-slider').addEventListener('click', () => switchSection(secLetter, secSlider));
