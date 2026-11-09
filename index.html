@@ -17,7 +17,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 
 .home-content{display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
 
-/* 密碼輸入畫面區塊（四個分散格子，附帶閃爍鼠標） */
+/* 密碼輸入畫面區塊（四個分散格子，一進入就自動聚焦） */
 .password-stage{display:flex;flex-direction:column;align-items:center;gap:14px;transition:opacity 0.6s ease}
 .password-hint{font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.35rem;letter-spacing:.1em;color:#ffe9f5;text-shadow:0 2px 9px #ffacd466;line-height:1.5}
 .password-box{display:flex;gap:10px;margin-bottom:6px}
@@ -102,14 +102,14 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 .easter-egg-btn:hover{background:#ffb7d515;transform:translateY(-2px)}
 @keyframes blink-fast{0%{opacity:0.3;transform:scale(0.98)}100%{opacity:1;transform:scale(1.02)}}
 
-/* 抽籤頁面樣式：雙格子調整（支援高度自適應，絕不被遮擋） */
+/* 抽籤頁面樣式：防疊字與長文字自適應 */
 .picker-card{background:#2a2232;border:1px solid #ffffff55;max-width:550px;width:92%;padding:24px;border-radius:12px;text-align:center;box-shadow:0 20px 50px #000b;display:flex;flex-direction:column;gap:16px;align-items:center}
 .picker-title{font-family:'Noto Sans TC',sans-serif;font-size:1.25rem;letter-spacing:.1em;color:#b8f1df;margin-bottom:2px}
 
 .picker-grid{display:flex;gap:12px;width:100%}
-.picker-box{flex:1;background:#171321;border:1px dashed #b8f1df66;padding:18px 12px;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:120px;height:auto;font-family:'Noto Sans TC',sans-serif}
-.picker-box-label{font-size:0.85rem;color:#b8f1dfaa;letter-spacing:.1em;margin-bottom:8px}
-.picker-box-content{font-size:1.05rem;color:#ffe9f5;line-height:1.5;text-align:center;word-break:break-all}
+.picker-box{flex:1;background:#171321;border:1px dashed #b8f1df66;padding:18px 12px;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:130px;height:auto;font-family:'Noto Sans TC',sans-serif}
+.picker-box-label{font-size:0.85rem;color:#b8f1dfaa;letter-spacing:.1em;margin-bottom:8px;flex-shrink:0}
+.picker-box-content{font-size:0.98rem;color:#ffe9f5;line-height:1.5;text-align:center;word-break:break-all;transition:opacity 0.25s ease;opacity:1}
 
 /* 清單與筆記本互動樣式 */
 .notebook-trigger-row{display:flex;gap:10px;justify-content:center;width:100%;margin-top:4px}
@@ -445,13 +445,11 @@ function playClickSound() { playAudio(clickAudio, 700); }
 
 /* 一進入網頁就嘗試自動播放音樂，並讓第一格密碼框直接自動聚焦（顯示鼠標） */
 window.addEventListener('DOMContentLoaded', () => {
-  // 自動聚焦到第一格密碼框
   const firstInput = document.getElementById('pin-first');
   if (firstInput) {
     firstInput.focus();
   }
 
-  // 音樂自動播放嘗試
   music.volume = MUSIC_VOLUME;
   music.play().catch(() => {
     const unlockAudio = () => {
@@ -476,7 +474,7 @@ const errorMessages = [
   '沒關係啊，就再也不見面，你這樣開心嗎',
   '才不是這個日期，你就沒有很想我嗎',
   '這是我堅持不下去的時候，就會告訴自己再一下下就可以看到你了',
-  '我一直偷偷數著日子，期待著那天到來',
+  'I一直偷偷數著日子，期待著那天到來',
   '妳要好好記得喔，有人願意飛好久好久就為了看到你'
 ];
 
@@ -592,7 +590,7 @@ function toggleMusic() {
 document.getElementById('music-stop-btn').addEventListener('click', toggleMusic);
 document.getElementById('music-stop-btn-picker').addEventListener('click', toggleMusic);
 
-/* 隨機約會抽籤邏輯（徹底解決文字疊影問題） */
+/* 隨機約會抽籤邏輯（完美防止長文字疊字） */
 const locationsList = ['咖啡廳', '公園草地', '舊書店', '河堤海邊', '家裡軟乎乎的地毯', '家附近的街區'];
 const activitiesList = ['交換聽一首歌', '各自看書發呆', '拍奇怪的自拍', '為對方想一道料理一起買食材', '喝一杯聊聊天', '天馬行空的創作', '陪對方做一件他想做很久的事情'];
 
@@ -601,26 +599,25 @@ document.getElementById('btn-pick-random').addEventListener('click', () => {
   const locBox = document.getElementById('picker-loc');
   const actBox = document.getElementById('picker-act');
   
-  // 1. 先讓文字淡出，並在淡出瞬間清空文字，避免殘留疊影
-  locBox.style.transition = 'opacity 0.2s ease';
-  actBox.style.transition = 'opacity 0.2s ease';
+  // 1. 先讓內容淡出並清空
   locBox.style.opacity = '0';
   actBox.style.opacity = '0';
   
   setTimeout(() => {
-    // 2. 隨機選出新文字
+    // 2. 隨機選取新字串
     const randomLoc = locationsList[Math.floor(Math.random() * locationsList.length)];
     const randomAct = activitiesList[Math.floor(Math.random() * activitiesList.length)];
     
-    // 3. 賦予新文字
+    // 3. 更新文字
     locBox.textContent = randomLoc;
     actBox.textContent = randomAct;
     
-    // 4. 淡入顯示新文字
+    // 4. 淡入顯示
     locBox.style.opacity = '1';
     actBox.style.opacity = '1';
   }, 200);
 });
+
 const actionPrompt = document.getElementById('action-prompt'),
       lighterArea = document.getElementById('lighter-area'),
       lighter = document.getElementById('lighter'),
