@@ -21,7 +21,21 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 .password-stage{display:flex;flex-direction:column;align-items:center;gap:14px;transition:opacity 0.6s ease}
 .password-hint{font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.35rem;letter-spacing:.1em;color:#ffe9f5;text-shadow:0 2px 9px #ffacd466;line-height:1.5}
 .password-box{display:flex;gap:10px;margin-bottom:6px}
-.pin-input{width:55px;height:60px;background:transparent;border:2px solid #b8f1df;border-radius:12px;color:#b8f1df;font-size:1.8rem;text-align:center;font-family:'Noto Sans TC',sans-serif;box-shadow:0 0 12px #b8f1df22,inset 0 0 10px #b8f1df11;outline:none;transition:all .25s;}
+.pin-input{
+  width: 55px;
+  height: 60px;
+  background: transparent;
+  border: 2px solid #b8f1df;
+  border-radius: 12px;
+  color: #b8f1df;
+  font-size: 1.8rem;
+  text-align: center;
+  font-family: 'Noto Sans TC', sans-serif;
+  box-shadow: 0 0 12px #b8f1df22, inset 0 0 10px #b8f1df11;
+  outline: none;
+  transition: all .25s;
+  caret-color: auto; /* 確保顯示正常的鼠標游標 */
+}
 .pin-input:focus{border-color:#ffb7d5;box-shadow:0 0 20px #ffb7d566;background:#b8f1df0a}
 .password-error{font-family:'Noto Sans TC',sans-serif;font-size:0.95rem;color:#ff85a1;min-height:24px;letter-spacing:.08em;text-shadow:0 2px 6px #0008}
 
