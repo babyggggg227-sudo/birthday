@@ -304,7 +304,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
       </div>
       <div class="slide-item">
         <img src="20260422第一次遇到巫師.png" class="slide-img" alt="回憶照片">
-        <div class="slide-caption-overlay">【2026.04.22】第一次遇到巫師，開啟我們無恥要免費的日子，超爽的</div>
+        <div class="slide-caption-overlay">【2026.04.22】第一次遇到巫師，開啟我們無恥要免費大杯冰美式的日子，超爽的</div>
       </div>
       <div class="slide-item">
         <img src="20260502我們一起走到人生新階段了.png" class="slide-img" alt="回憶照片">
@@ -312,7 +312,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
       </div>
       <div class="slide-item">
         <img src="20260717一起去上班pt2.png" class="slide-img" alt="回憶照片">
-        <div class="slide-caption-overlay">【2026.07.17】又是樓梯間，我在想這一天，我們又是為了什麼而出門呢？<br>你讓我的租屋住變好玩了</div>
+        <div class="slide-caption-overlay">【2026.07.17】又是雞窩，我在想這一天，我們又是為了什麼而出門呢？<br>你讓我的租屋住變好玩了</div>
       </div>
       <div class="slide-item">
         <img src="20260804好好的最後一次約會.png" class="slide-img" alt="回憶照片">
@@ -599,8 +599,8 @@ function toggleMusic() {
 document.getElementById('music-stop-btn').addEventListener('click', toggleMusic);
 document.getElementById('music-stop-btn-picker').addEventListener('click', toggleMusic);
 
-/* 隨機約會抽籤邏輯（完美防止長文字疊字） */
-const locationsList = ['咖啡廳', '公園草地', '舊書店', '河堤海邊', '家裡軟乎乎的地毯', '家附近的街區'];
+/* 隨機約會抽籤邏輯（完美防殘影疊字） */
+const locationsList = ['咖啡廳', '公園草地', '舊書店', '河堤、海邊', '家裡軟乎乎的地毯', '家附近的街區'];
 const activitiesList = ['交換聽一首歌', '各自看書發呆', '拍奇怪的自拍', '為對方想一道料理一起買食材', '喝一杯聊聊天', '天馬行空的創作', '陪對方做一件他想做很久的事情'];
 
 document.getElementById('btn-pick-random').addEventListener('click', () => {
@@ -608,25 +608,28 @@ document.getElementById('btn-pick-random').addEventListener('click', () => {
   const locBox = document.getElementById('picker-loc');
   const actBox = document.getElementById('picker-act');
   
-  // 1. 先讓內容淡出並清空
+  // 1. 先讓內容淡出
   locBox.style.opacity = '0';
   actBox.style.opacity = '0';
   
   setTimeout(() => {
-    // 2. 隨機選取新字串
+    // 2. 先清空舊文字，防止切換時殘影重疊
+    locBox.textContent = '';
+    actBox.textContent = '';
+
+    // 3. 隨機選取新字串
     const randomLoc = locationsList[Math.floor(Math.random() * locationsList.length)];
     const randomAct = activitiesList[Math.floor(Math.random() * activitiesList.length)];
     
-    // 3. 更新文字
+    // 4. 更新文字
     locBox.textContent = randomLoc;
     actBox.textContent = randomAct;
     
-    // 4. 淡入顯示
+    // 5. 淡入顯示
     locBox.style.opacity = '1';
     actBox.style.opacity = '1';
   }, 200);
 });
-
 const actionPrompt = document.getElementById('action-prompt'),
       lighterArea = document.getElementById('lighter-area'),
       lighter = document.getElementById('lighter'),
