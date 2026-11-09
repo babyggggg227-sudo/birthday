@@ -570,29 +570,32 @@ function toggleMusic() {
 document.getElementById('music-stop-btn').addEventListener('click', toggleMusic);
 document.getElementById('music-stop-btn-picker').addEventListener('click', toggleMusic);
 
-/* 隨機約會抽籤邏輯 */
+/* 隨機約會抽籤邏輯（防疊字修正版） */
 const locationsList = ['咖啡廳', '公園草地', '舊書店', '河堤海邊', '家裡軟乎乎的地毯', '家附近的街區'];
 const activitiesList = ['交換聽一首歌', '各自看書發呆', '拍奇怪的自拍', '為對方想一道料理一起買食材', '喝一杯聊聊天', '天馬行空的創作', '陪對方做一件他想做很久的事情'];
 
 document.getElementById('btn-pick-random').addEventListener('click', () => {
   playClickSound();
-  const randomLoc = locationsList[Math.floor(Math.random() * locationsList.length)];
-  const randomAct = activitiesList[Math.floor(Math.random() * activitiesList.length)];
-  
   const locBox = document.getElementById('picker-loc');
   const actBox = document.getElementById('picker-act');
   
+  // 先讓文字淡出
+  locBox.style.transition = 'opacity 0.25s ease';
+  actBox.style.transition = 'opacity 0.25s ease';
   locBox.style.opacity = '0';
   actBox.style.opacity = '0';
   
+  // 等淡出後立刻換字並淡入，確保不會疊影
   setTimeout(() => {
+    const randomLoc = locationsList[Math.floor(Math.random() * locationsList.length)];
+    const randomAct = activitiesList[Math.floor(Math.random() * activitiesList.length)];
+    
     locBox.textContent = randomLoc;
     actBox.textContent = randomAct;
-    locBox.style.transition = 'opacity 0.4s ease';
-    actBox.style.transition = 'opacity 0.4s ease';
+    
     locBox.style.opacity = '1';
     actBox.style.opacity = '1';
-  }, 200);
+  }, 250);
 });
 
 const actionPrompt = document.getElementById('action-prompt'),
