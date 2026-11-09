@@ -12,7 +12,7 @@ body{background:radial-gradient(ellipse at 18% 15%,#352546 0%,transparent 38%),r
 button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='20'%3E%F0%9F%90%A5%3C/text%3E%3C/svg%3E") 2 2,pointer}
 
 /* 修正各頁面的層級與開關控制 */
-.stage-section{position:absolute;inset:0;width:100vw;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 1.2s cubic-bezier(.4,0,.2,1);padding:20px;z-index:1}
+.stage-section{position:absolute;inset:0;width:100vw;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 1.2s cubic-bezier(.4,0,.2,1);padding:20px;z-index:1;overflow-y:auto}
 .stage-section.active{opacity:1;pointer-events:auto;z-index:10}
 
 .home-content{display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
@@ -102,10 +102,34 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 .easter-egg-btn:hover{background:#ffb7d515;transform:translateY(-2px)}
 @keyframes blink-fast{0%{opacity:0.3;transform:scale(0.98)}100%{opacity:1;transform:scale(1.02)}}
 
-/* 抽籤頁面樣式 */
-.picker-card{background:#2a2232;border:1px solid #ffffff55;max-width:480px;width:90%;padding:30px;border-radius:12px;text-align:center;box-shadow:0 20px 50px #000b;display:flex;flex-direction:column;gap:20px;align-items:center}
-.picker-title{font-family:'Noto Sans TC',sans-serif;font-size:1.3rem;letter-spacing:.1em;color:#b8f1df;margin-bottom:5px}
-.result-box{background:#171321;border:1px dashed #b8f1df66;padding:20px;border-radius:8px;width:100%;min-height:90px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;color:#ffe9f5;line-height:1.6;font-family:'Noto Sans TC',sans-serif;text-align:center}
+/* 抽籤頁面樣式：雙格子調整 */
+.picker-card{background:#2a2232;border:1px solid #ffffff55;max-width:550px;width:92%;padding:24px;border-radius:12px;text-align:center;box-shadow:0 20px 50px #000b;display:flex;flex-direction:column;gap:16px;align-items:center}
+.picker-title{font-family:'Noto Sans TC',sans-serif;font-size:1.25rem;letter-spacing:.1em;color:#b8f1df;margin-bottom:2px}
+
+.picker-grid{display:flex;gap:12px;width:100%}
+.picker-box{flex:1;background:#171321;border:1px dashed #b8f1df66;padding:15px 10px;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:90px;font-family:'Noto Sans TC',sans-serif}
+.picker-box-label{font-size:0.85rem;color:#b8f1dfaa;letter-spacing:.1em;margin-bottom:6px}
+.picker-box-content{font-size:1.05rem;color:#ffe9f5;line-height:1.4;text-align:center}
+
+/* 清單與筆記本互動樣式 */
+.notebook-trigger-row{display:flex;gap:10px;justify-content:center;width:100%;margin-top:4px}
+.notebook-btn{background:#352a49;color:#ffe9f5;border:1px solid #b8f1df44;padding:8px 16px;border-radius:8px;font-size:0.9rem;font-family:'Noto Sans TC',sans-serif;cursor:pointer;transition:background .2s,transform .2s}
+.notebook-btn:hover{background:#483860;transform:translateY(-2px)}
+
+/* 筆記本燈箱展開樣式 */
+.notebook-modal{position:fixed;inset:0;width:100%;height:100%;background:#15101bd9;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s;z-index:2000;padding:15px}
+.notebook-modal.active{opacity:1;pointer-events:auto}
+.notebook-spread{background:#fffaf0;color:#3e3442;max-width:780px;width:100%;height:450px;border-radius:6px;box-shadow:0 20px 60px #000b;display:flex;position:relative;overflow:hidden;font-family:'Noto Sans TC',sans-serif}
+.notebook-page{flex:1;padding:30px 25px;overflow-y:auto;background-image:linear-gradient(to bottom,#bd99b115 1px,transparent 1px);background-size:100% 2.2em;line-height:2.2}
+.notebook-page:first-child{border-right:2px dashed #d8c6ff88}
+.notebook-page h3{font-size:1.15rem;margin-bottom:12px;color:#5b4268;font-weight:700;border-bottom:2px solid #5b426822;padding-bottom:4px}
+.notebook-page ul{padding-left:20px;font-size:0.95rem;color:#493b50}
+.notebook-page li{margin-bottom:8px}
+.notebook-close{position:absolute;top:10px;right:15px;background:none;border:0;color:#5b4268;font-size:1.6rem;cursor:pointer;z-index:10}
+
+/* Emoji 暫停按鈕樣式 */
+.emoji-music-btn{background:transparent;border:2px solid #ffb7d5;color:#ffb7d5;width:42px;height:42px;border-radius:50%;font-size:1.2rem;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 0 12px #ffb7d533;transition:transform .2s,background .2s;margin:0 auto}
+.emoji-music-btn:hover{background:#ffb7d515;transform:scale(1.08)}
 
 /* 返回按鈕樣式 */
 .back-btn{position:absolute;top:20px;left:20px;background:#ffffff15;border:1px solid #ffffff44;color:#fff;padding:8px 16px;border-radius:999px;font-family:'Noto Sans TC',sans-serif;font-size:0.9rem;letter-spacing:.08em;z-index:50;transition:background .2s,transform .2s}
@@ -130,6 +154,8 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
   .candles-container{top:43px}
   .lighter-custom{width:88px;height:128px}
   .line-btn-container{margin-top:12px}
+  .notebook-spread{flex-direction:column;height:85vh}
+  .notebook-page:first-child{border-right:none;border-bottom:2px dashed #d8c6ff88}
 }
 </style>
 </head>
@@ -221,7 +247,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
   <div class="letter-container">
     <div class="letter-paper" id="letter-paper">
       <h3>嗨正義哥：</h3>
-      <p>想了想，還是想好好祝你生日快樂。在那之前先說抱歉，在接近你生日的時候毀了他。<br>長大了一歲，過去的一年我們一起看過了很多不一樣的風景，也各自在不同的路上創造了很多故事。我還是會偶爾想起台北的細雨，想起在潮濕冷空氣抽煙的日子。<br>其實我還是會想像跟你的未來，比你認為的還要多很多，可是現在好像沒有那種勇氣了<br>我可以繼續當那一個旁觀者就好了，看著你越來越好<br>所以呀，時間在前進，我們也一步一步往前，不急著成為一個完美的大人，慢慢地走呀走就好了。<br>過了一年，生日快樂。</p>
+      <p id="letter-text"></p>
     </div>
     <div class="envelope" id="envelope" onclick="tearEnvelope()">
       <div class="envelope-flap"></div>
@@ -296,27 +322,72 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
   <div class="line-btn-container" id="line-btn-container">
     <div class="line-btn-row">
       <a href="https://line.me/ti/p/rRB0-1SSeX" target="_blank" rel="noopener noreferrer" class="line-btn">想我就打給我</a>
-      <a href="https://line.me/ti/p/rRB0-1SSeX" target="_blank" rel="noopener noreferrer" class="line-btn">V我50</a>
-      <a href="https://canva.link/06dcu0hb0u6cfyg" target="_blank" rel="noopener noreferrer" class="line-btn">回憶去年寫的</a>
+      <a href="https://line.me/ti/p/rRB0-1SSeX" target="_blank" rel="noopener noreferrer" class="line-btn">這個就要V我100了</a>
+      <a href="https://canva.link/06dcu0hb0u6cfyg" target="_blank" rel="noopener noreferrer" class="line-btn">看完之後不要留在過去了</a>
     </div>
     <!-- 🥚 蛋的閃爍彩蛋按鈕 -->
     <a href="#" class="easter-egg-btn" id="btn-goto-picker">🥚 點我點我點我</a>
-    <button type="button" class="music-stop-btn" id="music-stop-btn">停止播放音樂</button>
+    <button type="button" class="emoji-music-btn" id="music-stop-btn" title="暫停/播放音樂">⏸️</button>
   </div>
 </div>
 
-<!-- 隨機約會抽籤頁面（小彩蛋） -->
+<!-- 隨機約會抽籤頁面（已拆成兩格子與下方筆記本清單） -->
 <div id="section-picker" class="stage-section">
   <button class="back-btn" onclick="switchSection(secPicker, secSlider)">← 返回相簿</button>
   <div class="picker-card">
     <div class="picker-title">🎲 今天去哪裡？約會盲盒</div>
-    <div class="result-box" id="picker-result">點擊下方按鈕，抽一個今天的約會行程吧！</div>
+    
+    <!-- 拆成兩個格子：地點與做什麼 -->
+    <div class="picker-grid">
+      <div class="picker-box">
+        <div class="picker-box-label">📍 地點</div>
+        <div class="picker-box-content" id="picker-loc">點擊下方抽籤</div>
+      </div>
+      <div class="picker-box">
+        <div class="picker-box-label">✨ 做什麼</div>
+        <div class="picker-box-content" id="picker-act">期待今天的行程！</div>
+      </div>
+    </div>
+
     <div class="picker-btn-row">
-      <button type="button" class="line-btn" id="btn-pick-random">隨機抽籤</button>
+      <button type="button" class="line-btn" id="btn-pick-random">抽一個約會行程</button>
+    </div>
+
+    <!-- 下方筆記本清單按鈕 -->
+    <div class="notebook-trigger-row">
+      <button type="button" class="notebook-btn" id="btn-open-notebook">📖 開啟隨身筆記本（口袋咖啡廳 ＆ 電影清單）</button>
     </div>
   </div>
+
   <div style="margin-top: 15px;">
-    <button type="button" class="music-stop-btn" id="music-stop-btn-picker">停止播放音樂</button>
+    <button type="button" class="emoji-music-btn" id="music-stop-btn-picker" title="暫停/播放音樂">⏸️</button>
+  </div>
+</div>
+
+<!-- 筆記本燈箱展開頁面（左邊口袋咖啡廳，右邊電影清單） -->
+<div class="notebook-modal" id="notebook-modal" onclick="closeNotebook(event)">
+  <div class="notebook-spread" onclick="event.stopPropagation()">
+    <button class="notebook-close" onclick="closeNotebookDirect()">×</button>
+    <!-- 左頁：口袋咖啡廳 -->
+    <div class="notebook-page">
+      <h3>☕ 口袋咖啡廳</h3>
+      <ul>
+        <li><strong>角落安靜選：</strong>巷弄裡不限時的老宅咖啡，有暖黃燈光與貓咪。</li>
+        <li><strong>手沖與肉桂捲：</strong>空氣中永遠飄著烘豆香氣的地方。</li>
+        <li><strong>深夜營業所：</strong>適合聊天到忘記時間的深夜咖啡館。</li>
+        <li><strong>窗景發呆亭：</strong>看著路上行人雨滴發呆的完美角落。</li>
+      </ul>
+    </div>
+    <!-- 右頁：電影清單 -->
+    <div class="notebook-page">
+      <h3>🎬 電影清單</h3>
+      <ul>
+        <li>《世界上最糟糕的人》— 那些還在摸索的人生階段。</li>
+        <li>《在布魯日登岸》— 帶點荒謬卻溫柔的告別。</li>
+        <li>《愛在黎明破曉時》— 在火車上遇見的無盡對話。</li>
+        <li>《瑞克與莫蒂》— 一起瘋狂穿越多元宇宙。</li>
+      </ul>
+    </div>
   </div>
 </div>
 
@@ -372,7 +443,7 @@ const passwordError = document.getElementById('password-error');
 
 const errorMessages = [
   '你想什麼時候想見到我呀',
-  '沒關係啊啊就再也不見面，你這樣開心嗎',
+  '沒關係啊就再也不見面，你這樣開心嗎',
   '才不是這個日期，你就沒有很想我嗎',
   '這是我堅持不下去的時候，就會告訴自己再一下下就可以看到你了',
   '我一直偷偷數著日子，期待著那天到來',
@@ -441,27 +512,44 @@ document.getElementById('btn-goto-picker').addEventListener('click', (e) => {
   switchSection(secSlider, secPicker);
 });
 
-// 音樂停止／播放切換控制（同步兩顆音樂按鈕）
+// 筆記本燈箱開關控制
+const notebookModal = document.getElementById('notebook-modal');
+document.getElementById('btn-open-notebook').addEventListener('click', () => {
+  playClickSound();
+  notebookModal.classList.add('active');
+});
+
+function closeNotebookDirect() {
+  playClickSound();
+  notebookModal.classList.remove('active');
+}
+
+function closeNotebook(e) {
+  if (e.target === notebookModal) notebookModal.classList.remove('active');
+}
+
+// Emoji 音樂暫停／播放切換控制（同步兩顆按鈕與 emoji 狀態）
 function toggleMusic() {
+  playClickSound();
   const btn1 = document.getElementById('music-stop-btn');
   const btn2 = document.getElementById('music-stop-btn-picker');
   if (music.paused) {
     music.play().then(() => {
       music.volume = MUSIC_VOLUME;
-      btn1.textContent = '停止播放音樂';
-      btn2.textContent = '停止播放音樂';
+      btn1.textContent = '⏸️';
+      btn2.textContent = '⏸️';
     }).catch(() => {});
   } else {
     music.pause();
-    btn1.textContent = '播放背景音樂';
-    btn2.textContent = '播放背景音樂';
+    btn1.textContent = '▶️';
+    btn2.textContent = '▶️';
   }
 }
 
 document.getElementById('music-stop-btn').addEventListener('click', toggleMusic);
 document.getElementById('music-stop-btn-picker').addEventListener('click', toggleMusic);
 
-/* 隨機約會抽籤邏輯 */
+/* 隨機約會抽籤邏輯（分別抽地點與做什麼） */
 const locationsList = ['口袋咖啡廳（安靜角落）', '巷口公園散步', '舊書店挖寶', '河堤看夕陽', '家裡客廳看老電影'];
 const activitiesList = ['交換聽一首歌', '各自看書發呆', '拍奇怪的自拍', '亂逛超市買晚餐食材', '喝一杯聊聊天'];
 
@@ -470,12 +558,19 @@ document.getElementById('btn-pick-random').addEventListener('click', () => {
   const randomLoc = locationsList[Math.floor(Math.random() * locationsList.length)];
   const randomAct = activitiesList[Math.floor(Math.random() * activitiesList.length)];
   
-  const resultBox = document.getElementById('picker-result');
-  resultBox.style.opacity = '0';
+  const locBox = document.getElementById('picker-loc');
+  const actBox = document.getElementById('picker-act');
+  
+  locBox.style.opacity = '0';
+  actBox.style.opacity = '0';
+  
   setTimeout(() => {
-    resultBox.textContent = `✨ 今天的行程：\n去 【${randomLoc}】 ＋ 【${randomAct}】`;
-    resultBox.style.transition = 'opacity 0.4s ease';
-    resultBox.style.opacity = '1';
+    locBox.textContent = randomLoc;
+    actBox.textContent = randomAct;
+    locBox.style.transition = 'opacity 0.4s ease';
+    actBox.style.transition = 'opacity 0.4s ease';
+    locBox.style.opacity = '1';
+    actBox.style.opacity = '1';
   }, 200);
 });
 
@@ -634,6 +729,8 @@ document.querySelectorAll('.polaroid').forEach(item => {
 document.getElementById('btn-goto-letter').addEventListener('click', () => switchSection(secGallery, secLetter));
 
 let envelopeOpened = false;
+const fullLetterText = "想了想，還是想好好祝你生日快樂。在那之前先說抱歉，在接近你生日的時候毀了他。<br>長大了一歲，過去的一年我們一起看過了很多不一樣的風景，也各自在不同的路上創造了很多故事。我還是會偶爾想起台北的細雨，想起在潮濕冷空氣抽煙的日子。<br>其實我還是會想像跟你的未來，比你認為的還要多很多，可是現在好像沒有那種勇氣了<br>我可以繼續當那一個旁觀者就好了，看著你越來越好<br>所以呀，時間在前進，我們也一步一步往前，不急著成為一個完美的大人，慢慢地走呀走就好了。<br>過了一年，生日快樂。";
+
 function tearEnvelope() {
   if (envelopeOpened) return;
   envelopeOpened = true;
@@ -642,7 +739,33 @@ function tearEnvelope() {
         p = document.getElementById('letter-paper');
   e.classList.add('torn');
   setTimeout(() => p.classList.add('pulled'), 450);
-  setTimeout(() => document.getElementById('letter-next-container').classList.add('visible'), 2300);
+  
+  setTimeout(() => {
+    typeLetterEffect(fullLetterText, () => {
+      document.getElementById('letter-next-container').classList.add('visible');
+    });
+  }, 1200);
+}
+
+function typeLetterEffect(htmlText, callback) {
+  const targetBox = document.getElementById('letter-text');
+  targetBox.innerHTML = '';
+  let i = 0;
+  function type() {
+    if (i < htmlText.length) {
+      if (htmlText.substr(i, 4) === '<br>') {
+        targetBox.innerHTML += '<br>';
+        i += 4;
+      } else {
+        targetBox.innerHTML += htmlText.charAt(i);
+        i++;
+      }
+      setTimeout(type, 45);
+    } else if (callback) {
+      callback();
+    }
+  }
+  type();
 }
 
 document.getElementById('btn-goto-slider').addEventListener('click', () => switchSection(secLetter, secSlider));
