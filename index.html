@@ -17,12 +17,17 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 
 .home-content{display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
 
-/* 密碼輸入框與提示文字樣式 */
-.password-hint{font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.35rem;letter-spacing:.1em;color:#ffe9f5;text-shadow:0 2px 9px #ffacd466;margin-bottom:6px}
-.password-box{display:flex;gap:10px;margin-bottom:10px}
+/* 密碼輸入畫面區塊 */
+.password-stage{display:flex;flex-direction:column;align-items:center;gap:14px;transition:opacity 0.6s ease}
+.password-hint{font-family:'Caveat','Noto Sans TC',sans-serif;font-size:1.4rem;letter-spacing:.1em;color:#ffe9f5;text-shadow:0 2px 9px #ffacd466;line-height:1.5}
+.password-box{display:flex;gap:10px;margin-bottom:6px}
 .pin-input{width:55px;height:60px;background:transparent;border:2px solid #b8f1df;border-radius:12px;color:#b8f1df;font-size:1.8rem;text-align:center;font-family:'Noto Sans TC',sans-serif;box-shadow:0 0 12px #b8f1df22,inset 0 0 10px #b8f1df11;outline:none;transition:all .25s}
 .pin-input:focus{border-color:#ffb7d5;box-shadow:0 0 20px #ffb7d566;background:#b8f1df0a}
-.password-error{font-family:'Noto Sans TC',sans-serif;font-size:0.9rem;color:#ff85a1;min-height:20px;letter-spacing:.08em;text-shadow:0 2px 6px #0008}
+.password-error{font-family:'Noto Sans TC',sans-serif;font-size:0.95rem;color:#ff85a1;min-height:24px;letter-spacing:.08em;text-shadow:0 2px 6px #0008}
+
+/* 解鎖後的 Light up 區塊（預設完全隱藏） */
+.unlocked-stage{display:none;flex-direction:column;align-items:center;gap:16px;opacity:0;transition:opacity 0.8s ease}
+.unlocked-stage.show{display:flex;opacity:1}
 
 /* 首頁透明螢光方框按鈕（保留字體設計） */
 .light-up-btn{background:transparent;color:#b8f1df;border:2px solid #b8f1df;padding:14px 44px;font-size:1.3rem;letter-spacing:.18em;transition:transform .25s,box-shadow .25s,background .25s;font-family:'Caveat','Noto Sans TC',sans-serif;border-radius:12px;box-shadow:0 0 15px #b8f1df33,inset 0 0 15px #b8f1df11}
@@ -125,24 +130,29 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 </head>
 <body>
 
-<!-- 首頁（含 4 位數房間密碼解鎖） -->
+<!-- 首頁：第一階段輸入密碼，第二階段解鎖 Light up -->
 <div id="section-home" class="stage-section active">
   <div class="home-content">
-    <div class="password-hint">進入房間前要輸入密碼喔！<br>我們最快什麼時候見面</div>
-    <div class="password-box">
-      <input type="password" maxlength="1" class="pin-input" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code">
-      <input type="password" maxlength="1" class="pin-input" inputmode="numeric" pattern="[0-9]*">
-      <input type="password" maxlength="1" class="pin-input" inputmode="numeric" pattern="[0-9]*">
-      <input type="password" maxlength="1" class="pin-input" inputmode="numeric" pattern="[0-9]*">
-    </div>
-    <div class="password-error" id="password-error"></div>
     
-    <!-- 正確輸入密碼後才會顯示與解鎖的 Light up 區塊 -->
-    <div id="unlocked-content" style="display: none; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+    <!-- 階段一：密碼輸入畫面 -->
+    <div class="password-stage" id="password-stage">
+      <div class="password-hint">進入房間前要輸入密碼喔！<br>我們最快什麼時候見面</div>
+      <div class="password-box">
+        <input type="password" maxlength="1" class="pin-input" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code">
+        <input type="password" maxlength="1" class="pin-input" inputmode="numeric" pattern="[0-9]*">
+        <input type="password" maxlength="1" class="pin-input" inputmode="numeric" pattern="[0-9]*">
+        <input type="password" maxlength="1" class="pin-input" inputmode="numeric" pattern="[0-9]*">
+      </div>
+      <div class="password-error" id="password-error"></div>
+    </div>
+
+    <!-- 階段二：密碼正確後才出現的 Light up 按鈕與版權 -->
+    <div class="unlocked-stage" id="unlocked-stage">
       <button class="light-up-btn" id="btn-light-up">Light up</button>
       <div class="sound-hint">open the sound</div>
       <div class="producer-credit">produced by small._.gg</div>
     </div>
+
   </div>
 </div>
 
@@ -334,7 +344,8 @@ function playClickSound() { playAudio(clickAudio, 700); }
 
 /* 4位數密碼驗證邏輯 (正確密碼為 1222) */
 const pinInputs = document.querySelectorAll('.pin-input');
-const unlockedContent = document.getElementById('unlocked-content');
+const passwordStage = document.getElementById('password-stage');
+const unlockedStage = document.getElementById('unlocked-stage');
 const passwordError = document.getElementById('password-error');
 
 pinInputs.forEach((input, index) => {
@@ -359,16 +370,14 @@ function checkPinCode() {
     if (code === '1222') {
       playClickSound();
       passwordError.textContent = '';
-      document.querySelector('.password-box').style.display = 'none';
-      document.querySelector('.password-hint').style.display = 'none';
-      unlockedContent.style.display = 'flex';
-      unlockedContent.style.opacity = '0';
+      
+      // 密碼正確：淡出密碼輸入框，淡入 Light up 按鈕，並同步播放音樂
+      passwordStage.style.opacity = '0';
       setTimeout(() => {
-        unlockedContent.style.transition = 'opacity 0.8s ease';
-        unlockedContent.style.opacity = '1';
-      }, 50);
+        passwordStage.style.display = 'none';
+        unlockedStage.classList.add('show');
+      }, 500);
 
-      // 輸入正確密碼後立即播放背景音樂
       music.volume = MUSIC_VOLUME;
       music.play().catch(() => {});
     } else {
