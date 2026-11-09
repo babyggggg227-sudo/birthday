@@ -97,8 +97,16 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
 .line-btn{background:transparent;color:#b8f1df;border:2px solid #b8f1df;padding:10px 24px;font-size:0.9rem;letter-spacing:.1em;border-radius:12px;text-decoration:none;box-shadow:0 0 10px #b8f1df22,inset 0 0 10px #b8f1df11;transition:transform .3s,box-shadow .3s,background .3s;font-family:'Noto Sans TC',sans-serif;display:inline-block}
 .line-btn:hover{transform:translateY(-2px);background:#b8f1df15;box-shadow:0 0 18px #b8f1df55}
 
-.music-stop-btn{border:1px solid #ffffff66;background:#171321b8;color:#ffffffaa;padding:8px 20px;border-radius:999px;font-family:'Noto Sans TC',sans-serif;font-size:0.85rem;letter-spacing:.08em;box-shadow:0 3px 0 #080711;transition:transform .2s,color .2s}
-.music-stop-btn:hover{transform:translateY(-2px);color:#fff}
+/* 🥚 蛋的閃爍彩蛋按鈕樣式 */
+.easter-egg-btn{background:transparent;color:#ffb7d5;border:2px dashed #ffb7d5;padding:8px 24px;font-size:0.95rem;letter-spacing:.1em;border-radius:12px;text-decoration:none;box-shadow:0 0 15px #ffb7d533;font-family:'Noto Sans TC',sans-serif;display:inline-block;animation:blink-fast 1s infinite alternate;margin-top:2px}
+.easter-egg-btn:hover{background:#ffb7d515;transform:translateY(-2px)}
+@keyframes blink-fast{0%{opacity:0.3;transform:scale(0.98)}100%{opacity:1;transform:scale(1.02)}}
+
+/* 抽籤頁面樣式 */
+.picker-card{background:#2a2232;border:1px solid #ffffff55;max-width:480px;width:90%;padding:30px;border-radius:12px;text-align:center;box-shadow:0 20px 50px #000b;display:flex;flex-direction:column;gap:20px;align-items:center}
+.picker-title{font-family:'Noto Sans TC',sans-serif;font-size:1.3rem;letter-spacing:.1em;color:#b8f1df;margin-bottom:5px}
+.result-box{background:#171321;border:1px dashed #b8f1df66;padding:20px;border-radius:8px;width:100%;min-height:90px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;color:#ffe9f5;line-height:1.6;font-family:'Noto Sans TC',sans-serif;text-align:center}
+
 
 /* 返回按鈕樣式 */
 .back-btn{position:absolute;top:20px;left:20px;background:#ffffff15;border:1px solid #ffffff44;color:#fff;padding:8px 16px;border-radius:999px;font-family:'Noto Sans TC',sans-serif;font-size:0.9rem;letter-spacing:.08em;z-index:50;transition:background .2s,transform .2s}
@@ -214,7 +222,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
   <div class="letter-container">
     <div class="letter-paper" id="letter-paper">
       <h3>嗨正義哥：</h3>
-      <p>想了想，還是想好好祝你生日快樂。在那之前先說抱歉，在你真正生日的當天毀了他。<br>長大了一歲，過去的一年我們一起看過了很多不一樣的風景，也各自在不同的路上創造了很多故事。我還是會偶爾想起台北的細雨，想起在潮濕冷空氣抽煙的日子。但是呀，時間在前進，我們也一步一步往前，不急著成為一個完美的大人，慢慢地走呀走就好了。<br>過了一年，生日快樂。</p>
+      <p>想了想，還是想好好祝你生日快樂。在那之前先說抱歉，在接近你生日的時候毀了他。<br>長大了一歲，過去的一年我們一起看過了很多不一樣的風景，也各自在不同的路上創造了很多故事。我還是會偶爾想起台北的細雨，想起在潮濕冷空氣抽煙的日子。<br>其實我還是會想像跟你的未來，比你認為的還要多很多，可是現在好像沒有那種勇氣了<br>我可以繼續當那一個旁觀者就好了，看著你越來越好<br>所以呀，時間在前進，我們也一步一步往前，不急著成為一個完美的大人，慢慢地走呀走就好了。<br>過了一年，生日快樂。</p>
     </div>
     <div class="envelope" id="envelope" onclick="tearEnvelope()">
       <div class="envelope-flap"></div>
@@ -278,7 +286,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
       </div>
       <div class="slide-item">
         <img src="20260810要說再見了.png" class="slide-img" alt="回憶照片">
-        <div class="slide-caption-overlay">【2026.08.10】要好好說再見喔！不過我又參與你人生一個新階段了:D<br>你看著我從橘髮到黑髮到橘髮，我看見你從有頭髮到奇異果，這一年已經過得足夠豐富多彩了</div>
+        <div class="slide-caption-overlay">【2026.08.10】我們要好好說再見喔！又參與你人生一個新階段了:D<br>你看著我從橘髮到黑髮又到橘髮，他現在又開始慢慢變黑了，我應該不打算再擁有這樣繽紛的顏色了<br>我也看見你從有頭髮到奇異果，這一年已經足夠豐富多彩了</div>
       </div>
       <div class="slide-item">
         <img src="20260811新的一年，祝你開心.png" class="slide-img" alt="回憶照片">
@@ -292,9 +300,27 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
       <a href="https://line.me/ti/p/rRB0-1SSeX" target="_blank" rel="noopener noreferrer" class="line-btn">V我50</a>
       <a href="https://canva.link/06dcu0hb0u6cfyg" target="_blank" rel="noopener noreferrer" class="line-btn">回憶去年寫的</a>
     </div>
+ <!-- 🥚 蛋的閃爍彩蛋按鈕 -->
+    <a href="#" class="easter-egg-btn" id="btn-goto-picker">🥚 點我點我點我</a>
     <button type="button" class="music-stop-btn" id="music-stop-btn">停止播放音樂</button>
   </div>
 </div>
+
+<!-- 隨機約會抽籤頁面（小彩蛋） -->
+<div id="section-picker" class="stage-section">
+  <button class="back-btn" onclick="switchSection(secPicker, secSlider)">← 返回相簿</button>
+  <div class="picker-card">
+    <div class="picker-title">🎲 今天去哪裡？約會盲盒</div>
+    <div class="result-box" id="picker-result">點擊下方按鈕，抽一個今天的約會行程吧！</div>
+    <div class="picker-btn-row">
+      <button type="button" class="line-btn" id="btn-pick-random">隨機抽籤</button>
+    </div>
+  </div>
+  <div style="margin-top: 15px;">
+    <button type="button" class="music-stop-btn" id="music-stop-btn-picker">停止播放音樂</button>
+  </div>
+</div>
+
 
 <!-- 故事彈窗燈箱 -->
 <div class="modal-overlay" id="story-modal" onclick="closeStory(event)">
@@ -340,6 +366,7 @@ function playAudio(audio, duckMs = 850) {
 
 function playClickSound() { playAudio(clickAudio, 700); }
 
+
 /* 4位數密碼驗證邏輯與隨機錯誤訊息 (正確密碼為 1222) */
 const pinInputs = document.querySelectorAll('.pin-input');
 const passwordStage = document.getElementById('password-stage');
@@ -378,8 +405,6 @@ function checkPinCode() {
     if (code === '1222') {
       playClickSound();
       passwordError.textContent = '';
-      
-      // 密碼正確：淡出密碼輸入框，淡入 Light up 按鈕，並同步播放音樂
       passwordStage.style.opacity = '0';
       setTimeout(() => {
         passwordStage.style.display = 'none';
@@ -389,7 +414,6 @@ function checkPinCode() {
       music.volume = MUSIC_VOLUME;
       music.play().catch(() => {});
     } else {
-      // 隨機挑選一句錯誤訊息顯示
       const randomMsg = errorMessages[Math.floor(Math.random() * errorMessages.length)];
       passwordError.textContent = randomMsg;
       pinInputs.forEach(inp => inp.value = '');
@@ -402,7 +426,8 @@ const secHome = document.getElementById('section-home'),
       secCake = document.getElementById('section-cake'),
       secGallery = document.getElementById('section-gallery'),
       secLetter = document.getElementById('section-letter'),
-      secSlider = document.getElementById('section-slider');
+      secSlider = document.getElementById('section-slider'),
+      secPicker = document.getElementById('section-picker');
 
 function switchSection(from, to) {
   playClickSound();
@@ -414,14 +439,48 @@ document.getElementById('btn-light-up').addEventListener('click', () => {
   switchSection(secHome, secCake);
 });
 
-document.getElementById('music-stop-btn').addEventListener('click', () => {
-  const btn = document.getElementById('music-stop-btn');
+// 點擊蛋的彩蛋按鈕切換到抽籤頁面
+document.getElementById('btn-goto-picker').addEventListener('click', (e) => {
+  e.preventDefault();
+  switchSection(secSlider, secPicker);
+});
+
+// 音樂停止／播放切換控制（同步兩顆音樂按鈕）
+function toggleMusic() {
+  const btn1 = document.getElementById('music-stop-btn');
+  const btn2 = document.getElementById('music-stop-btn-picker');
   if (music.paused) {
-    music.play().then(() => { music.volume = MUSIC_VOLUME; btn.textContent = '停止播放音樂'; }).catch(() => {});
+    music.play().then(() => {
+      music.volume = MUSIC_VOLUME;
+      btn1.textContent = '停止播放音樂';
+      btn2.textContent = '停止播放音樂';
+    }).catch(() => {});
   } else {
     music.pause();
-    btn.textContent = '播放背景音樂';
+    btn1.textContent = '播放背景音樂';
+    btn2.textContent = '播放背景音樂';
   }
+}
+
+document.getElementById('music-stop-btn').addEventListener('click', toggleMusic);
+document.getElementById('music-stop-btn-picker').addEventListener('click', toggleMusic);
+
+/* 隨機約會抽籤邏輯 */
+const locationsList = ['口袋咖啡廳（安靜角落）', '巷口公園散步', '舊書店挖寶', '河堤看夕陽', '家裡客廳看老電影'];
+const activitiesList = ['交換聽一首歌', '各自看書發呆', '拍奇怪的自拍', '亂逛超市買晚餐食材', '喝一杯聊聊天'];
+
+document.getElementById('btn-pick-random').addEventListener('click', () => {
+  playClickSound();
+  const randomLoc = locationsList[Math.floor(Math.random() * locationsList.length)];
+  const randomAct = activitiesList[Math.floor(Math.random() * activitiesList.length)];
+  
+  const resultBox = document.getElementById('picker-result');
+  resultBox.style.opacity = '0';
+  setTimeout(() => {
+    resultBox.textContent = `✨ 今天的行程：\n去 【${randomLoc}】 ＋ 【${randomAct}】`;
+    resultBox.style.transition = 'opacity 0.4s ease';
+    resultBox.style.opacity = '1';
+  }, 200);
 });
 
 const actionPrompt = document.getElementById('action-prompt'),
