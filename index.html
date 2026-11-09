@@ -7,6 +7,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+  /* 隱藏密碼框內瀏覽器自帶的圖示與裝飾 */
+input::-webkit-contacts-auto-fill-button,
+input::-webkit-credentials-auto-fill-button {
+  visibility: hidden;
+  position: absolute;
+  right: 0;
+}
+
 :root{--ink:#f8edf5;--pink:#ffb7d5;--lav:#d8c6ff;--mint:#b8f1df;--gold:#ffe5a8;--night:#171321}
 body{background:radial-gradient(ellipse at 18% 15%,#352546 0%,transparent 38%),radial-gradient(ellipse at 85% 85%,#263744 0%,transparent 40%),var(--night);color:var(--ink);font-family:'Noto Sans TC',sans-serif;width:100vw;height:100vh;overflow:hidden;position:relative;cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='20'%3E%F0%9F%90%A5%3C/text%3E%3C/svg%3E") 2 2,auto}
 button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='20'%3E%F0%9F%90%A5%3C/text%3E%3C/svg%3E") 2 2,pointer}
