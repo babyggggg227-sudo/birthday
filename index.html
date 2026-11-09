@@ -324,7 +324,7 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
       </div>
       <div class="slide-item">
         <img src="20260811新的一年，祝你開心.png" class="slide-img" alt="回憶照片">
-        <div class="slide-caption-overlay">【2026.08.21】 我們有好好告別喔！無論什麼時候都是，都做出了認為對現在最棒最棒的決定<br>23歲的陳政毅會是什麼樣子呢？<br>我會期待，一直期待著的<br>新的一年，天天快樂，天天開心</div>
+        <div class="slide-caption-overlay">【2026.08.21】 我們有好好告別喔！無論什麼時候都是，都做出了認為對現在最棒最棒的決定<br>24歲的陳政毅會是什麼樣子呢？<br>我會期待，一直期待著的<br>新的一年，天天快樂，天天開心</div>
       </div>
     </div>
   </div>
@@ -386,11 +386,11 @@ button,.polaroid,.lighter,.envelope,.candle,.slide-item,a{cursor:url("data:image
     <div class="notebook-page">
       <h3>☕ 讚讚咖啡廳</h3>
       <ul>
-        <li><strong>REBIRTH：</strong>他可以不要倒嗎，我喜歡他的沙發喜歡跟你</li>
-        <li><strong>羊跳蚤：</strong>Rebirth沒有位置就去對面吧。</li>
+        <li><strong>REBIRTH：</strong>他可以不要倒嗎，我喜歡他的沙發喜歡還有跟你一起抽煙</li>
+        <li><strong>羊跳蚤：</strong>Rebirth沒有位置就去對面吧，也不錯。</li>
         <li><strong>黃山羊：</strong>肉桂捲好好吃，我想要吃肉桂捲</li>
         <li><strong>Sugar man：</strong>開到凌晨四點，可以抽菸抽到爽。</li>
-        <li><strong>坵粼咖啡：</strong>大安森林公園旁邊，氣氛很好（不能抽煙）。</li>
+        <li><strong>坵粼咖啡：</strong>大安森林公園旁邊，氣氛很好（不能抽煙、難停車）。</li>
          <li><strong>半路咖啡：</strong>我們有一起在這裡過喔，還匆匆忙忙跑回去世新。</li>
       </ul>
     </div>
@@ -600,7 +600,7 @@ document.getElementById('music-stop-btn').addEventListener('click', toggleMusic)
 document.getElementById('music-stop-btn-picker').addEventListener('click', toggleMusic);
 
 /* 隨機約會抽籤邏輯（完美修復淡入卡住與殘影） */
-const locationsList = ['咖啡廳', '公園草地', '舊書店', '河堤、海邊', '家裡軟乎乎的地毯', '家附近的街區'];
+const locationsList = ['咖啡廳', '公園草地', '舊書店', '河堤海邊', '家裡軟乎乎的地毯', '家附近的街區'];
 const activitiesList = ['交換聽一首歌', '各自看書發呆', '拍奇怪的自拍', '為對方想一道料理一起買食材', '喝一杯聊聊天', '天馬行空的創作', '陪對方做一件他想做很久的事情'];
 
 let isPicking = false;
@@ -634,7 +634,7 @@ document.getElementById('btn-pick-random').addEventListener('click', () => {
     setTimeout(() => {
       locBox.style.opacity = '1';
       actBox.style.opacity = '1';
-      isPicking =- false; // 解除鎖定
+      isPicking = false; // 這裡原本誤打成 =- 囉！改成 = 即可
     }, 50);
     
   }, 200);
