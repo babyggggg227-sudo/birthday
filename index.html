@@ -7,7 +7,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-  /* 隱藏密碼框內瀏覽器自帶的圖示與裝飾 */
+
+/* 隱藏密碼框內瀏覽器自帶的圖示與裝飾 */
 input::-webkit-contacts-auto-fill-button,
 input::-webkit-credentials-auto-fill-button {
   visibility: hidden;
@@ -482,7 +483,7 @@ const errorMessages = [
   '沒關係啊，就再也不見面，你這樣開心嗎',
   '才不是這個日期，你就沒有很想我嗎',
   '這是我堅持不下去的時候，就會告訴自己再一下下就可以看到你了',
-  'I一直偷偷數著日子，期待著那天到來',
+  '我一直偷偷數著日子，期待著那天到來',
   '妳要好好記得喔，有人願意飛好久好久就為了看到你'
 ];
 
@@ -598,8 +599,8 @@ function toggleMusic() {
 document.getElementById('music-stop-btn').addEventListener('click', toggleMusic);
 document.getElementById('music-stop-btn-picker').addEventListener('click', toggleMusic);
 
-/* 隨機約會抽籤邏輯（完美防止長文字疊字） */
-const locationsList = ['咖啡廳', '公園草地', '舊書店', '河堤海邊', '家裡軟乎乎的地毯', '家附近的街區'];
+/* 隨機約會抽籤邏輯（地點與活動清單已更新，並完美防止長文字疊字） */
+const locationsList = ['REBIRTH 沙發', '羊跳蚤對面', '黃山羊吃肉桂捲', 'Sugar man 抽菸聊天', '大安森林公園旁散步', '半路咖啡跟回世新路上', '家裡軟乎乎的地毯上'];
 const activitiesList = ['交換聽一首歌', '各自看書發呆', '拍奇怪的自拍', '為對方想一道料理一起買食材', '喝一杯聊聊天', '天馬行空的創作', '陪對方做一件他想做很久的事情'];
 
 document.getElementById('btn-pick-random').addEventListener('click', () => {
@@ -607,7 +608,7 @@ document.getElementById('btn-pick-random').addEventListener('click', () => {
   const locBox = document.getElementById('picker-loc');
   const actBox = document.getElementById('picker-act');
   
-  // 1. 先讓內容淡出並清空
+  // 1. 先讓內容淡出
   locBox.style.opacity = '0';
   actBox.style.opacity = '0';
   
